@@ -8,7 +8,7 @@
       name="description"
       content="This is Cashless Digital Transactions Pay (CDTPay). A very good place to store your money! "
     />
-    <title>CDTPay chào các bạn</title>
+    <title>CDTPay chào cáczxcxzczx bạn</title>
   </head>
 
   <body>
