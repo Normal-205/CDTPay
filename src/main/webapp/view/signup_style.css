@@ -1,0 +1,120 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  padding: 24px;
+  background: linear-gradient(
+    115.74deg,
+    #d6d6d6 12.61%,
+    #008bc8 49.63%,
+    #576cef 81.98%
+  );
+}
+.signup__bg {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  box-shadow: 4px -4px 4px rgba(0, 0, 0, 0.25);
+}
+.signup__content {
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.signup__banner {
+  width: 50%;
+  height: 100%;
+  background-color: #f5f5ff;
+  border-radius: 0 10px 10px 0;
+}
+.m24 {
+  margin: 12px 0;
+}
+.signup__form-title {
+  margin: 0px 0 36px 0px;
+  font-size: 28px;
+  font-weight: bold;
+  width: 350px;
+  text-align: center;
+}
+.signup__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input__signup {
+  width: 350px;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+  font-size: 18px;
+  padding: 0 24px;
+}
+.signup__form-username,
+.signup__form-password {
+  position: relative;
+  line-height: 50px;
+}
+
+.signup__form-username:focus-within .signup__form-txt {
+  opacity: 1;
+  top: -32px;
+}
+.signup__form-password:focus-within .signup__form-txt {
+  top: -32px;
+  opacity: 1;
+}
+
+.signup__form-txt {
+  position: absolute;
+  left: 24px;
+  opacity: 0.5;
+}
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+.signup__form-btn button {
+  width: 350px;
+  height: 50px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  color: #fff;
+  background: linear-gradient(94.49deg, #3ba0cc 24.53%, #afc8d3 96.1%);
+}
+.signup__form-check {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  color: #61678b;
+}
+.signup__form-check a {
+  text-decoration: none;
+}
+.signup__form-check a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+.btn__signup a {
+  font-size: 18px;
+  color: #61678b;
+  text-decoration: none;
+}
+.btn__signup a:hover {
+  color: #000;
+  text-decoration: underline;
+}
