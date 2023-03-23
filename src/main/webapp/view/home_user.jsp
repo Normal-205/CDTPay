@@ -17,7 +17,9 @@
           <a href="#"><i class="fa-solid fa-house"></i>Home</a>
         </li>
         <li class="navbar_item">
-          <a href=""><i class="fa-solid fa-right-left"></i>Transaction</a>
+          <a href="transaction_user.html"
+            ><i class="fa-solid fa-right-left"></i>Transaction</a
+          >
         </li>
         <li class="navbar_item">
           <a href=""><i class="fa-solid fa-qrcode"></i>QR code</a>
@@ -84,12 +86,12 @@
         ></a>
       </div>
       <div class="content_menu">
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-right-left"></i>
+        <a href="transaction_user.html">
+          <div class="content_menu-item">
+            <i class="fa-solid fa-right-left"></i>
             <p>Transaction</p>
-          </a>
-        </div>
+          </div>
+        </a>
         <div class="content_menu-item">
           <a href=""
             ><i class="fa-solid fa-qrcode"></i>
