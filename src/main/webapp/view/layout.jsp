@@ -13,8 +13,7 @@
       <div class="navbar_logo"><h1>CDTPay</h1></div>
       <ul class="navbar_items">
         <li class="navbar_item">
-          <div class="point"></div>
-          <a href="#"><i class="fa-solid fa-house"></i>Home</a>
+          <a href="home_user.html"><i class="fa-solid fa-house"></i>Home</a>
         </li>
         <li class="navbar_item">
           <a href="transaction_user.html"
@@ -22,10 +21,19 @@
           >
         </li>
         <li class="navbar_item">
-          <a href=""><i class="fa-solid fa-qrcode"></i>QR code</a>
+          <a href="myqrcode.html"
+            ><i class="fa-solid fa-qrcode"></i>My QRcode</a
+          >
         </li>
         <li class="navbar_item">
-          <a href=""><i class="fa-solid fa-credit-card"></i>Card service</a>
+          <a href="qrcode.html"
+            ><i class="fa-sharp fa-solid fa-barcode"></i>QR code</a
+          >
+        </li>
+        <li class="navbar_item">
+          <a href="card.html"
+            ><i class="fa-solid fa-credit-card"></i>Card service</a
+          >
         </li>
         <li class="navbar_item">
           <a href=""><i class="fa-solid fa-clock-rotate-left"></i>History</a>
@@ -62,71 +70,6 @@
               >
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="content_info">
-        <div class="content_info-main">
-          <p class="content_info-num">0368808518</p>
-          <div class="content_info-mon">
-            <p>********</p>
-            <p>VND</p>
-            <i class="fa-solid fa-eye"></i>
-          </div>
-          <a href=""
-            ><div class="content_info-tran">
-              <i class="fa-solid fa-arrow-right"></i>Transaction
-            </div></a
-          >
-        </div>
-        <a href=""
-          ><div class="content_info-show">
-            <i class="fa-solid fa-chevron-right"></i></div
-        ></a>
-      </div>
-      <div class="content_menu">
-        <a href="transaction_user.html">
-          <div class="content_menu-item">
-            <i class="fa-solid fa-right-left"></i>
-            <p>Transaction</p>
-          </div>
-        </a>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-qrcode"></i>
-            <p>QR code</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-credit-card"></i>
-            <p>Card service</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-clock-rotate-left"></i>
-            <p>History</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-piggy-bank"></i>
-            <p>Saving</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-user"></i>
-            <p>Account</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-phone-volume"></i>
-            <p>Hotline</p></a
-          >
         </div>
       </div>
     </div>
