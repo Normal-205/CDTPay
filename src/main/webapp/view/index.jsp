@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.util.Calendar"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +27,7 @@
         </ul>
       </div>
       <div class="header__login">
-        <a href="login.html"><button>Login</button></a>
+        <a href="login.jsp"><button>Login</button></a>
       </div>
     </header>
     <div class="slide" id="slide">
@@ -41,32 +45,32 @@
     <div class="vission" id="vission">
       <div class="vission__img"></div>
       <div class="vission__content">
-        <p class="vission__title">CDT Bank's vision</p>
+        <p class="vission__title">CDT Pay's vision</p>
         <p class="vission__txt">
-          CDT Bank's vision is to become a leading financial institution in the
+          CDT Pay's vision is to become a leading financial institution in the
           region, offering innovative and customer-centric banking solutions.
           The bank aims to provide its customers with a seamless banking
           experience by leveraging the latest technology and ensuring the
           highest standards of service quality.
         </p>
-        <button class="btn__showall">Xem chi tiết</button>
+        <button class="btn__showall">Xem chi tiết</button>
       </div>
     </div>
     <div class="mission" id="mission">
       <div class="mission__content">
-        <p class="mission__title">CDT Bank's mision</p>
+        <p class="mission__title">CDT Pay's mision</p>
         <p class="mission__txt">
-          CDT Bank's mission is to provide breakthrough financial solutions and
+          CDT Pay's mission is to provide breakthrough financial solutions and
           meet customers' needs to the best possible extent. The bank is
           committed to delivering high-quality financial products and services,
           enabling customers to achieve their financial goals.
         </p>
-        <button class="btn__showall">Xem chi tiết</button>
+        <button class="btn__showall">Xem chi tiết</button>
       </div>
       <div class="mission__img"></div>
     </div>
     <div class="aboutus" id="aboutus">
-      <div class="aboutus__title">Founding team of CDT Bank</div>
+      <div class="aboutus__title">The Creators of CDT Pay</div>
       <div class="aboutus__content">
         <div class="aboutus__item">
           <img
@@ -75,7 +79,7 @@
             class="aboutus__item-img"
           />
           <p class="aboutus__item-ceo">CEO</p>
-          <p class="aboutus__item-name">NGUYỄN THÀNH CHUNG</p>
+          <p class="aboutus__item-name">NGUYỄN THÀNH CHUNG</p>
         </div>
         <div class="aboutus__item">
           <img
@@ -84,7 +88,7 @@
             class="aboutus__item-img"
           />
           <p class="aboutus__item-ceo">CEO</p>
-          <p class="aboutus__item-name">NGUYỄN HỮU THƯỜNG</p>
+          <p class="aboutus__item-name">NGUYỄN HỮU THƯỜNG</p>
         </div>
         <div class="aboutus__item">
           <img
@@ -93,20 +97,16 @@
             class="aboutus__item-img"
           />
           <p class="aboutus__item-ceo">CEO</p>
-          <p class="aboutus__item-name">PHẠM ĐẠT THÀNH DUY</p>
+          <p class="aboutus__item-name">PHẠM ĐẠT THÀNH DUY</p>
         </div>
       </div>
     </div>
     <div class="testimonals">
-      <div class="testimonals__title">Testimonals</div>
+      <div class="testimonals__title">Endorsements</div>
       <div class="testimonals__slide">
         <div class="testimonals__item">
-          <p class="testimonals__item-txt">
-            “ ufhsadhfsaoidhfsoahfsaoihfo
-            siahfiosahdfiohsafashdofihsadiofhsadohfsoifhsdaofhsodhfsdiohfsidofhs
-            oidhfsdiofhsdoihfsdoihfsodihfoisdhfoisdhfosdhfo ”
-          </p>
-          <p class="testimonals__item-name">CEO.NGUYỄN HỮU THƯỜNG</p>
+          <p class="testimonals__item-txt">"Tin chuẩn chưa anh?"</p>
+          <p class="testimonals__item-name">CEO.NGUYỄN HỮU THƯỜNG</p>
           <img
             src="https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/132339848_1082217975562826_8163229432639064333_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=pRxSLf5LwYoAX_xE26u&_nc_oc=AQk0UsaY8Ydup1-l-G0o4ZAZkuRteetFsXpt4oWnaDL3hWWG2gPSBXFpdz9DhpMsoVw&_nc_ht=scontent.fhan5-9.fna&oh=00_AfCKNMLbqZVkjewmDpnNyaYEDZnd4f1K6gl8kjYNvXt0AQ&oe=642D559D"
             alt=""
@@ -115,11 +115,11 @@
         </div>
         <div class="testimonals__item blnone">
           <p class="testimonals__item-txt">
-            “ ufhsadhfsaoidhfsoahfsaoihfo
+            â ufhsadhfsaoidhfsoahfsaoihfo
             siahfiosahdfiohsafashdofihsadiofhsadohfsoifhsdaofhsodhfsdiohfsidofhs
-            oidhfsdiofhsdoihfsdoihfsodihfoisdhfoisdhfosdhfo ”
+            oidhfsdiofhsdoihfsdoihfsodihfoisdhfoisdhfosdhfo â
           </p>
-          <p class="testimonals__item-name">CEO.NGUYỄN THÀNH CHUNG</p>
+          <p class="testimonals__item-name">CEO.NGUYỄN THÀNH CHUNG</p>
           <img
             src="https://scontent.fhan5-8.fna.fbcdn.net/v/t39.30808-6/325393360_729245461914335_3664016762843441654_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=RWUApxAoSdkAX_s4r3y&_nc_ht=scontent.fhan5-8.fna&oh=00_AfDTz26BjODgeq0kEYV5-_5CA0S9GbjltsU3J_euBLMKvA&oe=640A17A0"
             alt=""
@@ -128,11 +128,11 @@
         </div>
         <div class="testimonals__item blnone">
           <p class="testimonals__item-txt">
-            “ ufhsadhfsaoidhfsoahfsaoihfo
+            â ufhsadhfsaoidhfsoahfsaoihfo
             siahfiosahdfiohsafashdofihsadiofhsadohfsoifhsdaofhsodhfsdiohfsidofhs
-            oidhfsdiofhsdoihfsdoihfsodihfoisdhfoisdhfosdhfo ”
+            oidhfsdiofhsdoihfsdoihfsodihfoisdhfoisdhfosdhfo â
           </p>
-          <p class="testimonals__item-name">CEO.PHẠM ĐẠT THÀNH DUY</p>
+          <p class="testimonals__item-name">CEO.PHẠM ĐẠT THÀNH DUY</p>
           <img
             src="https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/131949286_1057344984733543_1461980836764487632_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=iNrYHDPv__YAX_0E7aY&_nc_ht=scontent.fhan5-9.fna&oh=00_AfDYw5yACUNs_BW3wbyxV0bR-dYKH0kF6U-eWAFEY4jJiQ&oe=642D50D5"
             alt=""
@@ -167,10 +167,10 @@
               src="./fontawesome-free-6.3.0-web/Sparkling Diamond.png"
               alt=""
             />
-            CDTBank
+            CDTPay
           </div>
           <p>
-            CDT Bank is a leading financial institution committed to providing
+            CDT Pay is a leading financial institution committed to providing
             innovative financial solutions and exceptional customer service.
             Founded by a team of experienced professionals, the bank offers a
             wide range of financial products and services, including personal
@@ -190,8 +190,7 @@
           <div class="footer__menu-title">Contact</div>
           <div class="footer__menu-address-items">
             <div>
-              <i class="fa-sharp fa-solid fa-location-dot"></i> 43, Trần Duy
-              Hưng,<br />
+              <i class="fa-sharp fa-solid fa-location-dot"></i> 43, Trần Duy Hưng,<br />
               Trung Hoà, Cầu Giấy, Hà Nội
             </div>
             <div><i class="fa-solid fa-envelope"></i>ulsait@gmail.com</div>
@@ -213,7 +212,15 @@
       </div>
     </div>
     <footer>
-      <p>Copyright @ 2023 CDTBank. All rights reserved.</p>
+    <%
+  // Create a Calendar instance
+  Calendar now = Calendar.getInstance();
+  
+  // Get the current year
+  int year = now.get(Calendar.YEAR);
+%>
+      <p>Copyright <%= year %> CDTPay. All rights reserved.</p>
+  
     </footer>
   </body>
 </html>
