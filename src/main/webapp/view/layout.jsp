@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,22 +17,22 @@
           <a href="home_user.html"><i class="fa-solid fa-house"></i>Home</a>
         </li>
         <li class="navbar_item">
-          <a href="transaction_user.html"
+          <a href="transaction_user.jsp"
             ><i class="fa-solid fa-right-left"></i>Transaction</a
           >
         </li>
         <li class="navbar_item">
-          <a href="myqrcode.html"
+          <a href="myqrcode.jsp"
             ><i class="fa-solid fa-qrcode"></i>My QRcode</a
           >
         </li>
         <li class="navbar_item">
-          <a href="qrcode.html"
+          <a href="qrcode.jsp"
             ><i class="fa-sharp fa-solid fa-barcode"></i>QR code</a
           >
         </li>
         <li class="navbar_item">
-          <a href="card.html"
+          <a href="card.jsp"
             ><i class="fa-solid fa-credit-card"></i>Card service</a
           >
         </li>
