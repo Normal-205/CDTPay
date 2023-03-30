@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,8 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="home_user_style.css" />
-    <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.min.css" />
+    <link rel="stylesheet" href="style/css/home_user_style.css" />
+    <link
+      rel="stylesheet"
+      href="style/font/fontawesome-free-6.3.0-web/css/all.min.css"
+    />
   </head>
   <body>
     <div class="navbar">
@@ -17,27 +22,40 @@
           <a href="#"><i class="fa-solid fa-house"></i>Home</a>
         </li>
         <li class="navbar_item">
-          <a href="transaction_user.html"
+          <a href="transaction_user.jsp"
             ><i class="fa-solid fa-right-left"></i>Transaction</a
           >
         </li>
         <li class="navbar_item">
-          <a href=""><i class="fa-solid fa-qrcode"></i>QR code</a>
+          <a href="myqrcode.jsp"><i class="fa-solid fa-qrcode"></i>My QRcode</a>
         </li>
         <li class="navbar_item">
-          <a href=""><i class="fa-solid fa-credit-card"></i>Card service</a>
+          <a href="qrcode.jsp"
+            ><i class="fa-sharp fa-solid fa-barcode"></i>QR code</a
+          >
         </li>
         <li class="navbar_item">
-          <a href=""><i class="fa-solid fa-clock-rotate-left"></i>History</a>
+          <a href="card.jsp"
+            ><i class="fa-solid fa-credit-card"></i>Card service</a
+          >
         </li>
         <li class="navbar_item">
-          <a href=""><i class="fa-solid fa-piggy-bank"></i>Saving</a>
+          <a href="history_user.jsp"
+            ><i class="fa-solid fa-clock-rotate-left"></i>History</a
+          >
         </li>
         <li class="navbar_item">
-          <a href=""><i class="fa-solid fa-user"></i>Account</a>
+          <a href="saving_user.jsp"
+            ><i class="fa-solid fa-piggy-bank"></i>Saving</a
+          >
         </li>
         <li class="navbar_item">
-          <a href=""><i class="fa-solid fa-phone-volume"></i>Hotline</a>
+          <a href="account_user.jsp"><i class="fa-solid fa-user"></i>Account</a>
+        </li>
+        <li class="navbar_item">
+          <a href="support.jsp"
+            ><i class="fa-solid fa-phone-volume"></i>Hotline</a
+          >
         </li>
       </ul>
     </div>
@@ -86,48 +104,48 @@
         ></a>
       </div>
       <div class="content_menu">
-        <a href="transaction_user.html">
+        <a href="transaction_user.jsp">
           <div class="content_menu-item">
             <i class="fa-solid fa-right-left"></i>
             <p>Transaction</p>
-          </div>
-        </a>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-qrcode"></i>
-            <p>QR code</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-credit-card"></i>
-            <p>Card service</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-clock-rotate-left"></i>
-            <p>History</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-piggy-bank"></i>
-            <p>Saving</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-user"></i>
-            <p>Account</p></a
-          >
-        </div>
-        <div class="content_menu-item">
-          <a href=""
-            ><i class="fa-solid fa-phone-volume"></i>
-            <p>Hotline</p></a
-          >
-        </div>
+          </div> </a
+        ><a href="myqrcode.jsp">
+          <div class="content_menu-item">
+            <i class="fa-solid fa-qrcode"></i>
+            <p>My QRcode</p>
+          </div></a
+        ><a href="qrcode.jsp">
+          <div class="content_menu-item">
+            <i class="fa-solid fa-barcode"></i>
+            <p>QRcode</p>
+          </div></a
+        ><a href="card.jsp">
+          <div class="content_menu-item">
+            <i class="fa-solid fa-credit-card"></i>
+            <p>Card service</p>
+          </div></a
+        >
+        <a href="history_user.jsp"
+          ><div class="content_menu-item">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <p>History</p>
+          </div></a
+        ><a href="saving_user.jsp">
+          <div class="content_menu-item">
+            <i class="fa-solid fa-piggy-bank"></i>
+            <p>Saving</p>
+          </div></a
+        ><a href="account_user.jsp">
+          <div class="content_menu-item">
+            <i class="fa-solid fa-user"></i>
+            <p>Account</p>
+          </div></a
+        ><a href="support.jsp">
+          <div class="content_menu-item">
+            <i class="fa-solid fa-phone-volume"></i>
+            <p>Hotline</p>
+          </div></a
+        >
       </div>
     </div>
   </body>
