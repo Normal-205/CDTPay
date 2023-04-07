@@ -196,8 +196,7 @@
           <div class="footer__menu-title">Contact</div>
           <div class="footer__menu-address-items">
             <div>
-              <i class="fa-sharp fa-solid fa-location-dot"></i> 43, Trần Duy
-              Hưng,<br />
+              <i class="fa-sharp fa-solid fa-location-dot"></i> 43, Trần Duy  Hưng,<br />
               Trung Hoà, Cầu Giấy, Hà Nội
             </div>
             <div><i class="fa-solid fa-envelope"></i>ulsait@gmail.com</div>
@@ -219,7 +218,11 @@
       </div>
     </div>
     <footer>
- 
+      <% // Create a Calendar instance
+      Calendar now = Calendar.getInstance(); 
+      //Get the current year 
+      int year = now.get(Calendar.YEAR); %>
+      <p>Copyright <%= year %> CDTPay. All rights reserved.</p>
     </footer>
   </body>
   <script type="text/javascript">
