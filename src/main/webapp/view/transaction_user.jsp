@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,7 +59,7 @@ pageEncoding="UTF-8" %>
                 class="to_item"
                 maxlength="15"
                 id="content"
-                value="PHAM DUY THANH DAN Chuyển khoản"
+                value="PHAM DUY THANH DAN chuyen khoan"
               />
               <input
                 type="submit"
@@ -155,22 +155,22 @@ pageEncoding="UTF-8" %>
       $("#accountnumber,#money").on("keypress", function (e) {
         var keyCode = e.which ? e.which : e.keyCode;
         if (keyCode < 48 || keyCode > 57) {
-          e.preventDefault(); // Loại bỏ các ký tự không phải số
+          e.preventDefault(); // Loáº¡i bá» cÃ¡c kÃ½ tá»± khÃ´ng pháº£i sá»
         }
       });
     });
     // jQuery
     $(document).ready(function () {
-      var inputFields = $(".otp_number"); // Lấy tất cả các trường nhập liệu kiểu số
-      var currentInputIndex = 0; // Vị trí của ô đang được nhập liệu
+      var inputFields = $(".otp_number"); // Láº¥y táº¥t cáº£ cÃ¡c trÆ°á»ng nháº­p liá»u kiá»u sá»
+      var currentInputIndex = 0; // Vá» trÃ­ cá»§a Ã´ Äang ÄÆ°á»£c nháº­p liá»u
 
-      // Xử lý sự kiện khi nhập giá trị
+      // Xá»­ lÃ½ sá»± kiá»n khi nháº­p giÃ¡ trá»
       inputFields.on("input", function () {
-        var inputVal = $(this).val(); // Lấy giá trị của ô đang nhập liệu
-        inputVal = inputVal.replace(/[^\d]/g, ""); // Loại bỏ các ký tự không phải số
-        $(this).val(inputVal); // Cập nhật giá trị của ô đang nhập liệu
+        var inputVal = $(this).val(); // Láº¥y giÃ¡ trá» cá»§a Ã´ Äang nháº­p liá»u
+        inputVal = inputVal.replace(/[^\d]/g, ""); // Loáº¡i bá» cÃ¡c kÃ½ tá»± khÃ´ng pháº£i sá»
+        $(this).val(inputVal); // Cáº­p nháº­t giÃ¡ trá» cá»§a Ã´ Äang nháº­p liá»u
 
-        // Di chuyển con trỏ chuột sang ô tiếp theo khi đã nhập xong giá trị của ô hiện tại
+        // Di chuyá»n con trá» chuá»t sang Ã´ tiáº¿p theo khi ÄÃ£ nháº­p xong giÃ¡ trá» cá»§a Ã´ hiá»n táº¡i
 
         if (inputVal.length >= 1) {
           currentInputIndex++;
@@ -181,11 +181,11 @@ pageEncoding="UTF-8" %>
         }
       });
 
-      // Xử lý sự kiện khi nhấn phím Enter
+      // Xá»­ lÃ½ sá»± kiá»n khi nháº¥n phÃ­m Enter
       inputFields.on("keydown", function (event) {
         if (event.keyCode == 13) {
-          event.preventDefault(); // Ngăn chặn mặc định hành động của nút Enter
-          var inputValues = ""; // Chuỗi chứa giá trị của 6 ô nhập liệu
+          event.preventDefault(); // NgÄn cháº·n máº·c Äá»nh hÃ nh Äá»ng cá»§a nÃºt Enter
+          var inputValues = ""; // Chuá»i chá»©a giÃ¡ trá» cá»§a 6 Ã´ nháº­p liá»u
           inputFields.each(function () {
             inputValues += $(this).val();
           });
@@ -194,7 +194,7 @@ pageEncoding="UTF-8" %>
         }
       });
       $(".otp_btn").on("click", function () {
-        var inputValues = ""; // Chuỗi chứa giá trị của 6 ô nhập liệu
+        var inputValues = ""; // Chuá»i chá»©a giÃ¡ trá» cá»§a 6 Ã´ nháº­p liá»u
         inputFields.each(function () {
           inputValues += $(this).val();
         });

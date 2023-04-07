@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,6 +10,7 @@ pageEncoding="UTF-8" %>
     <title>Document</title>
     <link rel="stylesheet" href="style/css/signup_style.css" />
   </head>
+
   <body>
     <div class="signup__bg">
       <div class="signup__content">
@@ -20,16 +22,8 @@ pageEncoding="UTF-8" %>
               <input type="text" class="input__signup" name="" id="fullname" />
             </div>
             <div class="signup__form m24">
-              <label for="username" class="signup__form-txt"
-                >Phone number</label
-              >
-              <input
-                type="text"
-                class="input__signup"
-                name=""
-                id="username"
-                maxlength="10"
-              />
+              <label for="username" class="signup__form-txt">Phone number</label>
+              <input type="text" class="input__signup" name="" id="username" maxlength="10" />
             </div>
 
             <!-- <div class="signup__form m24">
@@ -64,36 +58,11 @@ pageEncoding="UTF-8" %>
 
                 <div class="otp_in">
                   <input type="password" class="otp_number" maxlength="1" />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
                   <input type="text" readonly class="otp_pass hiden" />
                 </div>
                 <button class="otp_btn">Confirm</button>
@@ -201,4 +170,5 @@ pageEncoding="UTF-8" %>
       });
     });
   </script>
-</html>
+
+  </html>
