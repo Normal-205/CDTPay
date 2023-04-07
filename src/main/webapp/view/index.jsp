@@ -219,7 +219,11 @@
       </div>
     </div>
     <footer>
- 
+ <% // Create a Calendar instance
+      Calendar now = Calendar.getInstance(); 
+      //Get the current year 
+      int year = now.get(Calendar.YEAR); %>
+      <p>Copyright <%= year %> CDTPay. All rights reserved.</p>
     </footer>
   </body>
   <script type="text/javascript">
