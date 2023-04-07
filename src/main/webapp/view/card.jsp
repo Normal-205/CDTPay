@@ -37,7 +37,7 @@ pageEncoding="UTF-8" %>
 
   <script>
     $(document).ready(function () {
-      $("#header").load("layout.html", function () {
+      $("#header").load("layout.jsp", function () {
         $("#header")
           .find(".navbar_item")
           .eq(4)

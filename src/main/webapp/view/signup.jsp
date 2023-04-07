@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="signup_style.css" />
   </head>
 
@@ -22,8 +22,8 @@
               <input type="text" class="input__signup" name="" id="fullname" />
             </div>
             <div class="signup__form m24">
-              <label for="username" class="signup__form-txt">Phone number</label>
-              <input type="text" class="input__signup" name="" id="username" maxlength="10" />
+              <label for="phone" class="signup__form-txt">Phone number</label>
+              <input type="text" class="input__signup" name="" id="phone" maxlength="10" pattern="0+[0-9]{9}" />
             </div>
 
             <!-- <div class="signup__form m24">
@@ -80,6 +80,7 @@
 
   <script>
     $(document).ready(function () {
+      alert("hello");
       $(".input__signup")
         .focus(function () {
           $(this)
@@ -97,6 +98,7 @@
               .removeClass("signup__form-txt-val");
           }
         });
+
       var input1Val = "";
       var input2Val = "";
       var input3Val = "";
@@ -167,6 +169,14 @@
           inputValues += $(this).val();
         });
         $(".otp_pass").val(inputValues);
+      });
+    });
+    $(document).ready(function () {
+      $("#phone").on("keypress", function (e) {
+        var keyCode = e.which ? e.which : e.keyCode;
+        if (keyCode < 48 || keyCode > 57) {
+          e.preventDefault(); 
+        }
       });
     });
   </script>
