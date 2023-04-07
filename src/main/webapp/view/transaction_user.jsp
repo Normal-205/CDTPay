@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
-    <link
-      rel="stylesheet"
-      href="style/font/fontawesome-free-6.3.0-web/css/all.min.css"
-    />
+    <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
   </head>
+
   <body>
     <div id="header"></div>
 
@@ -43,29 +42,14 @@
             <p>To:</p>
             <div class="to_items">
               <label for="accountnumber">Account number:</label>
-              <input
-                type="text"
-                maxlength="10"
-                class="to_item"
-                id="accountnumber"
-              />
+              <input type="text" maxlength="10" class="to_item" id="accountnumber" />
               <label for="accountname">Account name:</label>
               <input type="text" class="to_item" id="accountname" readonly />
               <label for="money">Money:</label>
               <input type="text" class="to_item" maxlength="15" id="money" />
               <label for="content">Content:</label>
-              <input
-                type="text"
-                class="to_item"
-                maxlength="15"
-                id="content"
-                value="PHAM DUY THANH DAN chuyen khoan"
-              />
-              <input
-                type="submit"
-                value="checknumber"
-                class="otp_checknumber hiden"
-              />
+              <input type="text" class="to_item" maxlength="15" id="content" value="PHAM DUY THANH DAN chuyen khoan" />
+              <input type="submit" value="checknumber" class="otp_checknumber hiden" />
               <div class="to_item_next">Next</div>
               <div class="otp_form hiden">
                 <div class="otp_bg"></div>
@@ -77,36 +61,11 @@
 
                   <div class="otp_in">
                     <input type="text" class="otp_number" maxlength="1" />
-                    <input
-                      type="text"
-                      class="otp_number"
-                      disabled
-                      maxlength="1"
-                    />
-                    <input
-                      type="text"
-                      class="otp_number"
-                      disabled
-                      maxlength="1"
-                    />
-                    <input
-                      type="text"
-                      class="otp_number"
-                      disabled
-                      maxlength="1"
-                    />
-                    <input
-                      type="text"
-                      class="otp_number"
-                      disabled
-                      maxlength="1"
-                    />
-                    <input
-                      type="text"
-                      class="otp_number"
-                      disabled
-                      maxlength="1"
-                    />
+                    <input type="text" class="otp_number" disabled maxlength="1" />
+                    <input type="text" class="otp_number" disabled maxlength="1" />
+                    <input type="text" class="otp_number" disabled maxlength="1" />
+                    <input type="text" class="otp_number" disabled maxlength="1" />
+                    <input type="text" class="otp_number" disabled maxlength="1" />
                     <input type="text" readonly class="otp_pass hiden" />
                   </div>
                   <button class="otp_btn">Confirm</button>
@@ -119,7 +78,7 @@
       <div class="recent">
         <p>Recent</p>
         <div class="recent_items">
-          <a href="transaction_user.html?accountnumber=0123456789">
+          <a href="transaction_user.jsp?accountnumber=0123456789">
             <div class="recent_item">
               <p>NGUYEN THANH CHUNG</p>
               <p>-</p>
@@ -242,4 +201,5 @@
       $("#accountnumber").val(accountnumber);
     });
   </script>
-</html>
+
+  </html>

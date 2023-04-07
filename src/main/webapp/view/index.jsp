@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-<%@page import="java.util.Calendar"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%> <%@page import="java.util.Calendar"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%@ taglib prefix="fn"
+uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,18 +35,18 @@
         <img src="style/img/1.png" alt="" class="img active" />
         <img src="style/img/2.png" alt="" class="img" />
         <img src="style/img/3.png" alt="" class="img" />
-         <img src="style/img/4.png" alt="" class="img" />
+        <img src="style/img/4.png" alt="" class="img" />
       </div>
       <div class="slide__dots">
         <div class="slide__dot slide-taget"></div>
         <div class="slide__dot"></div>
         <div class="slide__dot"></div>
-         <div class="slide__dot"></div>
+        <div class="slide__dot"></div>
       </div>
     </div>
     <div class="vission" id="vission">
       <div class="vission__img">
-      <img alt="" src="style/img/vission.png">
+        <img alt="" src="style/img/vission.png" />
       </div>
       <div class="vission__content">
         <p class="vission__title">CDT Pay's vision</p>
@@ -72,36 +72,24 @@
         <button class="btn__showall">Xem chi tiết</button>
       </div>
       <div class="mission__img">
-      <img alt="" src="style/img/mission.png">
+        <img alt="" src="style/img/mission.png" />
       </div>
     </div>
     <div class="aboutus" id="aboutus">
       <div class="aboutus__title">The Creators of CDT Pay</div>
       <div class="aboutus__content">
         <div class="aboutus__item">
-          <img
-            src="style/img/avt1.png"
-            alt=""
-            class="aboutus__item-img"
-          />
+          <img src="style/img/avt1.png" alt="" class="aboutus__item-img" />
           <p class="aboutus__item-ceo">CEO</p>
           <p class="aboutus__item-name">NGUYỄN THÀNH CHUNG</p>
         </div>
         <div class="aboutus__item">
-          <img
-            src="style/img/avt3.jpg"
-            alt=""
-            class="aboutus__item-img"
-          />
+          <img src="style/img/avt3.jpg" alt="" class="aboutus__item-img" />
           <p class="aboutus__item-ceo">CEO</p>
           <p class="aboutus__item-name">NGUYỄN HỮU THƯỜNG</p>
         </div>
         <div class="aboutus__item">
-          <img
-            src="style/img/avt2.jpg"
-            alt=""
-            class="aboutus__item-img"
-          />
+          <img src="style/img/avt2.jpg" alt="" class="aboutus__item-img" />
           <p class="aboutus__item-ceo">CEO</p>
           <p class="aboutus__item-name">PHẠM ĐẠT THÀNH DUY</p>
         </div>
@@ -113,11 +101,7 @@
         <div class="testimonals__item active">
           <p class="testimonals__item-txt">"Tin chuẩn chưa anh?"</p>
           <p class="testimonals__item-name">CEO.NGUYỄN HỮU THƯỜNG</p>
-          <img
-            src="style/img/avt3.jpg"
-            alt=""
-            class="testimonals__item-img"
-          />
+          <img src="style/img/avt3.jpg" alt="" class="testimonals__item-img" />
         </div>
         <div class="testimonals__item blnone">
           <p class="testimonals__item-txt">
@@ -126,11 +110,7 @@
             oidhfsdiofhsdoihfsdoihfsodihfoisdhfoisdhfosdhfo â
           </p>
           <p class="testimonals__item-name">CEO.NGUYỄN THÀNH CHUNG</p>
-          <img
-            src="style/img/avt1.png"
-            alt=""
-            class="testimonals__item-img"
-          />
+          <img src="style/img/avt1.png" alt="" class="testimonals__item-img" />
         </div>
         <div class="testimonals__item blnone">
           <p class="testimonals__item-txt">
@@ -139,11 +119,7 @@
             oidhfsdiofhsdoihfsdoihfsodihfoisdhfoisdhfosdhfo â
           </p>
           <p class="testimonals__item-name">CEO.PHẠM ĐẠT THÀNH DUY</p>
-          <img
-            src="style/img/avt2.jpg"
-            alt=""
-            class="testimonals__item-img"
-          />
+          <img src="style/img/avt2.jpg" alt="" class="testimonals__item-img" />
         </div>
       </div>
       <div class="testimonals__dots">
@@ -219,77 +195,75 @@
       </div>
     </div>
     <footer>
- <% // Create a Calendar instance
-      Calendar now = Calendar.getInstance(); 
-      //Get the current year 
-      int year = now.get(Calendar.YEAR); %>
+      <% // Create a Calendar instance Calendar now = Calendar.getInstance();
+      //Get the current year int year = now.get(Calendar.YEAR); %>
       <p>Copyright <%= year %> CDTPay. All rights reserved.</p>
     </footer>
   </body>
   <script type="text/javascript">
-  const slide = document.querySelector('.slide');
-  const imgs = slide.querySelectorAll('.img');
-  const dots = slide.querySelectorAll('.slide__dot');
-  let currentSlide = 0;
+    const slide = document.querySelector(".slide");
+    const imgs = slide.querySelectorAll(".img");
+    const dots = slide.querySelectorAll(".slide__dot");
+    let currentSlide = 0;
 
-  function changeSlide(n) {
-    imgs.forEach(img => {
-      img.classList.remove('active');
-    });
-    dots.forEach(dot => {
-      dot.classList.remove('slide-taget');
-    });
-    imgs[n].classList.add('active');
-    dots[n].classList.add('slide-taget');
-    currentSlide = n;
-  }
-  setInterval(() => {
-	  let nextSlide = currentSlide + 1;
-	  if (nextSlide >= imgs.length) {
-	    nextSlide = 0;
-	  }
-	  changeSlide(nextSlide);
-	}, 3000);
-  dots.forEach((dot, index) => {
-	  dot.addEventListener('click', () => {
-	    changeSlide(index);
-	  });
-	});
-
-  const testimonialsSlide = document.querySelector('.testimonals__slide');
-  const testimonialsItems = testimonialsSlide.querySelectorAll('.testimonals__item');
-  const testimonialsDots = document.querySelectorAll('.testimonals__dot');
-
-  let currentTestimonial = 0;
-
-  function changeTestimonial(n) {
-    testimonialsItems.forEach(item => {
-      item.classList.remove('active');
-    });
-
-    testimonialsDots.forEach(dot => {
-      dot.classList.remove('taget');
-    });
-
-    testimonialsItems[n].classList.add('active');
-    testimonialsDots[n].classList.add('taget');
-
-    currentTestimonial = n;
-  }
-
-  setInterval(() => {
-    let nextTestimonial = currentTestimonial + 1;
-    if (nextTestimonial >= testimonialsItems.length) {
-      nextTestimonial = 0;
+    function changeSlide(n) {
+      imgs.forEach((img) => {
+        img.classList.remove("active");
+      });
+      dots.forEach((dot) => {
+        dot.classList.remove("slide-taget");
+      });
+      imgs[n].classList.add("active");
+      dots[n].classList.add("slide-taget");
+      currentSlide = n;
     }
-    changeTestimonial(nextTestimonial);
-  }, 3000);
-
-  testimonialsDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      changeTestimonial(index);
+    setInterval(() => {
+      let nextSlide = currentSlide + 1;
+      if (nextSlide >= imgs.length) {
+        nextSlide = 0;
+      }
+      changeSlide(nextSlide);
+    }, 3000);
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        changeSlide(index);
+      });
     });
-  });
 
+    const testimonialsSlide = document.querySelector(".testimonals__slide");
+    const testimonialsItems =
+      testimonialsSlide.querySelectorAll(".testimonals__item");
+    const testimonialsDots = document.querySelectorAll(".testimonals__dot");
+
+    let currentTestimonial = 0;
+
+    function changeTestimonial(n) {
+      testimonialsItems.forEach((item) => {
+        item.classList.remove("active");
+      });
+
+      testimonialsDots.forEach((dot) => {
+        dot.classList.remove("taget");
+      });
+
+      testimonialsItems[n].classList.add("active");
+      testimonialsDots[n].classList.add("taget");
+
+      currentTestimonial = n;
+    }
+
+    setInterval(() => {
+      let nextTestimonial = currentTestimonial + 1;
+      if (nextTestimonial >= testimonialsItems.length) {
+        nextTestimonial = 0;
+      }
+      changeTestimonial(nextTestimonial);
+    }, 3000);
+
+    testimonialsDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        changeTestimonial(index);
+      });
+    });
   </script>
 </html>
