@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,6 +10,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="login_style.css" />
   </head>
+
   <body>
     <div class="login__bg">
       <div class="login__content">
@@ -17,12 +19,7 @@
           <div class="login__form">
             <div class="login__form-username m24">
               <label for="username" class="login__form-txt">Username</label>
-              <input
-                type="text"
-                class="input__login username"
-                name=""
-                id="username"
-              />
+              <input type="text" class="input__login username" name="" id="username" />
             </div>
             <div class="otp_form hiden">
               <div class="otp_bg"></div>
@@ -34,36 +31,11 @@
 
                 <div class="otp_in">
                   <input type="password" class="otp_number" maxlength="1" />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
+                  <input type="password" class="otp_number" disabled maxlength="1" />
                   <input type="text" readonly class="otp_pass hiden" />
                 </div>
                 <button class="otp_btn">Confirm</button>
@@ -79,7 +51,7 @@
             <div class="login__form-btn m24">
               <button>LOGIN</button>
             </div>
-            <div class="btn__signup m24"><a href="signup.html">Sign Up</a></div>
+            <div class="btn__signup m24"><a href="signup.jsp">Sign Up</a></div>
           </div>
         </form>
       </div>
@@ -181,4 +153,5 @@
       });
     });
   </script>
-</html>
+
+  </html>

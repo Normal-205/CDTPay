@@ -1,22 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
-    <link
-      rel="stylesheet"
-      href="style/font/fontawesome-free-6.3.0-web/css/all.min.css"
-    />
+    <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
 
     <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
   </head>
+
   <body>
     <div id="header"></div>
 
@@ -38,8 +36,8 @@ pageEncoding="UTF-8" %>
               video: {
                 facingMode: isMobile
                   ? {
-                      exact: "environment",
-                    }
+                    exact: "environment",
+                  }
                   : "user",
               },
             })
@@ -79,7 +77,7 @@ pageEncoding="UTF-8" %>
 
   <script>
     $(document).ready(function () {
-      $("#header").load("layout.html", function () {
+      $("#header").load("layout.jsp", function () {
         $("#header")
           .find(".navbar_item")
           .eq(3)
@@ -88,4 +86,5 @@ pageEncoding="UTF-8" %>
       });
     });
   </script>
-</html>
+
+  </html>

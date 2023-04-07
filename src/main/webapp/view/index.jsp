@@ -190,8 +190,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           <div class="footer__menu-title">Contact</div>
           <div class="footer__menu-address-items">
             <div>
-              <i class="fa-sharp fa-solid fa-location-dot"></i> 43, Trần Duy
-              Hưng,<br />
+              <i class="fa-sharp fa-solid fa-location-dot"></i> 43, Trần Duy  Hưng,<br />
               Trung Hoà, Cầu Giấy, Hà Nội
             </div>
             <div><i class="fa-solid fa-envelope"></i>ulsait@gmail.com</div>
@@ -213,8 +212,10 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
       </div>
     </div>
     <footer>
-      <% // Create a Calendar instance Calendar now = Calendar.getInstance(); //
-      Get the current year int year = now.get(Calendar.YEAR); %>
+      <% // Create a Calendar instance
+      Calendar now = Calendar.getInstance(); 
+      //Get the current year 
+      int year = now.get(Calendar.YEAR); %>
       <p>Copyright <%= year %> CDTPay. All rights reserved.</p>
     </footer>
   </body>

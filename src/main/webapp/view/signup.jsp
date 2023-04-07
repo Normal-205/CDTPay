@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style/css/signup_style.css" />
+    <link rel="stylesheet" type="text/css" href="style/css/signup_style.css" />
   </head>
 
   <body>
@@ -68,8 +68,7 @@
                 <button class="otp_btn">Confirm</button>
               </div>
             </div>
-
-            <div class="btn__signup m24"><a href="login.html">Sign In</a></div>
+            <div class="btn__signup m24"><a href="login.jsp">Sign In</a></div>
           </div>
         </form>
       </div>
