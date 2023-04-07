@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@page import="java.util.Calendar"%> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%@ taglib prefix="fn"
-uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@page import="java.util.Calendar"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,18 +32,22 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
     </header>
     <div class="slide" id="slide">
       <div class="imgs">
-        <img src="./ULSA IT.png" alt="" class="img" />
-        <img src="./ULSA IT.png" alt="" class="img" />
-        <img src="./ULSA IT.png" alt="" class="img" />
+        <img src="style/img/1.png" alt="" class="img active" />
+        <img src="style/img/2.png" alt="" class="img" />
+        <img src="style/img/3.png" alt="" class="img" />
+         <img src="style/img/4.png" alt="" class="img" />
       </div>
       <div class="slide__dots">
         <div class="slide__dot slide-taget"></div>
         <div class="slide__dot"></div>
         <div class="slide__dot"></div>
+         <div class="slide__dot"></div>
       </div>
     </div>
     <div class="vission" id="vission">
-      <div class="vission__img"></div>
+      <div class="vission__img">
+      <img alt="" src="style/img/vission.png">
+      </div>
       <div class="vission__content">
         <p class="vission__title">CDT Pay's vision</p>
         <p class="vission__txt">
@@ -67,14 +71,16 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         </p>
         <button class="btn__showall">Xem chi tiết</button>
       </div>
-      <div class="mission__img"></div>
+      <div class="mission__img">
+      <img alt="" src="style/img/mission.png">
+      </div>
     </div>
     <div class="aboutus" id="aboutus">
       <div class="aboutus__title">The Creators of CDT Pay</div>
       <div class="aboutus__content">
         <div class="aboutus__item">
           <img
-            src="https://scontent.fhan5-8.fna.fbcdn.net/v/t39.30808-6/325393360_729245461914335_3664016762843441654_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=RWUApxAoSdkAX_s4r3y&_nc_ht=scontent.fhan5-8.fna&oh=00_AfDTz26BjODgeq0kEYV5-_5CA0S9GbjltsU3J_euBLMKvA&oe=640A17A0"
+            src="style/img/avt1.png"
             alt=""
             class="aboutus__item-img"
           />
@@ -83,7 +89,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         </div>
         <div class="aboutus__item">
           <img
-            src="https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/132339848_1082217975562826_8163229432639064333_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=pRxSLf5LwYoAX_xE26u&_nc_oc=AQk0UsaY8Ydup1-l-G0o4ZAZkuRteetFsXpt4oWnaDL3hWWG2gPSBXFpdz9DhpMsoVw&_nc_ht=scontent.fhan5-9.fna&oh=00_AfCKNMLbqZVkjewmDpnNyaYEDZnd4f1K6gl8kjYNvXt0AQ&oe=642D559D"
+            src="style/img/avt3.jpg"
             alt=""
             class="aboutus__item-img"
           />
@@ -92,7 +98,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         </div>
         <div class="aboutus__item">
           <img
-            src="https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/131949286_1057344984733543_1461980836764487632_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=iNrYHDPv__YAX_0E7aY&_nc_ht=scontent.fhan5-9.fna&oh=00_AfDYw5yACUNs_BW3wbyxV0bR-dYKH0kF6U-eWAFEY4jJiQ&oe=642D50D5"
+            src="style/img/avt2.jpg"
             alt=""
             class="aboutus__item-img"
           />
@@ -104,11 +110,11 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
     <div class="testimonals">
       <div class="testimonals__title">Endorsements</div>
       <div class="testimonals__slide">
-        <div class="testimonals__item">
+        <div class="testimonals__item active">
           <p class="testimonals__item-txt">"Tin chuẩn chưa anh?"</p>
           <p class="testimonals__item-name">CEO.NGUYỄN HỮU THƯỜNG</p>
           <img
-            src="https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/132339848_1082217975562826_8163229432639064333_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=pRxSLf5LwYoAX_xE26u&_nc_oc=AQk0UsaY8Ydup1-l-G0o4ZAZkuRteetFsXpt4oWnaDL3hWWG2gPSBXFpdz9DhpMsoVw&_nc_ht=scontent.fhan5-9.fna&oh=00_AfCKNMLbqZVkjewmDpnNyaYEDZnd4f1K6gl8kjYNvXt0AQ&oe=642D559D"
+            src="style/img/avt3.jpg"
             alt=""
             class="testimonals__item-img"
           />
@@ -121,7 +127,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           </p>
           <p class="testimonals__item-name">CEO.NGUYỄN THÀNH CHUNG</p>
           <img
-            src="https://scontent.fhan5-8.fna.fbcdn.net/v/t39.30808-6/325393360_729245461914335_3664016762843441654_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=RWUApxAoSdkAX_s4r3y&_nc_ht=scontent.fhan5-8.fna&oh=00_AfDTz26BjODgeq0kEYV5-_5CA0S9GbjltsU3J_euBLMKvA&oe=640A17A0"
+            src="style/img/avt1.png"
             alt=""
             class="testimonals__item-img"
           />
@@ -134,7 +140,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           </p>
           <p class="testimonals__item-name">CEO.PHẠM ĐẠT THÀNH DUY</p>
           <img
-            src="https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/131949286_1057344984733543_1461980836764487632_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=iNrYHDPv__YAX_0E7aY&_nc_ht=scontent.fhan5-9.fna&oh=00_AfDYw5yACUNs_BW3wbyxV0bR-dYKH0kF6U-eWAFEY4jJiQ&oe=642D50D5"
+            src="style/img/avt2.jpg"
             alt=""
             class="testimonals__item-img"
           />
@@ -219,4 +225,70 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
       <p>Copyright <%= year %> CDTPay. All rights reserved.</p>
     </footer>
   </body>
+  <script type="text/javascript">
+  const slide = document.querySelector('.slide');
+  const imgs = slide.querySelectorAll('.img');
+  const dots = slide.querySelectorAll('.slide__dot');
+  let currentSlide = 0;
+
+  function changeSlide(n) {
+    imgs.forEach(img => {
+      img.classList.remove('active');
+    });
+    dots.forEach(dot => {
+      dot.classList.remove('slide-taget');
+    });
+    imgs[n].classList.add('active');
+    dots[n].classList.add('slide-taget');
+    currentSlide = n;
+  }
+  setInterval(() => {
+	  let nextSlide = currentSlide + 1;
+	  if (nextSlide >= imgs.length) {
+	    nextSlide = 0;
+	  }
+	  changeSlide(nextSlide);
+	}, 3000);
+  dots.forEach((dot, index) => {
+	  dot.addEventListener('click', () => {
+	    changeSlide(index);
+	  });
+	});
+
+  const testimonialsSlide = document.querySelector('.testimonals__slide');
+  const testimonialsItems = testimonialsSlide.querySelectorAll('.testimonals__item');
+  const testimonialsDots = document.querySelectorAll('.testimonals__dot');
+
+  let currentTestimonial = 0;
+
+  function changeTestimonial(n) {
+    testimonialsItems.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    testimonialsDots.forEach(dot => {
+      dot.classList.remove('taget');
+    });
+
+    testimonialsItems[n].classList.add('active');
+    testimonialsDots[n].classList.add('taget');
+
+    currentTestimonial = n;
+  }
+
+  setInterval(() => {
+    let nextTestimonial = currentTestimonial + 1;
+    if (nextTestimonial >= testimonialsItems.length) {
+      nextTestimonial = 0;
+    }
+    changeTestimonial(nextTestimonial);
+  }, 3000);
+
+  testimonialsDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      changeTestimonial(index);
+    });
+  });
+
+  </script>
 </html>

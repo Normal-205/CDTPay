@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <!DOCTYPE html>
-  <html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
 
   <head>
     <meta charset="UTF-8" />
@@ -74,7 +75,6 @@
   </body>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
-
   <script>
     $(document).ready(function () {
       $("#header").load("layout.jsp", function () {

@@ -70,6 +70,7 @@
 .imgs img {
   width: 100%;
   position: absolute;
+  display: none;
 }
 .slide__dots {
   position: absolute;
@@ -87,6 +88,9 @@
   background-color: #646464;
   width: 40px;
 }
+.active{
+	display: block !important;
+}
 .vission,
 .mission {
   height: 540px;
@@ -98,6 +102,15 @@
 .vission__img,
 .mission__img {
   width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vission__img img,
+.mission__img img{
+	width: 65%;
+	  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	  border-radius: 10px;
 }
 .vission__content,
 .mission__content {
@@ -188,6 +201,8 @@
   margin: auto;
   text-align: center;
   font-size: 18px;
+  display: none;
+ 
 }
 .testimonals__item-txt {
   margin: 24px 0px 0px 0;
