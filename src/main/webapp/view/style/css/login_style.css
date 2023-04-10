@@ -191,3 +191,8 @@ body {
 .otp_in input::-webkit-outer-spin-button {
   display: none;
 }
+.login__banner{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
