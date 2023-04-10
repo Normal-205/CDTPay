@@ -28,7 +28,6 @@
                 <div class="otp_close">
                   <i class="fa-solid fa-xmark"></i>
                 </div>
-
                 <div class="otp_in">
                   <input type="password" class="otp_number" maxlength="1" />
                   <input type="password" class="otp_number" disabled maxlength="1" />

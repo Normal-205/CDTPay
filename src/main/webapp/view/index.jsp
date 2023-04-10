@@ -195,8 +195,10 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
       </div>
     </div>
     <footer>
-      <% // Create a Calendar instance Calendar now = Calendar.getInstance();
-      //Get the current year int year = now.get(Calendar.YEAR); %>
+      <% // Create a Calendar instance 
+      Calendar now = Calendar.getInstance();
+      //Get the current year 
+      int year = now.get(Calendar.YEAR); %>
       <p>Copyright <%= year %> CDTPay. All rights reserved.</p>
     </footer>
   </body>
