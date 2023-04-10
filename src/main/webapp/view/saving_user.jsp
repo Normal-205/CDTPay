@@ -13,7 +13,49 @@
 
   <body>
     <div id="header"></div>
-    <div class="content_saving"></div>
+    <div class="content_saving">
+    <div class="saving-send">
+         <div class="from_items">
+              <div class="from_left">
+                <div class="from_item">
+                  <div class="from_accnb">0368808518</div>
+                  <div>-</div>
+                  <div class="from_name">PHAM DAT THANH DUY</div>
+                </div>
+                <div class="from_item">
+                  <div class="from_money">1000000</div>
+                  <div class="from_dv">VND</div>
+                </div>
+              </div>
+              <div class="from_right">
+                <i class="fa-sharp fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div>
+            <form action="">
+            <label for="interestRate" >Interest Rate:</label>
+              <input type="text" maxlength="10" class="to_item" id="interestRate" readonly value="0%"/>
+              <label for="money" class="black">Money:</label>
+              <input type="text" class="to_item" id="money"  />
+              <div>
+              
+               <select name="" id="">
+            <option value="">Time</option>
+              <option value="5">5 minute</option>
+              <option value="10">10 minute</option>
+            </select>
+              </div>
+              <label for="totalmoney" >Total money:</label>
+              <input type="text" class="to_item" maxlength="15" id="totalmoney" readonly="readonly"/>
+           
+          
+            </form>
+            </div>
+    </div>
+    <div class="saving-withdraw">
+    sa
+    </div>
+    </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
