@@ -21,7 +21,7 @@
               <label for="username" class="login__form-txt">Username</label>
               <input type="text" class="input__login username" name="" id="username" />
             </div>
-            <div class="otp_form hiden">
+        <div class="otp_form hiden">
               <div class="otp_bg"></div>
               <div class="otp">
                 <p>ENTER PASSWORD</p>
@@ -31,11 +31,36 @@
 
                 <div class="otp_in">
                   <input type="password" class="otp_number" maxlength="1" />
-                  <input type="password" class="otp_number" disabled maxlength="1" />
-                  <input type="password" class="otp_number" disabled maxlength="1" />
-                  <input type="password" class="otp_number" disabled maxlength="1" />
-                  <input type="password" class="otp_number" disabled maxlength="1" />
-                  <input type="password" class="otp_number" disabled maxlength="1" />
+                  <input
+                    type="password"
+                    class="otp_number"
+                    disabled
+                    maxlength="1"
+                  />
+                  <input
+                    type="password"
+                    class="otp_number"
+                    disabled
+                    maxlength="1"
+                  />
+                  <input
+                    type="password"
+                    class="otp_number"
+                    disabled
+                    maxlength="1"
+                  />
+                  <input
+                    type="password"
+                    class="otp_number"
+                    disabled
+                    maxlength="1"
+                  />
+                  <input
+                    type="password"
+                    class="otp_number"
+                    disabled
+                    maxlength="1"
+                  />
                   <input type="text" readonly class="otp_pass hiden" />
                 </div>
                 <button class="otp_btn">Confirm</button>
