@@ -25,6 +25,9 @@ body {
   );
   box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
 }
+.navbar_admin{
+	background: linear-gradient(164.26deg, #000000 -4.41%, #B450B6 75.17%, #7AD6FF 144.32%);
+}
 .hiden {
   display: none !important;
 }
@@ -74,6 +77,13 @@ body {
   align-items: center;
   padding: 0 24px;
   color: #61678b;
+}
+.header_admin{
+	background: #1F0E20;
+	color: #fff;
+}
+.header_admin div{
+	color:#fff;
 }
 .header_user {
   display: flex;
@@ -218,7 +228,8 @@ body {
 .content_card,
 .content_history,
 .content_account,
-.content_saving {
+.content_saving,.dashboard,
+.admin_transaction {
   background-color: #fff;
 
   margin: 24px;
@@ -228,12 +239,160 @@ body {
   border-radius: 10px;
   color: #61678b;
 }
+.admin_transaction{
+	flex-direction: column;
+	padding: 48px;
+}
+.account{
+	  background-color: #fff;
+
+  margin: 24px;
+  padding: 24px;
+
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: #61678b;
+}
+	table {
+			border-collapse: collapse;
+			width: 100%;
+			color: #333;
+			font-family: sans-serif;
+			font-size: 14px;
+			text-align: left;
+			background: #fff;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			box-shadow: 0 1px 3px rgba(0,0,0,.25);
+		}
+
+		table th {
+			background: #F3F3F3;
+			font-weight: bold;
+			padding: 10px;
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
+			border-bottom: 1px solid #ccc;
+		}
+
+		table td {
+			padding: 10px;
+			border-bottom: 1px solid #ccc;
+			text-align: center;
+		}
+
+		table tr:hover {
+			background-color: #f5f5f5;
+		}
+
+	
+		.btn {
+			display: inline-block;
+			padding: 6px 12px;
+			margin-bottom: 0;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1.42857143;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: middle;
+			cursor: pointer;
+			border: 1px solid transparent;
+			border-radius: 4px;
+			color: #fff;
+		}
+
+		.create-btn {
+			background-color: #4CAF50;
+			margin: 24px 0;
+			font-size: 18px;
+		}
+
+		.update-btn {
+			background-color: #008CBA;
+		}
+
+		.delete-btn {
+			background-color: #f44336;
+		}
+.create_bg,.update_bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+      .create-form-items,.update-form-items {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        background-color: #fff;
+        border-radius: 10px;
+        align-items: center;
+        animation: dropdown 1s forwards;
+         padding: 24px 0;
+         z-index: 999;
+      }
+       .create-form-items p,.update-form-items p{
+       font-size: 28px;
+       font-weight:bold;
+       margin: 12px 0 24px;
+       }
+      @keyframes dropdown {
+        from {
+          top: -30%;
+        }
+        to {
+          top: 50%;
+        }
+      }
+      .create-form-items input,.update-form-items input {
+     	 padding:0 12px;
+        margin: 12px;
+        width: 400px;
+        height: 50px;
+        font-size: 18px;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        outline: none;
+      }
+      .create-form-items button , .update-form-items button {
+        margin: 12px;
+        width: 300px;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        background-color: #4caf50;
+        color: #fff;
+        font-size: 18px;
+      }
+.black{
+	color:#000;
+	font-weight: bold;
+}
 .transaction {
   margin-right: 24px;
   font-style: italic;
   width: 60%;
 
   border-right: 1px solid rgba(0, 0, 0, 0.25);
+}
+.transaction_from{
+	 margin-right: 24px;
+  font-style: italic;
+  width: 100%;
+
+ 
+}
+
+.content_adtran{
+	display: flex;
 }
 .from_items {
   width: 95%;
@@ -261,7 +420,7 @@ body {
 .from_item div {
   margin-right: 12px;
 }
-.to p {
+.to p,.from p {
   margin-bottom: 24px;
 }
 .to_items {
@@ -539,3 +698,70 @@ body {
 }
 .changepass {
 }
+.dashboard{
+	display: block;
+}
+.dashboard_block{
+	display: flex;
+	justify-content:space-around;
+	width: 100%;
+}
+.block{
+	width: 300px;
+	height: 150px;
+	
+	border-radius: 10px;
+	color:#fff;
+	font-size:24px;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	 box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.tim{
+	background-color: #B254B8;
+}
+.xanh{
+	background-color: #55df55;
+}
+.cam{
+	background-color: orange;
+}
+.dashboard_chart{
+	margin:50px 0 50px 0;
+	width:100%;
+	display: flex;
+}	
+.dashboard_chart div{
+	width: 50%;
+}
+.block p:nth-child(1) {
+	margin: 12px;
+	font-weight: bold;
+}
+.dashboard p:nth-child(1) {
+	margin: 12px;
+	font-weight: bold;
+	font-size: 24px;
+}
+@media screen and (max-width: 768px) {
+  /* Các quy tắc CSS cho màn hình có độ rộng tối đa là 768px */
+.navbar {
+	
+  position: fixed;
+  top: 0;
+  right:0;
+  height: 100%;
+  width: 250px;
+  background: linear-gradient(
+    164.26deg,
+    #61678b -4.41%,
+    #43a2cc 75.17%,
+    #f9f9f9 144.32%
+  );
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
+}
+}
+
+

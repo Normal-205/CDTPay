@@ -11,7 +11,7 @@
   <body>
     <div class="login__bg">
       <div class="login__content">
-        <div class="login__form-title">Welcome to CDTPay</div>
+        <div class="login__form-title">Welcome to CDTPay (Admin)</div>
         <form action="" method="post">
           <div class="login__form">
             <div class="login__form-username m24">
@@ -23,51 +23,17 @@
                 id="username"
               />
             </div>
-            <div class="otp_form hiden">
-              <div class="otp_bg"></div>
-              <div class="otp">
-                <p>ENTER PASSWORD</p>
-                <div class="otp_close">
-                  <i class="fa-solid fa-xmark"></i>
-                </div>
-
-                <div class="otp_in">
-                  <input type="password" class="otp_number" maxlength="1" />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input
-                    type="password"
-                    class="otp_number"
-                    disabled
-                    maxlength="1"
-                  />
-                  <input type="text" readonly class="otp_pass hiden" />
-                </div>
-                <button class="otp_btn">Confirm</button>
-              </div>
-            </div>
+                 <div class="login__form-password m24">
+              <label for="password" class="login__form-txt">Password</label>
+              <input
+                type="password"
+                name=""
+                class="input__login"
+                id="password"
+              />
+            </div> 
+           
+            
             <div class="login__form-check m24">
               <div class="show__pass">
                 <input type="checkbox" name="" id="showpassword" />
