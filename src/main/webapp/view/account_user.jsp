@@ -16,7 +16,7 @@
     <div id="header"></div>
     <div class="content_account">
       <img
-        src=""
+        src="./style/img/page's avatar.png"
         alt="" class="account_img" width="200px" height="200px" />
       <p>PHAM DUY THANH DAN</p>
       <p><span>Phone number: </span><span>0368808518</span></p>

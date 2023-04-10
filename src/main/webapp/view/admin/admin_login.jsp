@@ -48,7 +48,7 @@
           </div>
         </form>
       </div>
-      <div class="login__banner"><img src="../style/img/thum.jpg" alt="" /></div>
+      <div class="login__banner"><img src="../style/img/thuml.png" alt="" /></div>
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

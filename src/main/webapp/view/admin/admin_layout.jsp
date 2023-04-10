@@ -18,32 +18,32 @@
       <div class="navbar_logo"><h1>CDTPay</h1></div>
       <ul class="navbar_items">
         <li class="navbar_item">
-          <a href="home_user.jsp"><i class="fa-solid fa-house"></i>Dashboard</a>
+          <a href="dashboard.jsp"><i class="fa-solid fa-house"></i>Dashboard</a>
         </li>
         <li class="navbar_item">
-          <a href="transaction_user.jsp"
+          <a href="admin_transaction.jsp"
             ><i class="fa-solid fa-right-left"></i>Transaction</a
           >
         </li>
         <li class="navbar_item">
-          <a href="myqrcode.jsp"><i class="fa-solid fa-wallet"></i>Deposit</a>
+          <a href="deposit.jsp"><i class="fa-solid fa-wallet"></i>Deposit</a>
         </li>
         
         <li class="navbar_item">
-          <a href="history_user.jsp"
+          <a href="admin_history.jsp"
             ><i class="fa-solid fa-clock-rotate-left"></i>History</a
           >
         </li>
         <li class="navbar_item">
-          <a href="saving_user.jsp"
+          <a href="#"
             ><i class="fa-solid fa-piggy-bank"></i>Saving</a
           >
         </li>
         <li class="navbar_item">
-          <a href="account_user.jsp"><i class="fa-solid fa-user"></i>Account User</a>
+          <a href="accuser.jsp"><i class="fa-solid fa-user"></i>Account User</a>
         </li>
         <li class="navbar_item">
-          <a href="support.jsp"
+          <a href="#"
             ><i class="fa-solid fa-phone-volume"></i>Support</a
           >
         </li>
@@ -53,7 +53,7 @@
       <div class="header_title"><p>Dashboard</p></div>
       <div class="header_user">
         <img
-          src="../style/img/avt1.png"
+          src="../style/img/page's avatar.png"
           alt=""
         />
         <p>PHAM DUY THANH DAN</p>
