@@ -15,6 +15,7 @@
     <div id="header"></div>
     <div class="content_saving">
     <div class="saving-send">
+    <p>Send:</p>
          <div class="from_items">
               <div class="from_left">
                 <div class="from_item">
@@ -33,27 +34,28 @@
             </div>
             <div>
             <form action="">
-            <label for="interestRate" >Interest Rate:</label>
-              <input type="text" maxlength="10" class="to_item" id="interestRate" readonly value="0%"/>
-              <label for="money" class="black">Money:</label>
-              <input type="text" class="to_item" id="money"  />
-              <div>
-              
-               <select name="" id="">
-            <option value="">Time</option>
+            <label for="interestRate" >Interest Rate (%):</label>
+              <input type="text" maxlength="10" class="to_item" id="interestRate" readonly value="0.03"/>
+              <select name="" id="select-time">
               <option value="5">5 minute</option>
               <option value="10">10 minute</option>
             </select>
+              <label for="money" class="black">Money:</label>
+              <input type="text" class="to_item" id="money"  />
+              
+              <div>
+              
+               
               </div>
               <label for="totalmoney" >Total money:</label>
               <input type="text" class="to_item" maxlength="15" id="totalmoney" readonly="readonly"/>
-           
+   <div class="to_item_next">Send</div>
           
             </form>
             </div>
     </div>
     <div class="saving-withdraw">
-    sa
+    <p>Withdraw:Features under development.  </p>
     </div>
     </div>
   </body>
@@ -70,6 +72,29 @@
         $("#header").find(".header_title").find("p").text("Saving");
       });
     });
+    $(document).ready(function() {
+    	  // Bắt sự kiện khi chọn giá trị trong select
+    	  $('#select-time').change(function() {
+    	    // Lấy giá trị được chọn
+    	    var selectedValue = $(this).val();
+    	    if (selectedValue === '5') {
+    	      // Nếu giá trị được chọn là 5, thêm giá trị 0.3 vào input
+    	      var currentValue = $('#interestRate').val();
+    	      $('#interestRate').val(0.03);
+    	    }
+    	    if (selectedValue === '10') {
+      	      // Nếu giá trị được chọn là 5, thêm giá trị 0.3 vào input
+      	      var currentValue = $('#interestRate').val();
+      	      $('#interestRate').val(0.035);
+      	    }
+    	  });
+    	  $('#money').on('input', function() {
+    		    var value1 = parseFloat($(this).val()); 
+    		    var value2 = value1 +  (value1*($('#interestRate').val()));
+    		    $('#totalmoney').val(value2);
+    		  });
+    	});
+
   </script>
 
   </html>
