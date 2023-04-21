@@ -60,7 +60,7 @@
       <div class="header_title"><p>Home</p></div>
       <div class="header_user">
         <img
-          src="https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/131949286_1057344984733543_1461980836764487632_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=iNrYHDPv__YAX_0E7aY&_nc_ht=scontent.fhan5-9.fna&oh=00_AfDYw5yACUNs_BW3wbyxV0bR-dYKH0kF6U-eWAFEY4jJiQ&oe=642D50D5"
+          src="style/img/page's avatar.png"
           alt=""
         />
         <p>PHAM DUY THANH DAN</p>

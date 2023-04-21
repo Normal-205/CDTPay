@@ -15,5 +15,8 @@
 
   <body>
     <h1>Hello World!</h1>
+    <form action="CheckConnection" method="post">
+			<input type="submit" value="ENTER">
+	</form>
   </body>
 </html>

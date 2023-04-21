@@ -25,7 +25,7 @@
       </div>
       <script>
         var qrcode = new QRCode(document.getElementById("qrcode"), {
-          text: "transaction_user.jsp",
+          text: "transaction_user.jsp?accountnumber=1111",
           width: 300,
           height: 300,
           colorDark: "#61678B",
