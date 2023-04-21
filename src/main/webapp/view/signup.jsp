@@ -105,7 +105,7 @@
         input1Val = $(this).val();
       });
 
-      $("#username").change(function () {
+      $("#phone").change(function () {
         input2Val = $(this).val();
       });
 
