@@ -110,6 +110,7 @@ body {
 }
 .header_user:hover .header_dropdown {
   display: block;
+  z-index: 99999;
 }
 .header_dropdown {
   display: none;
