@@ -174,7 +174,7 @@
       $("#phone").on("keypress", function (e) {
         var keyCode = e.which ? e.which : e.keyCode;
         if (keyCode < 48 || keyCode > 57) {
-          e.preventDefault(); 
+          e.preventDefault();
         }
       });
     });

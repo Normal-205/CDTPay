@@ -10,6 +10,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
     <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
   </head>
 
   <body>
@@ -43,6 +45,7 @@
             <div class="to_items">
               <label for="accountnumber">Account number:</label>
               <input type="text" maxlength="10" class="to_item" id="accountnumber" />
+              <input type="submit" value="checkacc" id="checkacc" hidden/>
               <label for="accountname">Account name:</label>
               <input type="text" class="to_item" id="accountname" readonly />
               <label for="money">Money:</label>
@@ -200,6 +203,22 @@
 
       $("#accountnumber").val(accountnumber);
     });
+    $(document).ready(function() {
+    	  $('#accountnumber').blur(function() {
+    	    var accountNumber = $(this).val();
+    	    if (accountNumber === '') {
+    	   
+    	      Swal.fire({
+    	        icon: 'warning',
+    	        title: 'Yêu cầu',
+    	        text: 'Vui lòng nhập số tài khoản',
+    	      });
+    	    } else {
+    	      $('#checkacc').trigger('click');
+    	    }
+    	  });
+    	});
+
   </script>
 
   </html>

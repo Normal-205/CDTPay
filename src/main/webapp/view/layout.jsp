@@ -71,7 +71,7 @@
         <div class="header_dropdown">
           <ul class="header_dropdown_items">
             <li class="header_dropdown_item">
-              <a href=""><i class="fa-solid fa-user"></i>Account</a>
+              <a href="account_user.jsp"><i class="fa-solid fa-user"></i>Account</a>
             </li>
             <li class="header_dropdown_item">
               <a href=""
