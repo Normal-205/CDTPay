@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,78 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
-    <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css"/>
+    <link
+      rel="stylesheet"
+      href="style/font/fontawesome-free-6.3.0-web/css/all.min.css"
+    />
   </head>
   <body>
-    <div class="navbar">
-      <div class="navbar_logo"><h1>CDTPay</h1></div>
-      <ul class="navbar_items">
-        <li class="navbar_item">
-          <div class="point"></div>
-          <a href="#"><i class="fa-solid fa-house"></i>Home</a>
-        </li>
-        <li class="navbar_item">
-          <a href="transaction_user.jsp"
-            ><i class="fa-solid fa-right-left"></i>Transaction</a
-          >
-        </li>
-        <li class="navbar_item">
-          <a href="myqrcode.jsp"><i class="fa-solid fa-qrcode"></i>My QRcode</a>
-        </li>
-        <li class="navbar_item">
-          <a href="qrcode.jsp"
-            ><i class="fa-sharp fa-solid fa-barcode"></i>QR code</a
-          >
-        </li>
-        <li class="navbar_item">
-          <a href="card.jsp"
-            ><i class="fa-solid fa-credit-card"></i>Card service</a
-          >
-        </li>
-        <li class="navbar_item">
-          <a href="history_user.jsp"
-            ><i class="fa-solid fa-clock-rotate-left"></i>History</a
-          >
-        </li>
-        <li class="navbar_item">
-          <a href="saving_user.jsp"
-            ><i class="fa-solid fa-piggy-bank"></i>Saving</a
-          >
-        </li>
-        <li class="navbar_item">
-          <a href="account_user.jsp"><i class="fa-solid fa-user"></i>Account</a>
-        </li>
-        <li class="navbar_item">
-          <a href="support.jsp"
-            ><i class="fa-solid fa-phone-volume"></i>Hotline</a
-          >
-        </li>
-      </ul>
-    </div>
-    <div class="header">
-      <div class="header_title"><p>Home</p></div>
-      <div class="header_user">
-        <img
-          src="https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/131949286_1057344984733543_1461980836764487632_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=iNrYHDPv__YAX_0E7aY&_nc_ht=scontent.fhan5-9.fna&oh=00_AfDYw5yACUNs_BW3wbyxV0bR-dYKH0kF6U-eWAFEY4jJiQ&oe=642D50D5"
-          alt=""
-        />
-        <p>PHAM DUY THANH DAN</p>
-        <i class="fa-sharp fa-solid fa-chevron-down"></i>
-
-        <div class="header_dropdown">
-          <ul class="header_dropdown_items">
-            <li class="header_dropdown_item">
-              <a href=""><i class="fa-solid fa-user"></i>Account</a>
-            </li>
-            <li class="header_dropdown_item">
-              <a href=""
-                ><i class="fa-solid fa-arrow-right-from-bracket"></i>Log out</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <div id="header"></div>
     <div class="content">
       <div class="content_info">
         <div class="content_info-main">
@@ -146,4 +82,18 @@
       </div>
     </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#header").load("layout.jsp", function () {
+        $("#header")
+          .find(".navbar_item")
+          .eq(0)
+          .prepend("<div class='point'></div>");
+      });
+    });
+  </script>
 </html>
