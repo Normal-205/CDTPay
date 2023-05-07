@@ -14,18 +14,29 @@
   </head>
 
   <body>
+  <!-- Check session -->
+    <% if(null==session.getAttribute("customer")){ %>
+      <script>
+        window.location.href = "login.jsp";
+      </script>
+      <% }else{ %>
+        <script>
+          console.log("OKE, has session");
+        </script>
+        <% } %>
+          <!-- End check -->
     <div id="header"></div>
 
     <div class="content_qrcode">
       <div id="qrcode" class="qrcode">
         <div class="qr_info">
-          <p>PHAM DUY THANH DAN</p>
-          <p>0368808518</p>
+          <p>${sessionScope.customer.fullname}</p>
+          <p>${sessionScope.customer.phone}</p>
         </div>
       </div>
       <script>
         var qrcode = new QRCode(document.getElementById("qrcode"), {
-          text: "transaction_user.jsp?accountnumber=1111",
+          text: "transaction_user.jsp?customerPhone=${sessionScope.customer.phone}",
           width: 300,
           height: 300,
           colorDark: "#61678B",

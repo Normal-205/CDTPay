@@ -7,13 +7,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Support</title>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
     <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
   <body>
+  <!-- Check session -->
+    <% if(null==session.getAttribute("customer")){ %>
+      <script>
+        window.location.href = "login.jsp";
+      </script>
+      <% }else{ %>
+        <script>
+          console.log("OKE, has session");
+        </script>
+        <% } %>
+          <!-- End check -->
     <div id="header"></div>
     <div class="content_account">
       
@@ -33,8 +44,8 @@
       });
    
       Swal.fire({
-    	  title: 'Hello !',
-    	  text: 'Features under development.',
+    	  title: 'Sorry 😥',
+    	  text: 'The feature is under developing.',
     	  icon: 'warning'
     	}).then((result) => {
     	  if (result.isConfirmed) {

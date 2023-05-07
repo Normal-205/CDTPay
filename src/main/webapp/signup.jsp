@@ -15,15 +15,15 @@
     <div class="signup__bg">
       <div class="signup__content">
         <div class="signup__form-title">Sign Up</div>
-        <form action="" method="post">
+        <form action="SignUpServlet" method="post">
           <div class="signup__form">
             <div class="login__form m24">
               <label for="fullname" class="signup__form-txt">Full name</label>
-              <input type="text" class="input__signup" name="" id="fullname" />
+              <input type="text" class="input__signup" name="fullname" id="fullname" />
             </div>
             <div class="signup__form m24">
               <label for="phone" class="signup__form-txt">Phone number</label>
-              <input type="text" class="input__signup" name="" id="phone" maxlength="10" pattern="0+[0-9]{9}" />
+              <input type="text" class="input__signup" name="phone" id="phone" maxlength="10" pattern="0+[0-9]{9}" />
             </div>
 
             <!-- <div class="signup__form m24">
@@ -38,7 +38,7 @@
 
             <div class="signup__form m24">
               <label for="email" class="signup__form-txt">Email</label>
-              <input type="email" name="" class="input__signup" id="email" />
+              <input type="email" name="email" class="input__signup" id="email" />
             </div>
             <!-- <div class="signup__form-check m24">
               <div>
@@ -63,9 +63,9 @@
                   <input type="password" class="otp_number" disabled maxlength="1" />
                   <input type="password" class="otp_number" disabled maxlength="1" />
                   <input type="password" class="otp_number" disabled maxlength="1" />
-                  <input type="text" readonly class="otp_pass hiden" />
+                  <input type="text" name="password" readonly class="otp_pass hiden" />
                 </div>
-                <button class="otp_btn">Confirm</button>
+                <input type="submit" name ="submit" value="Confirm" class="otp_btn">
               </div>
             </div>
             <div class="btn__signup m24"><a href="login.jsp">Sign In</a></div>
@@ -74,12 +74,13 @@
       </div>
       <div class="signup__banner"><img src="" alt="" /></div>
     </div>
+
   </body>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
   <script>
     $(document).ready(function () {
-      alert("hello");
+      <!-- alert("hello"); -->
       $(".input__signup")
         .focus(function () {
           $(this)
@@ -174,7 +175,7 @@
       $("#phone").on("keypress", function (e) {
         var keyCode = e.which ? e.which : e.keyCode;
         if (keyCode < 48 || keyCode > 57) {
-          e.preventDefault(); 
+          e.preventDefault();
         }
       });
     });

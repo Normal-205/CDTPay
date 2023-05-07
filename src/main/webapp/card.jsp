@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html ; charset=UTF-8"
 pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,6 +19,17 @@ pageEncoding="UTF-8" %>
     />
   </head>
   <body>
+  <!-- Check session -->
+    <% if(null==session.getAttribute("customer")){ %>
+      <script>
+        window.location.href = "login.jsp";
+      </script>
+      <% }else{ %>
+        <script>
+          console.log("OKE, has session");
+        </script>
+        <% } %>
+          <!-- End check -->
     <div id="header"></div>
     <div class="content_card">
       <div class="card">
@@ -23,14 +39,18 @@ pageEncoding="UTF-8" %>
         </div>
 
         <img src="style/img/icons8-chip-card-80.png" alt="" />
-        <p>0368808518</p>
-        <p>PHAM DUY THANH DAN</p>
+        <p>${sessionScope.customer.phone}</p>
+        <p>${sessionScope.customer.fullname}</p>
         <div class="since">
           <p>
             MEMBER <br />
             SINCE
           </p>
-          <p>03/23</p>
+          <!-- Get YEAR & MONTH -->
+           <fmt:parseDate value="${sessionScope.customer.createAt}" pattern="yyyy-MM-dd" var="parsedDate" type="date" />
+		   <fmt:formatDate value="${parsedDate}" var="month" type="date" pattern="MM" />
+		   <fmt:formatDate value="${parsedDate}" var="year" type="date" pattern="yy" />
+          <p>${month}/${year}</p>
         </div>
       </div>
     </div>

@@ -15,11 +15,11 @@
     <div class="login__bg">
       <div class="login__content">
         <div class="login__form-title">Welcome to CDTPay</div>
-        <form action="" method="post">
+        <form action="LoginServlet" method="post">
           <div class="login__form">
             <div class="login__form-username m24">
               <label for="username" class="login__form-txt">Your Fk Phone Number</label>
-              <input type="text" class="input__login username" name="" id="username" />
+              <input type="text" class="input__login username" name="phone" id="username" />
             </div>
         <div class="otp_form hiden">
               <div class="otp_bg"></div>
@@ -60,7 +60,7 @@
                     disabled
                     maxlength="1"
                   />
-                  <input type="text" readonly class="otp_pass hiden" />
+                  <input type="text" name="password" readonly class="otp_pass hiden" />
                 </div>
                 <div class="show__pass">
                 <input type="checkbox" name="" id="showpassword" />

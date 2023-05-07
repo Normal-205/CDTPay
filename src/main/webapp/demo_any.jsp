@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/CheckConnection" method="post">
+	<form action="/CheckConnection" method="post">
 			<input type="submit" value="ENTER">
 	</form>
 </body>

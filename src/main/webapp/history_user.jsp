@@ -13,6 +13,17 @@
   </head>
 
   <body>
+  <!-- Check session -->
+    <% if(null==session.getAttribute("customer")){ %>
+      <script>
+        window.location.href = "login.jsp";
+      </script>
+      <% }else{ %>
+        <script>
+          console.log("OKE, has session");
+        </script>
+        <% } %>
+          <!-- End check -->
     <div id="header"></div>
     <div class="content_history">
       <div class="content_time">
