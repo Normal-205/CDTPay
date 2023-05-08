@@ -49,4 +49,14 @@
     <servlet-name>UserTransaction</servlet-name>
     <url-pattern>/UserTransaction</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserSaving</display-name>
+    <servlet-name>UserSaving</servlet-name>
+    <servlet-class>gateway.UserSaving</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserSaving</servlet-name>
+    <url-pattern>/UserSaving</url-pattern>
+  </servlet-mapping>
 </web-app>

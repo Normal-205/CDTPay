@@ -192,3 +192,7 @@ COMMIT;
 use cdtpay;
 select * from staff;
 select * from customer;
+select * from saving;
+INSERT INTO `cdtpay`.`saving` (`customerPhone`, `initialAmount`, `interestRate`, `startDate`, `endDate`, `totalAmount`, `status`) VALUES ('0111111111', '10000', '10', '2022-05-05', '2023-02-02', '50000', 'test');
+
+ALTER TABLE customer ENGINE = InnoDB;

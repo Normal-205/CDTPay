@@ -101,4 +101,46 @@ public class CustomerDAO {
 		return isValid;
 	}
 
+	public boolean checkMoney(String customerPhone, int money) {
+		boolean isValid = false;
+		try {
+			Connection conn = DBManager.getInstance().getConnection();
+			String sql = "SELECT * FROM customer WHERE customerPhone = ? AND balance >= ?";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, customerPhone);
+			statement.setInt(2, money);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				// User exists with given username and password
+				isValid = true;
+			}
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return isValid;
+	}
+
+	// update balance by phone
+	public boolean updateBalance(String phone, int money) {
+		boolean result = false;
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement("UPDATE customer SET balance = ? WHERE customerPhone = ?");
+			ps.setInt(1, money);
+			ps.setString(2, phone);
+			int rows = ps.executeUpdate();
+			if (rows > 0) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				dbManager.getConnection().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

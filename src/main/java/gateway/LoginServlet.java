@@ -2,8 +2,11 @@ package gateway;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import DAO.CustomerDAO;
+import DAO.SavingDAO;
+import Object.Saving;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -16,8 +19,9 @@ import jakarta.servlet.http.HttpSession;
  * Servlet implementation class LoginServlet
  */
 public class LoginServlet extends HttpServlet {
-	private CustomerDAO customerDAO;
 	private DBManager dbManager;
+	private CustomerDAO customerDAO;
+	private SavingDAO savingDAO;
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -33,6 +37,7 @@ public class LoginServlet extends HttpServlet {
 	public void init() {
 		dbManager = DBManager.getInstance();
 		customerDAO = new CustomerDAO(dbManager);
+		savingDAO = new SavingDAO(dbManager);
 	}
 
 	/**
@@ -64,12 +69,18 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String customerPhone = request.getParameter("phone");
 		String customerOTP = request.getParameter("password");
-
+		// initial saving object in list structure
+		List<Saving> savingList = savingDAO.getSavingByPhone(customerPhone);
+		// print test
+		for (Saving saving : savingList) {
+			System.out.println(saving.getStartDate() + " -> ");
+		}
 		// Check if the user exists in the database then set the session attribute to
 		// the customer object
 		if (customerDAO.checkLogin(customerPhone, customerOTP)) {
 			System.out.println("OKE");
 			request.getSession().setAttribute("customer", customerDAO.getCustomerByPhone(customerPhone));
+			request.getSession().setAttribute("saving", savingList);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home_user.jsp");
 			dispatcher.forward(request, response);
 

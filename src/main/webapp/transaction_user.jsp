@@ -15,7 +15,7 @@
   </head>
 
   <body>
-      <!-- Check session -->
+<!-- Check session -->
     <% if(null==session.getAttribute("customer")){ %>
       <script>
         window.location.href = "login.jsp";
