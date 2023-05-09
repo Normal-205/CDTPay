@@ -7,20 +7,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Your Information</title>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
     <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
   </head>
 
   <body>
+  <!-- Check session -->
+    <% if(null==session.getAttribute("customer")){ %>
+      <script>
+        window.location.href = "login.jsp";
+      </script>
+      <% }else{ %>
+        <script>
+          console.log("OKE, has session");
+        </script>
+        <% } %>
+          <!-- End check -->
     <div id="header"></div>
     <div class="content_account">
       <img
         src="./style/img/page's avatar.png"
         alt="" class="account_img" width="200px" height="200px" />
-      <p>PHAM DUY THANH DAN</p>
-      <p><span>Phone number: </span><span>0368808518</span></p>
-      <p><span>Email: </span><span>email@gmail.com</span></p>
+      <p>${sessionScope.customer.fullname}</p>
+      <p><span>Phone number: </span><span>${sessionScope.customer.phone}</span></p>
+      <p><span>Email: </span><span>${sessionScope.customer.email} </span></p>
 
       <div class="account_btn btn_changepass btn_edit">Change passwword</div>
       <div class="account_changepass">

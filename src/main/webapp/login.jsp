@@ -15,11 +15,11 @@
     <div class="login__bg">
       <div class="login__content">
         <div class="login__form-title">Welcome to CDTPay</div>
-        <form action="" method="post">
+        <form action="LoginServlet" method="post">
           <div class="login__form">
             <div class="login__form-username m24">
-              <label for="username" class="login__form-txt">Username</label>
-              <input type="text" class="input__login username" name="" id="username" />
+              <label for="username" class="login__form-txt">Your Fk Phone Number</label>
+              <input type="text" class="input__login username" name="phone" id="username" />
             </div>
         <div class="otp_form hiden">
               <div class="otp_bg"></div>
@@ -28,7 +28,6 @@
                 <div class="otp_close">
                   <i class="fa-solid fa-xmark"></i>
                 </div>
-
                 <div class="otp_in">
                   <input type="password" class="otp_number" maxlength="1" />
                   <input
@@ -61,17 +60,18 @@
                     disabled
                     maxlength="1"
                   />
-                  <input type="text" readonly class="otp_pass hiden" />
+                  <input type="text" name="password" readonly class="otp_pass hiden" />
                 </div>
-                <button class="otp_btn">Confirm</button>
-              </div>
-            </div>
-            <div class="login__form-check m24">
-              <div class="show__pass">
+                <div class="show__pass">
                 <input type="checkbox" name="" id="showpassword" />
                 <label for="showpassword">Show password</label>
               </div>
-              <div><a href="">Forgot password ?</a></div>
+                <input type="submit" name="login" class="otp_btn" value="Confirm">
+              </div>
+            </div>
+            <div class="login__form-check m24">
+              
+              <div><a href="">Forgot password?</a></div>
             </div>
             <div class="login__form-btn m24">
               <button>LOGIN</button>
@@ -86,16 +86,16 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
   <script>
-    // $(document).on("click", ".show__pass", function () {
-    //   if (
-    //     $("#showpassword").prop("checked") &&
-    //     $("#password").attr("type") == "password"
-    //   ) {
-    //     $("#password").attr("type", "text");
-    //   } else {
-    //     $("#password").attr("type", "password");
-    //   }
-    // });
+     $(document).on("click", ".show__pass", function () {
+       if (
+         $("#showpassword").prop("checked") &&
+         $(".otp_number").attr("type") == "password"
+       ) {
+         $(".otp_number").attr("type", "text");
+       } else {
+         $(".otp_number").attr("type", "password");
+       }
+     });
     $(document).ready(function () {
       var input1Val = "";
 
