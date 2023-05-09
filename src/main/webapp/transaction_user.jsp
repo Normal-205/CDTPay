@@ -15,7 +15,7 @@
   </head>
 
   <body>
-<!-- Check session -->
+    <!-- Check session -->
     <% if(null==session.getAttribute("customer")){ %>
       <script>
         window.location.href = "login.jsp";
@@ -26,92 +26,93 @@
         </script>
         <% } %>
           <!-- End check -->
-    <div id="header"></div>
-    <div class="content_transaction">
-      <div class="transaction">
-        <form action="UserTransaction" method="get">
-          <div class="from">
-            <p>Form:</p>
-            <div class="from_items">
-              <div class="from_left">
-                <div class="from_item">
-                  <div class="from_accnb">${sessionScope.customer.phone}</div>
-                  <div>-</div>
-                  <div class="from_name">${sessionScope.customer.fullname}</div>
+          <div id="header"></div>
+          <div class="content_transaction">
+            <div class="transaction">
+              <form action="UserTransaction" method="get">
+                <div class="from">
+                  <p>Form:</p>
+                  <div class="from_items">
+                    <div class="from_left">
+                      <div class="from_item">
+                        <div class="from_accnb">${sessionScope.customer.phone}</div>
+                        <div>-</div>
+                        <div class="from_name">${sessionScope.customer.fullname}</div>
+                      </div>
+                      <div class="from_item">
+                        <div class="from_money">${sessionScope.customer.balance}</div>
+                        <div class="from_dv">VND</div>
+                      </div>
+                    </div>
+                    <div class="from_right">
+                      <i class="fa-sharp fa-solid fa-chevron-down"></i>
+                    </div>
+                  </div>
                 </div>
-                <div class="from_item">
-                  <div class="from_money">${sessionScope.customer.balance}</div>
-                  <div class="from_dv">VND</div>
+                <div class="to">
+                  <p>To:</p>
+                  <div class="to_items">
+                    <label for="accountnumber">Account number:</label>${customerPhone}
+                    <input type="text" name="customerPhone" value="${transaction.phone}" maxlength="10" class="to_item"
+                      id="accountnumber" required />
+                    <input type="submit" name="submit" value="checkPhone" id="checkacc" hidden />
+                    <label for="accountname">Account name:</label>
+                    <input type="text" name="reciveName" class="to_item" id="accountname"
+                      value="${transaction.fullname}" readonly />${customerName}
+                    <label for="money">Money:</label>
+                    <input type="text" name="amount" class="to_item" maxlength="15" id="money" />
+                    <label for="content">Content:</label>
+                    <input type="text" name="message" class="to_item" maxlength="15" id="content"
+                      value="${sessionScope.customer.fullname} chuyen khoan" />
+                    <input type="submit" class="otp_checknumber hiden" />
+                    <div class="to_item_next">Next</div>
+                    <div class="otp_form hiden">
+                      <div class="otp_bg"></div>
+                      <div class="otp">
+                        <p>ENTER PASSWORD</p>
+                        <div class="otp_close">
+                          <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <div class="otp_in">
+                          <input type="text" class="otp_number" maxlength="1" />
+                          <input type="text" class="otp_number" disabled maxlength="1" />
+                          <input type="text" class="otp_number" disabled maxlength="1" />
+                          <input type="text" class="otp_number" disabled maxlength="1" />
+                          <input type="text" class="otp_number" disabled maxlength="1" />
+                          <input type="text" class="otp_number" disabled maxlength="1" />
+                          <input type="text" name="password" readonly class="otp_pass hiden" />
+                        </div>
+                        <button type="submit" name="submit" value="transaction" class="otp_btn">Confirm</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="from_right">
-                <i class="fa-sharp fa-solid fa-chevron-down"></i>
+              </form>
+            </div>
+            <div class="recent">
+              <p>Recent / Test</p>
+              <div class="recent_items">
+                <a href="transaction_user.jsp?accountnumber=0123456789">
+                  <div class="recent_item">
+                    <p>${customerPhone}</p>
+                    <p>${reciveName}</p>
+                    <p>${amount}</p>
+                    <p>${message}</p>
+                    <p>${password}</p>
+                  </div>
+                </a>
+                <a href="">
+                  <div class="recent_item">
+                    <p>NGUYEN THANH CHUNG</p>
+                    <p>-</p>
+                    <p>0123456789</p>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
-          <div class="to">
-            <p>To:</p>
-            <div class="to_items">
-              <label for="accountnumber">Account number:</label>${customerPhone}
-              <input type="text" name="customerPhone" value="${transaction.phone}" maxlength="10" class="to_item"
-                id="accountnumber" />
-              <input type="submit" name="submit" value="checkPhone" id="checkacc" hidden />
-              <label for="accountname">Account name:</label>
-              <input type="text" class="to_item" id="accountname" value="${transaction.fullname}"
-                readonly />${customerName}
-              <label for="money">Money:</label>
-              <input type="text" class="to_item" maxlength="15" id="money" />
-              <label for="content">Content:</label>
-              <input type="text" class="to_item" maxlength="15" id="content" value="PHAM DUY THANH DAN chuyen khoan" />
-              <input type="submit" name="submit" value="transfer" class="otp_checknumber hiden" />
-              <div class="to_item_next">Next</div>
-              <div class="otp_form hiden">
-                <div class="otp_bg"></div>
-                <div class="otp">
-                  <p>ENTER PASSWORD</p>
-                  <div class="otp_close">
-                    <i class="fa-solid fa-xmark"></i>
-                  </div>
-
-                  <div class="otp_in">
-                    <input type="text" class="otp_number" maxlength="1" />
-                    <input type="text" class="otp_number" disabled maxlength="1" />
-                    <input type="text" class="otp_number" disabled maxlength="1" />
-                    <input type="text" class="otp_number" disabled maxlength="1" />
-                    <input type="text" class="otp_number" disabled maxlength="1" />
-                    <input type="text" class="otp_number" disabled maxlength="1" />
-                    <input type="text" readonly class="otp_pass hiden" />
-                  </div>
-                  <button class="otp_btn">Confirm</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="recent">
-        <p>Recent</p>
-        <div class="recent_items">
-          <a href="transaction_user.jsp?accountnumber=0123456789">
-            <div class="recent_item">
-              <p>NGUYEN THANH CHUNG</p>
-              <p>-</p>
-              <p>0123456789</p>
-            </div>
-          </a>
-          <a href="">
-            <div class="recent_item">
-              <p>NGUYEN THANH CHUNG</p>
-              <p>-</p>
-              <p>0123456789</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
 
   <script>
@@ -134,16 +135,13 @@
     });
     // jQuery
     $(document).ready(function () {
-      var inputFields = $(".otp_number"); // Láº¥y táº¥t cáº£ cÃ¡c trÆ°á»ng nháº­p liá»u kiá»u sá»
-      var currentInputIndex = 0; // Vá» trÃ­ cá»§a Ã´ Äang ÄÆ°á»£c nháº­p liá»u
+      var inputFields = $(".otp_number");
+      var currentInputIndex = 0;
 
-      // Xá»­ lÃ½ sá»± kiá»n khi nháº­p giÃ¡ trá»
+
       inputFields.on("input", function () {
-        var inputVal = $(this).val(); // Láº¥y giÃ¡ trá» cá»§a Ã´ Äang nháº­p liá»u
-        inputVal = inputVal.replace(/[^\d]/g, ""); // Loáº¡i bá» cÃ¡c kÃ½ tá»± khÃ´ng pháº£i sá»
-        $(this).val(inputVal); // Cáº­p nháº­t giÃ¡ trá» cá»§a Ã´ Äang nháº­p liá»u
-
-        // Di chuyá»n con trá» chuá»t sang Ã´ tiáº¿p theo khi ÄÃ£ nháº­p xong giÃ¡ trá» cá»§a Ã´ hiá»n táº¡i
+        var inputVal = $(this).val();
+        inputVal = inputVal.replace(/[^\d]/g, "");
 
         if (inputVal.length >= 1) {
           currentInputIndex++;
@@ -154,11 +152,11 @@
         }
       });
 
-      // Xá»­ lÃ½ sá»± kiá»n khi nháº¥n phÃ­m Enter
+
       inputFields.on("keydown", function (event) {
         if (event.keyCode == 13) {
-          event.preventDefault(); // NgÄn cháº·n máº·c Äá»nh hÃ nh Äá»ng cá»§a nÃºt Enter
-          var inputValues = ""; // Chuá»i chá»©a giÃ¡ trá» cá»§a 6 Ã´ nháº­p liá»u
+          event.preventDefault();
+          var inputValues = "";
           inputFields.each(function () {
             inputValues += $(this).val();
           });
@@ -167,7 +165,7 @@
         }
       });
       $(".otp_btn").on("click", function () {
-        var inputValues = ""; // Chuá»i chá»©a giÃ¡ trá» cá»§a 6 Ã´ nháº­p liá»u
+        var inputValues = "";
         inputFields.each(function () {
           inputValues += $(this).val();
         });
@@ -194,15 +192,7 @@
 
       $(".to_item_next").click(function (event) {
         event.preventDefault();
-
-        if (input1Val !== "" && input2Val !== "") {
-          // Do something if both input values are not empty
-
-          $(".otp_form").addClass("unhiden").removeClass("hiden");
-        } else {
-          // Do something if at least one input value is empty
-          $("#accountnumber").focus();
-        }
+        $(".otp_form").addClass("unhiden").removeClass("hiden");
       });
       $(".otp_close,.otp_bg").on("click", function () {
         $(".otp_form").addClass("hiden");
@@ -222,14 +212,30 @@
 
           Swal.fire({
             icon: 'warning',
-            title: 'Yêu cầu',
-            text: 'Vui lòng nhập số tài khoản',
+            title: 'Required!',
+            text: 'Please enter account number',
           });
         } else {
           $('#checkacc').trigger('click');
         }
       });
-    }); 
+    });
+    $(document).ready(function () {
+      $('#money').blur(function () {
+        var money = parseInt($(this).val());
+        var fromMoney = parseInt($(".from_money").text());
+
+        if (money > fromMoney) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Warning!',
+            text: 'Insufficient balance in your account',
+          }).then(function () {
+            $('#money').val('').focus();
+          });
+        }
+      });
+    });
   </script>
 
   </html>

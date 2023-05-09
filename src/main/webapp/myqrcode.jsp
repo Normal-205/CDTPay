@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My ONLYFAN Code</title>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
     <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
@@ -36,7 +36,7 @@
       </div>
       <script>
         var qrcode = new QRCode(document.getElementById("qrcode"), {
-          text: "transaction_user.jsp?customerPhone=${sessionScope.customer.phone}",
+          text: "transaction_user.jsp?customerPhone=${sessionScope.customer.phone}&submit=checkPhone&reciveName=Test+Name+N&amount=&message=Test+Name+N+chuyen+khoan&password=",
           width: 300,
           height: 300,
           colorDark: "#61678B",

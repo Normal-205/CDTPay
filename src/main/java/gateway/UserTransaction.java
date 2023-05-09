@@ -4,19 +4,23 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import DAO.CustomerDAO;
+import DAO.TransactionDAO;
 import Object.Customer;
+import Object.Transaction;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UserTransaction
  */
 public class UserTransaction extends HttpServlet {
 	private CustomerDAO customerDAO;
+	private TransactionDAO transactionDAO;
 	private DBManager dbManager;
 	private static final long serialVersionUID = 1L;
 
@@ -24,6 +28,7 @@ public class UserTransaction extends HttpServlet {
 	public void init() {
 		dbManager = DBManager.getInstance();
 		customerDAO = new CustomerDAO(dbManager);
+		transactionDAO = new TransactionDAO(dbManager);
 	}
 
 	/**
@@ -50,8 +55,30 @@ public class UserTransaction extends HttpServlet {
 		String submitButtonValue = request.getParameter("submit");
 		if (submitButtonValue != null) {
 			if (submitButtonValue.equals("checkPhone")) {
+				// Retrieve the customer object from the session
+				HttpSession session = request.getSession();
+				Customer customerSession = (Customer) session.getAttribute("customer");
+
+				// Retrieve the information from session
+				String senderPhone = customerSession.getPhone();
 				// Get the phone parameter from the HTML form
 				String customerPhone = request.getParameter("customerPhone");
+				// test
+				System.out.println(senderPhone);
+				System.out.println(customerPhone);
+				// validate duplicate phone
+				if (customerPhone.equals(senderPhone) == true) {
+					out.println("<html><body>");
+					out.println("<script>");
+					out.println("alert('CANNOT FIND ACCOUNT NUMBER!');");
+					out.println("location='transaction_user.jsp';");
+					out.println("</script>");
+					out.println("</body></html>");
+				} else {
+					System.out.println("Sth wrong");
+
+				}
+
 				// Call the method to get the customer by phone
 				Customer customer = customerDAO.getCustomerByPhone(customerPhone);
 
@@ -67,8 +94,59 @@ public class UserTransaction extends HttpServlet {
 					out.println("</script>");
 					out.println("</body></html>");
 				}
-			} else if (submitButtonValue.equals("transfer")) {
-				System.out.println("transfer");
+			} else if (submitButtonValue.equals("transaction")) {
+				// Retrieve the customer object from the session
+				HttpSession session = request.getSession();
+				Customer customer = (Customer) session.getAttribute("customer");
+
+				// Retrieve the information from session
+				Integer balance = customer.getBalance();
+				String senderPhone = customer.getPhone();
+				String customerOTP = customer.getPassword();
+
+				// Get the phone parameter from the HTML form
+				String recievePhone = request.getParameter("customerPhone");
+				String reciveName = request.getParameter("reciveName");
+				Integer amount = Integer.parseInt(request.getParameter("amount"));
+				String message = request.getParameter("message");
+				String password = request.getParameter("password");
+				// validate password
+				if (!password.equals(customerOTP)) {
+					out.println("<html><body>");
+					out.println("<script>");
+					out.println("alert('WRONG PASSWORD!');");
+					out.println("location='transaction_user.jsp';");
+					out.println("</script>");
+					out.println("</body></html>");
+					return;
+				}
+				// create a transaction object
+				Transaction transaction = new Transaction(senderPhone, recievePhone, message, amount, password);
+				// count new balance from both user
+				// update sender balance
+				Integer newSenderBalance = balance - amount;
+				customerDAO.updateBalance(senderPhone, newSenderBalance);
+				// get reciever balance
+				Customer reciever = customerDAO.getCustomerByPhone(recievePhone);
+				Integer recieverBalance = reciever.getBalance();
+				// update reciever balance
+				Integer newRecieverBalance = recieverBalance + amount;
+				customerDAO.updateBalance(recievePhone, newRecieverBalance);
+				// import transaction to database
+				transactionDAO.createUserTransaction(transaction);
+				// set session attribute to new balance of sender
+				request.getSession().setAttribute("customer", customerDAO.getCustomerByPhone(senderPhone));
+				// alert success
+				out.println("<html><body>");
+				out.println("<script>");
+				out.println("alert('TRANSACTION SUCCESS! Press OKE to comeback :0');");
+				out.println("location='transaction_user.jsp';");
+				out.println("</script>");
+				out.println("</body></html>");
+
+				// redirect back to transaction_user.jsp
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/transaction_user.jsp");
+				dispatcher.forward(request, response);
 			}
 		}
 	}
@@ -89,6 +167,7 @@ public class UserTransaction extends HttpServlet {
 		String submitButtonValue = request.getParameter("submit");
 		if (submitButtonValue != null) {
 			if (submitButtonValue.equals("checkPhone")) {
+				System.out.println("Confirm Transaction");
 				// Get the phone parameter from the HTML form
 				String customerPhone = request.getParameter("customerPhone");
 				// Call the method to get the customer by phone
@@ -106,9 +185,23 @@ public class UserTransaction extends HttpServlet {
 					out.println("</script>");
 					out.println("</body></html>");
 				}
-			} else if (submitButtonValue.equals("transfer")) {
-				System.out.println("transfer");
-
+			} else if (submitButtonValue.equals("transaction")) {
+				System.out.println("Confirm Transaction");
+				// Get the phone parameter from the HTML form
+				String customerPhone = request.getParameter("customerPhone");
+				String reciveName = request.getParameter("reciveName");
+				Integer amount = Integer.parseInt(request.getParameter("amount"));
+				String message = request.getParameter("message");
+				String password = request.getParameter("password");
+				// set attribute for every input
+				request.setAttribute("customerPhone", customerPhone);
+				request.setAttribute("reciveName", reciveName);
+				request.setAttribute("amount", amount);
+				request.setAttribute("message", message);
+				request.setAttribute("password", password);
+				// redirect back to transaction_user.jsp
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/transaction_user.jsp");
+				dispatcher.forward(request, response);
 			}
 		}
 	}

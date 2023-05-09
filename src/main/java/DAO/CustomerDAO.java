@@ -143,4 +143,20 @@ public class CustomerDAO {
 		}
 		return result;
 	}
+
+	// get balance by phone
+	public int getBalance(String phone) {
+		int balance = 0;
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement("SELECT balance FROM customer WHERE customerPhone = ?");
+			ps.setString(1, phone);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				balance = rs.getInt("balance");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return balance;
+	}
 }

@@ -73,12 +73,12 @@ public class LoginServlet extends HttpServlet {
 		List<Saving> savingList = savingDAO.getSavingByPhone(customerPhone);
 		// print test
 		for (Saving saving : savingList) {
-			System.out.println(saving.getStartDate() + " -> ");
+			System.out.println("Saving session created");
 		}
 		// Check if the user exists in the database then set the session attribute to
 		// the customer object
 		if (customerDAO.checkLogin(customerPhone, customerOTP)) {
-			System.out.println("OKE");
+			System.out.println("Login session created");
 			request.getSession().setAttribute("customer", customerDAO.getCustomerByPhone(customerPhone));
 			request.getSession().setAttribute("saving", savingList);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home_user.jsp");

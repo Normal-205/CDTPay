@@ -41,6 +41,10 @@ public class Customer {
 		return phone;
 	}
 
+	public Integer getIntPhone() {
+		return Integer.parseInt(phone);
+	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}

@@ -8,6 +8,7 @@ import DAO.SavingDAO;
 import Object.Customer;
 import Object.Saving;
 import connection.DBManager;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -57,6 +58,7 @@ public class UserSaving extends HttpServlet {
 		// Retrieve the information from session
 		Integer balance = customer.getBalance();
 		String phone = customer.getPhone();
+		// retrieve the information from form
 		Integer interestRate = Integer.parseInt(request.getParameter("interestRate"));
 		Integer amount = Integer.parseInt(request.getParameter("initialAmount"));
 		Integer time = Integer.parseInt(request.getParameter("time"));
@@ -81,9 +83,8 @@ public class UserSaving extends HttpServlet {
 			// customer.setBalance(newBalance);
 			// session.setAttribute("customer", customer);
 			session.setAttribute("saving", saving);
-			// RequestDispatcher dispatcher =
-			// getServletContext().getRequestDispatcher("/saving_user.jsp");
-			// dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/saving_user.jsp");
+			dispatcher.forward(request, response);
 		} else {
 			System.out.println("NOT ENOUGH MONEY");
 			out.println("<html><body>");
