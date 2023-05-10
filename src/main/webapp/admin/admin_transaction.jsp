@@ -28,10 +28,12 @@
             <div class="to_items">
               <label for="accountnumber" class="black">Account number:</label>
               <input type="text" maxlength="10" class="to_item" id="accountnumber" />
+              <!-- submit check 1 -->
+              <input type="submit" class="checkacc1" value="checkacc1" hidden="true"/>
               <label for="accountname">Account name:</label>
               <input type="text" class="to_item" id="accountname" readonly />
               <label for="Balance">Balance:</label>
-              <input type="text" class="to_item" maxlength="15" readonly id="Balance" />
+              <input type="text" class="to_item" maxlength="15" readonly id="Balance" value="123" />
              
             </div>
           </div>
@@ -40,8 +42,10 @@
     <div>
      <div class="to">
      <p>To:</p>
-    <label for="accountnumber" class="black">Account number:</label>
-              <input type="text" maxlength="10" class="to_item" id="accountnumber" />
+    <label for="accountnumberto" class="black">Account number:</label>
+      <!-- submit check 2 -->
+              <input type="submit" class="checkacc2" value="checkacc2" hidden="true"/>
+              <input type="text" maxlength="10" class="to_item" id="accountnumberto" />
               <label for="accountname">Account name:</label>
               <input type="text" class="to_item" id="accountname" readonly />
               <label for="money" class="black">Money:</label>
@@ -74,7 +78,19 @@
  // Đăng ký sự kiện khi nút được nhấp vào
     $('.to_item_next').click(() => {
       // Hiển thị SweetAlert với nút confirm và cancel
-      
+       var accountNumber = $("#accountnumber").val();
+       var accountNumberto = $("#accountnumberto").val();
+       var money = $("#money").val();
+          if (accountNumber === ''|| accountNumberto===''||money==='') {
+
+            Swal.fire({
+              icon: 'warning',
+              title: 'Required!',
+              text: 'Please enter information',
+            });
+          }
+          else{
+        	  
       Swal.fire({
         title: 'Do you want to perform this action',
         text: "You won't be able to undo this action!",
@@ -90,9 +106,63 @@
         	  //window.location.href = redirectUrl;
         } 
       });
+          }
     });
 
+    $(document).ready(function () {
+        $('#accountnumber').blur(function () {
+          var accountNumber = $(this).val();
+          if (accountNumber === '') {
 
+            Swal.fire({
+              icon: 'warning',
+              title: 'Required!',
+              text: 'Please enter account number',
+            });
+          } else {
+            $('.checkacc1').trigger('click');
+          }
+        });
+      });
+    $(document).ready(function () {
+        $('#accountnumberto').blur(function () {
+          var accountNumber = $(this).val();
+          if (accountNumber === '') {
+
+            Swal.fire({
+              icon: 'warning',
+              title: 'Required!',
+              text: 'Please enter account number',
+            });
+          } else {
+            $('.checkacc2').trigger('click');
+          }
+        });
+      });
+    $(document).ready(function () {
+        $("#accountnumber,#money,#accountnumberto").on("keypress", function (e) {
+          var keyCode = e.which ? e.which : e.keyCode;
+          if (keyCode < 48 || keyCode > 57) {
+            e.preventDefault();
+          }
+        });
+      });
+    $(document).ready(function () {
+        $('#money').blur(function () {
+          var money = parseInt($(this).val());
+          var fromMoney = parseInt($("#Balance").val());
+
+          if (money > fromMoney) {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Warning!',
+              text: 'Insufficient balance in your account',
+            }).then(function () {
+              $('#money').val('').focus();
+            });
+          }
+        });
+      });
   </script>
 
   </html>

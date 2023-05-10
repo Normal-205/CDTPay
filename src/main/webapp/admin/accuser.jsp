@@ -16,7 +16,15 @@
   <body>
     <div id="header"></div>
    <div class="account">
+   <div>
       <button class="btn create-btn">Create account</button>
+      <div class="search">
+      <form action="">
+      <input type="text" class="accountnumber search_input" maxlength="10" placeholder="Search phone number"/>
+      <input type="submit" value="Search" class="search_submit"/>
+      </form>
+      </div>
+   </div>
       <div class="createbgr hiden">      
       <div class="create_bg">
       </div>
@@ -27,6 +35,11 @@
             <input type="text" placeholder="Fullname" />
             <input type="text" placeholder="Email" />
             <input type="password" placeholder="Password" />
+            <select class="roleuser hiden">
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+            <option value="nv">nv</option>
+            </select>
             <button class="btn create-submit">Create Account</button>
           </div>
         </div>
@@ -38,6 +51,7 @@
             <th>Fullname</th>
             <th>Email</th>
             <th>Password</th>
+            <th>Role</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -47,9 +61,10 @@
             <td>NGUYEN THANH CHUNG</td>
             <td>ntc@gmai.com</td>
             <td>642002</td>
+            <td>user</td>
             <td>
-              <button class="btn update-btn"  data-phone="0368808518" data-name="NGUYEN THANH CHUNG" data-email="ntc@gmai.com">Update</button>
-              <button class="btn delete-btn">Delete</button>
+              <button class="btn update-btn"  data-phone="0368808518" data-name="NGUYEN THANH CHUNG" data-email="ntc@gmai.com" data-role="user">Update</button>
+              <button class="btn delete-btn hiden">Delete</button>
             </td>
           </tr>
           <tr>
@@ -57,9 +72,10 @@
             <td>NGUYEN THANH CHUNG</td>
             <td>ntc@gmai.com</td>
             <td>271102</td>
+            <td>user</td>
             <td>
               <button class="btn update-btn">Update</button>
-              <button class="btn delete-btn">Delete</button>
+              <button class="btn delete-btn hiden">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -74,6 +90,11 @@
             <input type="text" placeholder="Fullname" class="name"/>
             <input type="text" placeholder="Email" class="email"/>
             <input type="password" placeholder="Password" />
+             <select class="roleuser hiden">
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+            <option value="nv">nv</option>
+            </select>
             <button class="btn update-submit">Update Account</button>
           </div>
         </div>
@@ -85,12 +106,16 @@
 
   <script>
     $(document).ready(function () {
+    	
       $("#header").load("admin_layout.jsp", function () {
         $("#header")
           .find(".navbar_item")
           .eq(5)
           .prepend("<div class='point'></div>");
         $("#header").find(".header_title").find("p").text("Account user");
+       if(  $("#header").find("#role").val()==="admin"){
+    	   $(".delete-btn,.roleuser").removeClass("hiden");
+       }
       });
       $(".create-btn").click(function(){
     	  $(".createbgr").removeClass("hiden");
@@ -103,6 +128,7 @@
     	  $(".update-form-items .phone").val($(this).data("phone"));
     	  $(".update-form-items .name").val($(this).data("name"));
     	  $(".update-form-items .email").val($(this).data("email"));
+    	  $(".update-form-items .roleuser").val($(this).data("role"));
       });
       $(".update_bg").click(function(){
     	  $(".updatebgr").addClass("hiden");
@@ -127,7 +153,14 @@
           });
       });
     });
-  
+    $(document).ready(function () {
+        $(".accountnumber").on("keypress", function (e) {
+          var keyCode = e.which ? e.which : e.keyCode;
+          if (keyCode < 48 || keyCode > 57) {
+            e.preventDefault();
+          }
+        });
+      });
 
   </script>
 

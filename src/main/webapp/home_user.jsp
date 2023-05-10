@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <!-- Check session -->
+  <!-- Check session -->
     <% if(null==session.getAttribute("customer")){ %>
       <script>
         window.location.href = "login.jsp";
@@ -34,7 +34,7 @@
                   <p>VND</p>
                   <i class="fa-solid fa-eye"></i>
                 </div>
-                <a href="">
+                <a href="transaction_user.jsp">
                   <div class="content_info-tran">
                     <i class="fa-solid fa-arrow-right"></i>Transaction
                   </div>
