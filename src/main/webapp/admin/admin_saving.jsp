@@ -18,32 +18,43 @@
 
   <body>
     <div id="header"></div>
- <div class="admin_transaction">
- <div class="content_adtran">
-        <form action="">
-     
-
-    <div>
-     <div class="to">
-     <p>To:</p>
-    <label for="accountnumber" class="black">Account number:</label>
+<div class="content_saving">
+              <form action="" method="get">
+            <div class="saving-send">
+             <div class="to_items w50">
+              <p>Account Information:</p>
+              <br/>
+              <label for="accountnumber" class="black">Account number:</label>
               <input type="text" maxlength="10" class="to_item" id="accountnumber" />
+          
+              <!-- submit check 1 -->
               <input type="submit" class="checkacc" value="checkacc" hidden="true"/>
               <label for="accountname">Account name:</label>
               <input type="text" class="to_item" id="accountname" readonly />
-                 <label for="Balance">Balance:</label>
+              <label for="Balance">Balance:</label>
               <input type="text" class="to_item" maxlength="15" readonly id="Balance" value="123" />
-              <label for="money" class="black">Money:</label>
-              <input type="text" class="to_item" maxlength="15" id="money" />
-              <label for="content" class="black">Content:</label>
-              <input type="text" class="to_item" maxlength="15" id="content" value="PHAM DUY THANH DAN deposit" />
-     </div>
+            </div>
+              <div>
+      
+                  <label for="interestRate">Interest Rate (%):</label>
+                  <input type="text" name="interestRate" maxlength="10" class="to_item" id="interestRate" readonly
+                    value="3" />
+                  <select name="time" id="select-time">
+                    <option value="5">5 minute</option>
+                    <option value="10">10 minute</option>
+                  </select>
+                  <label for="money" class="black">Money:</label>
+                  <input type="text" name="initialAmount" class="to_item" id="money" />
+                  <div>
+                  </div>
+                  <label for="totalmoney">Total money:</label>
+                  <input type="text" name="totalAmount" class="to_item" maxlength="15" id="totalmoney"
+                    readonly="readonly" />
+              </div>
+            </div>
+                   <div class="to_item_next" style="width: 95%">Next</div>
+                </form>
     </div>
-        </form>
-        </div>
-         <div class="to_item_next" style="width: 95%">Deposit</div>
-     </div>
-    
   </body>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -55,9 +66,9 @@
       $("#header").load("admin_layout.jsp", function () {
         $("#header")
           .find(".navbar_item")
-          .eq(2)
+          .eq(4)
           .prepend("<div class='point'></div>");
-    $("#header").find(".header_title").find("p").text("Deposit");
+    $("#header").find(".header_title").find("p").text("Saving");
       });
     });
  // Đăng ký sự kiện khi nút được nhấp vào
@@ -118,6 +129,22 @@
           }
         });
       });
+  
+    $(document).ready(function () {
+        $('#accountnumber').blur(function () {
+          var accountNumber = $(this).val();
+          if (accountNumber === '') {
+
+            Swal.fire({
+              icon: 'warning',
+              title: 'Required!',
+              text: 'Please enter account number',
+            });
+          } else {
+            $('.checkacc').trigger('click');
+          }
+        });
+      });
     $(document).ready(function () {
         $('#money').blur(function () {
           var money = parseInt($(this).val());
@@ -134,8 +161,6 @@
           }
         });
       });
-  </script>
-
   </script>
 
   </html>

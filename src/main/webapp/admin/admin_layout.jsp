@@ -17,32 +17,32 @@
     <div class="navbar navbar_admin">
       <div class="navbar_logo"><h1>CDTPay</h1></div>
       <ul class="navbar_items">
-        <li class="navbar_item">
+        <li class="navbar_item hiden navad">
           <a href="dashboard.jsp"><i class="fa-solid fa-house"></i>Dashboard</a>
         </li>
-        <li class="navbar_item">
+        <li class="navbar_item hiden">
           <a href="admin_transaction.jsp"
             ><i class="fa-solid fa-right-left"></i>Transaction</a
           >
         </li>
-        <li class="navbar_item">
+        <li class="navbar_item hiden">
           <a href="deposit.jsp"><i class="fa-solid fa-wallet"></i>Deposit</a>
         </li>
         
-        <li class="navbar_item">
+        <li class="navbar_item hiden">
           <a href="admin_history.jsp"
             ><i class="fa-solid fa-clock-rotate-left"></i>History</a
           >
         </li>
-        <li class="navbar_item">
-          <a href="#"
+        <li class="navbar_item hiden">
+          <a href="admin_saving.jsp"
             ><i class="fa-solid fa-piggy-bank"></i>Saving</a
           >
         </li>
-        <li class="navbar_item">
+        <li class="navbar_item hiden navad">
           <a href="accuser.jsp"><i class="fa-solid fa-user"></i>Account User</a>
         </li>
-        <li class="navbar_item">
+        <li class="navbar_item hiden">
           <a href="#"
             ><i class="fa-solid fa-phone-volume"></i>Support</a
           >
@@ -51,6 +51,8 @@
     </div>
     <div class="header header_admin">
       <div class="header_title"><p>Dashboard</p></div>
+      <!-- role ở đây -->
+      <input type="text" id="role" hidden="true" value="nv"/>
       <div class="header_user">
         <img
           src="../style/img/page's avatar.png"
@@ -74,4 +76,20 @@
       </div>
     </div>
   </body>
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
+
+  <script>
+ 
+    $(document).ready(function () {
+		if($("#role").val()==="admin"){
+			$(".navad").removeClass("hiden");
+		}
+		else{
+			$(".navbar_item").removeClass("hiden");
+		}
+    });
+ 
+  </script>
 </html>
