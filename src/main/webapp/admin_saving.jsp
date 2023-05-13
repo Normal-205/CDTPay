@@ -20,7 +20,7 @@
     <div id="header"></div>
 <div class="content_saving">
               <form action="" method="get">
-            <div class="saving-send">
+            <div class="saving-send disflex">
              <div class="to_items w50">
               <p>Account Information:</p>
               <br/>

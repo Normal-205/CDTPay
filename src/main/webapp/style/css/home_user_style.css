@@ -756,8 +756,12 @@ table tr:hover {
   font-weight: bold;
   font-size: 24px;
 }
-.saving-send {
+.disflex {
   display: flex;
+  width: 100% !important;
+}
+.saving-send{
+	width: 50%;
 }
 .w50{
 	width: 70% !important;
