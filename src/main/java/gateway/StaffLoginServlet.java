@@ -74,7 +74,7 @@ public class StaffLoginServlet extends HttpServlet {
 			out.println("<html><body>");
 			out.println("<script>");
 			out.println("alert('Invalid username or password. Please check again');");
-			out.println("location='admin_login.jsp';");
+			out.println("location='/admin_login.jsp';");
 			out.println("</script>");
 			out.println("</body></html>");
 		}

@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>For Staff Only</title>
-    <link rel="stylesheet" href="../style/css/login_style.css" />
+    <link rel="stylesheet" href="style/css/login_style.css" />
   </head>
 
   <body>
     <div class="login__bg">
       <div class="login__content">
         <div class="login__form-title">Welcome to CDTPay (Admin)</div>
-        <form action="StaffLoginServlet" method="get">
+        <form action="${pageContext.request.contextPath}/StaffLoginServlet" method="POST">
           <div class="login__form">
             <div class="login__form-username m24">
               <label for="username" class="login__form-txt">Username</label>
