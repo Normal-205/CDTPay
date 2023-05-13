@@ -7,15 +7,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Main System</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
     <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
   </head>
 
   <body>
+  <!-- Check session -->
+    <% if(null==session.getAttribute("staff")){ %>
+      <script>
+        window.location.href = "admin_login.jsp";
+      </script>
+      <% }else{ %>
+        <script>
+          console.log("OKE, has staff's session");
+        </script>
+        <% } %>
+          <!-- End check -->
     <div id="header"></div>
-
  	<div class="dashboard">
  	<p>Statistics of the day:</p>
  	<div class="dashboard_block">

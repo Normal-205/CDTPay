@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Admin's Layout</title>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
     <link
       rel="stylesheet"
@@ -40,7 +40,7 @@
           >
         </li>
         <li class="navbar_item hiden navad">
-          <a href="admin_accuser.jsp"><i class="fa-solid fa-user"></i>Account User</a>
+          <a href="admin_accuser.jsp"><i class="fa-solid fa-user"></i>User Account</a>
         </li>
         <li class="navbar_item hiden">
           <a href="#"
@@ -52,13 +52,13 @@
     <div class="header header_admin">
       <div class="header_title"><p>Dashboard</p></div>
       <!-- role ở đây ne -->
-      <input type="text" id="role" hidden="true" value="nv"/>
+      <input type="text" id="role" hidden="true" value="${sessionScope.staff.staffRole}"/>
       <div class="header_user">
         <img
           src="style/img/page's avatar.png"
           alt=""
         />
-        <p>PHAM DUY THANH DAN</p>
+        <p>${sessionScope.staff.staffName}</p>
         <i class="fa-sharp fa-solid fa-chevron-down"></i>
 
         <div class="header_dropdown">
@@ -67,7 +67,7 @@
               <a href=""><i class="fa-solid fa-user"></i>Account</a>
             </li>
             <li class="header_dropdown_item">
-              <a href=""
+              <a href="StaffLoginServlet"
                 ><i class="fa-solid fa-arrow-right-from-bracket"></i>Log out</a
               >
             </li>
@@ -77,7 +77,6 @@
     </div>
   </body>
    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
 
   <script>

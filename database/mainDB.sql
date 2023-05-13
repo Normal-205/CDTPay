@@ -194,7 +194,18 @@ select * from staff;
 select * from customer;
 select * from saving;
 select * from transaction;
-/* customerPhone=0914366674&submit=checkPhone&reciveName=&amount=&message=Test+Name+N+chuyen+khoan&password= */
-INSERT INTO `cdtpay`.`saving` (`customerPhone`, `initialAmount`, `interestRate`, `startDate`, `endDate`, `totalAmount`, `status`) VALUES ('0111111111', '10000', '10', '2022-05-05', '2023-02-02', '50000', 'test');
-SELECT * FROM saving WHERE customerPhone = 0123456789;
-ALTER TABLE customer ENGINE = InnoDB;
+
+/* sth */
+SELECT c.customerName AS senderName, t.senderPhone, c2.customerName AS receiverName, t.reciverPhone
+FROM customer c
+JOIN `transaction` t ON c.customerPhone = t.senderPhone
+JOIN customer c2 ON c2.customerPhone = t.reciverPhone
+WHERE t.senderPhone = '0123456789';
+
+/* sth */
+SELECT c.customerName AS senderName, t.senderPhone, c2.customerName AS receiverName, t.reciverPhone
+FROM customer c
+JOIN `transaction` t ON c.customerPhone = t.senderPhone
+JOIN customer c2 ON c2.customerPhone = t.reciverPhone
+GROUP BY t.senderPhone;
+

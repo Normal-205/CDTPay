@@ -77,4 +77,29 @@ public class StaffDAO {
 		}
 		return staff;
 	}
+
+	// deposit balance by phone
+	public boolean depositBalance(String staffName, int balance) {
+		boolean result = false;
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn
+					.prepareStatement("UPDATE staff SET staffBalance = staffBalance + ? WHERE staffName = ?");
+			ps.setInt(1, balance);
+			ps.setString(2, staffName);
+			int rows = ps.executeUpdate();
+			if (rows > 0) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				dbManager.getConnection().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 }

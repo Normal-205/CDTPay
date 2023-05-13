@@ -94,6 +94,8 @@ public class UserTransaction extends HttpServlet {
 				Integer amount = Integer.parseInt(request.getParameter("amount"));
 				String message = request.getParameter("message");
 				String password = request.getParameter("password");
+				// test
+				System.out.println(reciveName);
 				// validate password
 				if (!password.equals(customerOTP)) {
 					out.println("<html><body>");
@@ -105,7 +107,8 @@ public class UserTransaction extends HttpServlet {
 					return;
 				}
 				// create a transaction object
-				Transaction transaction = new Transaction(senderPhone, recievePhone, message, amount, password);
+//				Transaction transaction = new Transaction(senderPhone, recievePhone,reciveName, message, amount, password);
+				Transaction transaction = new Transaction(senderPhone, recievePhone, reciveName, message, amount);
 				// count new balance from both user
 				// update sender balance
 				Integer newSenderBalance = balance - amount;

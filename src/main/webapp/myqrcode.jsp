@@ -36,7 +36,7 @@
       </div>
       <script>
         var qrcode = new QRCode(document.getElementById("qrcode"), {
-          text: "transaction_user.jsp?customerPhone=${sessionScope.customer.phone}&submit=checkPhone",
+          text: "${sessionScope.customer.phone}",
           width: 300,
           height: 300,
           colorDark: "#61678B",

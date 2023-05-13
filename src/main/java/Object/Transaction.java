@@ -8,6 +8,7 @@ public class Transaction {
 	private String senderPhone;
 	private Integer staffID;
 	private String reciverPhone;
+	private String reciveName;
 	private String transactionMessages;
 	private Integer transactionAmount;
 	private LocalDate date;
@@ -17,28 +18,26 @@ public class Transaction {
 	public Transaction() {
 	}
 
-	public Transaction(String senderPhone, String reciverPhone, String transactionMessages, Integer transactionAmount,
-			String status) {
+	public Transaction(String senderPhone, String reciverPhone, String reciveName, String transactionMessages,
+			Integer transactionAmount) {
 		super();
 		this.transactionNumber = "TransNo " + LocalDate.now().toString() + " / " + LocalTime.now().toString();
 		this.senderPhone = senderPhone;
 		this.reciverPhone = reciverPhone;
+		this.reciveName = reciveName;
 		this.transactionMessages = transactionMessages;
 		this.transactionAmount = transactionAmount;
 		date = LocalDate.now();
-		Status = status;
 	}
 
-	public Transaction(Integer staffID, String reciverPhone, String transactionMessages, Integer transactionAmount,
-			String status) {
+	public Transaction(Integer staffID, String reciverPhone, String transactionMessages, Integer transactionAmount) {
 		super();
-		this.transactionNumber = LocalDate.now().toString();
+		this.transactionNumber = "TransNo " + LocalDate.now().toString() + " / " + LocalTime.now().toString();
 		this.staffID = staffID;
 		this.reciverPhone = reciverPhone;
 		this.transactionMessages = transactionMessages;
 		this.transactionAmount = transactionAmount;
 		date = LocalDate.now();
-		Status = status;
 	}
 
 	// getter & setter
@@ -56,6 +55,14 @@ public class Transaction {
 
 	public void setSenderPhone(String senderPhone) {
 		this.senderPhone = senderPhone;
+	}
+
+	public String getReciveName() {
+		return reciveName;
+	}
+
+	public void setReciveName(String reciveName) {
+		this.reciveName = reciveName;
 	}
 
 	public Integer getStaffID() {

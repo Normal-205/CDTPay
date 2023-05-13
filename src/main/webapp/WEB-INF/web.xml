@@ -69,4 +69,14 @@
     <servlet-name>StaffLoginServlet</servlet-name>
     <url-pattern>/StaffLoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminDepositServlet</display-name>
+    <servlet-name>AdminDepositServlet</servlet-name>
+    <servlet-class>gateway.AdminDepositServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDepositServlet</servlet-name>
+    <url-pattern>/AdminDepositServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
