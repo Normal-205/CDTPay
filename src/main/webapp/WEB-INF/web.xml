@@ -59,4 +59,14 @@
     <servlet-name>UserSaving</servlet-name>
     <url-pattern>/UserSaving</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StaffLoginServlet</display-name>
+    <servlet-name>StaffLoginServlet</servlet-name>
+    <servlet-class>gateway.StaffLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StaffLoginServlet</servlet-name>
+    <url-pattern>/StaffLoginServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

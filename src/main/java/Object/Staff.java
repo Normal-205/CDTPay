@@ -12,8 +12,7 @@ public class Staff {
 	public Staff() {
 	}
 
-	public Staff(Integer staffID, String staffPassword, String staffName, String staffPhone, String staffEmail,
-			String staffRole) {
+	public Staff(Integer staffID, String staffPassword, String staffName, String staffPhone, String staffEmail, String staffRole) {
 		super();
 		this.staffID = staffID;
 		this.staffPassword = staffPassword;

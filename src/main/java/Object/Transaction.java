@@ -1,6 +1,7 @@
 package Object;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Transaction {
 	private String transactionNumber;
@@ -19,7 +20,7 @@ public class Transaction {
 	public Transaction(String senderPhone, String reciverPhone, String transactionMessages, Integer transactionAmount,
 			String status) {
 		super();
-		this.transactionNumber = "TransNo" + LocalDate.now().toString();
+		this.transactionNumber = "TransNo " + LocalDate.now().toString() + " / " + LocalTime.now().toString();
 		this.senderPhone = senderPhone;
 		this.reciverPhone = reciverPhone;
 		this.transactionMessages = transactionMessages;

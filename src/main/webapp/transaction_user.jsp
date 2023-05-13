@@ -35,7 +35,7 @@
                   <div class="from_items">
                     <div class="from_left">
                       <div class="from_item">
-                        <div class="from_accnb">0123456789</div>
+                        <div class="from_accnb">${sessionScope.customer.phone}</div>
                         <div>-</div>
                         <div class="from_name">${sessionScope.customer.fullname}</div>
                       </div>
@@ -216,24 +216,24 @@
             text: 'Please enter account number',
           });
         } else {
-        	if(accountNumber===$(".from_accnb").text()){
-        		
-       		 Swal.fire({
-       	            icon: 'error',
-       	            title: 'Phone number',
-       	            text: 'Can\'t send to yourself',
-       	          }).then(function () {
-       	            $('#accountnumber').val('').focus();
-       	          });
-       	}
-        	else{
-        		
-          $('#checkacc').trigger('click');
-        	}
+          if (accountNumber === $(".from_accnb").text()) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Phone number',
+              text: 'Can\'t send to yourself',
+            }).then(function () {
+              $('#accountname').val('');
+              $('#accountnumber').val('').focus();
+            });
+          }
+          else {
+
+            $('#checkacc').trigger('click');
+          }
         }
       });
     });
-    
+
     $(document).ready(function () {
       $('#money').blur(function () {
         var money = parseInt($(this).val());

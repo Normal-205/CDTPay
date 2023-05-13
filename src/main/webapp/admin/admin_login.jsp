@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,32 +9,23 @@
     <title>For Staff Only</title>
     <link rel="stylesheet" href="../style/css/login_style.css" />
   </head>
+
   <body>
     <div class="login__bg">
       <div class="login__content">
         <div class="login__form-title">Welcome to CDTPay (Admin)</div>
-        <form action="" method="post">
+        <form action="StaffLoginServlet" method="get">
           <div class="login__form">
             <div class="login__form-username m24">
               <label for="username" class="login__form-txt">Username</label>
-              <input
-                type="text"
-                class="input__login username"
-                name=""
-                id="username"
-              />
+              <input type="text" class="input__login username" name="staffName" id="username" />
             </div>
-                 <div class="login__form-password m24">
+            <div class="login__form-password m24">
               <label for="password" class="login__form-txt">Password</label>
-              <input
-                type="password"
-                name=""
-                class="input__login"
-                id="password"
-              />
-            </div> 
-           
-            
+              <input type="password" name="staffPassword" class="input__login" id="password" />
+            </div>
+
+
             <div class="login__form-check m24">
               <div class="show__pass">
                 <input type="checkbox" name="" id="showpassword" />
@@ -42,7 +34,7 @@
               <div><a href="">Forgot password ?</a></div>
             </div>
             <div class="login__form-btn m24">
-              <button>LOGIN</button>
+              <input type="submit" name="submit" value="LOGIN">
             </div>
             <div class="btn__signup m24"><a href="signup.html">Sign Up</a></div>
           </div>
@@ -146,4 +138,5 @@
       });
     });
   </script>
-</html>
+
+  </html>

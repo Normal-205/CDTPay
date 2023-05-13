@@ -63,22 +63,6 @@ public class UserTransaction extends HttpServlet {
 				String senderPhone = customerSession.getPhone();
 				// Get the phone parameter from the HTML form
 				String customerPhone = request.getParameter("customerPhone");
-				// test
-				System.out.println(senderPhone);
-				System.out.println(customerPhone);
-				// validate duplicate phone
-				if (customerPhone.equals(senderPhone) == true) {
-					out.println("<html><body>");
-					out.println("<script>");
-					out.println("alert('CANNOT FIND ACCOUNT NUMBER!');");
-					out.println("location='transaction_user.jsp';");
-					out.println("</script>");
-					out.println("</body></html>");
-				} else {
-					System.out.println("Sth wrong");
-
-				}
-
 				// Call the method to get the customer by phone
 				Customer customer = customerDAO.getCustomerByPhone(customerPhone);
 
@@ -135,7 +119,6 @@ public class UserTransaction extends HttpServlet {
 				// import transaction to database
 				transactionDAO.createUserTransaction(transaction);
 				// set session attribute to new balance of sender
-				request.getSession().setAttribute("customer", customerDAO.getCustomerByPhone(senderPhone));
 				// alert success
 				out.println("<html><body>");
 				out.println("<script>");
@@ -143,6 +126,8 @@ public class UserTransaction extends HttpServlet {
 				out.println("location='transaction_user.jsp';");
 				out.println("</script>");
 				out.println("</body></html>");
+				// set attribute
+				request.getSession().setAttribute("customer", customerDAO.getCustomerByPhone(senderPhone));
 
 				// redirect back to transaction_user.jsp
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/transaction_user.jsp");
@@ -158,52 +143,5 @@ public class UserTransaction extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Set the content type
-		response.setContentType("text/html");
-
-		// Output stream to write HTML response
-		PrintWriter out = response.getWriter();
-
-		String submitButtonValue = request.getParameter("submit");
-		if (submitButtonValue != null) {
-			if (submitButtonValue.equals("checkPhone")) {
-				System.out.println("Confirm Transaction");
-				// Get the phone parameter from the HTML form
-				String customerPhone = request.getParameter("customerPhone");
-				// Call the method to get the customer by phone
-				Customer customer = customerDAO.getCustomerByPhone(customerPhone);
-
-				if (customer != null) {
-					request.setAttribute("transaction", customer);
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/transaction_user.jsp");
-					dispatcher.forward(request, response);
-				} else {
-					out.println("<html><body>");
-					out.println("<script>");
-					out.println("alert('CANNOT FIND ACCOUNT NUMBER!');");
-					out.println("location='transaction_user.jsp';");
-					out.println("</script>");
-					out.println("</body></html>");
-				}
-			} else if (submitButtonValue.equals("transaction")) {
-				System.out.println("Confirm Transaction");
-				// Get the phone parameter from the HTML form
-				String customerPhone = request.getParameter("customerPhone");
-				String reciveName = request.getParameter("reciveName");
-				Integer amount = Integer.parseInt(request.getParameter("amount"));
-				String message = request.getParameter("message");
-				String password = request.getParameter("password");
-				// set attribute for every input
-				request.setAttribute("customerPhone", customerPhone);
-				request.setAttribute("reciveName", reciveName);
-				request.setAttribute("amount", amount);
-				request.setAttribute("message", message);
-				request.setAttribute("password", password);
-				// redirect back to transaction_user.jsp
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/transaction_user.jsp");
-				dispatcher.forward(request, response);
-			}
-		}
 	}
-
 }
