@@ -14,7 +14,7 @@
     <div class="login__bg">
       <div class="login__content">
         <div class="login__form-title">Welcome to CDTPay (Admin)</div>
-        <form action="${pageContext.request.contextPath}/StaffLoginServlet" method="POST">
+        <form action="StaffLoginServlet" method="POST">
           <div class="login__form">
             <div class="login__form-username m24">
               <label for="username" class="login__form-txt">Username</label>
