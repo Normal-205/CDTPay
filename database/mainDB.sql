@@ -200,12 +200,13 @@ SELECT c.customerName AS senderName, t.senderPhone, c2.customerName AS receiverN
 FROM customer c
 JOIN `transaction` t ON c.customerPhone = t.senderPhone
 JOIN customer c2 ON c2.customerPhone = t.reciverPhone
-WHERE t.senderPhone = '0123456789';
-
+WHERE t.senderPhone = '0123456789'
+order by reciverPhone;
 /* sth */
-SELECT c.customerName AS senderName, t.senderPhone, c2.customerName AS receiverName, t.reciverPhone
-FROM customer c
-JOIN `transaction` t ON c.customerPhone = t.senderPhone
-JOIN customer c2 ON c2.customerPhone = t.reciverPhone
-GROUP BY t.senderPhone;
+SELECT DISTINCT customerName,reciverPhone
+FROM transaction 
+INNER JOIN customer ON transaction.reciverPhone = customer.customerPhone 
+WHERE senderPhone = '0123456789'
+ORDER BY reciverPhone DESC 
+LIMIT 5
 

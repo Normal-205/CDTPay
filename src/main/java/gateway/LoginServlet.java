@@ -6,7 +6,9 @@ import java.util.List;
 
 import DAO.CustomerDAO;
 import DAO.SavingDAO;
+import DAO.TransactionDAO;
 import Object.Saving;
+import Object.Transaction;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -20,6 +22,7 @@ import jakarta.servlet.http.HttpSession;
  */
 public class LoginServlet extends HttpServlet {
 	private DBManager dbManager;
+	private TransactionDAO transactionDAO;
 	private CustomerDAO customerDAO;
 	private SavingDAO savingDAO;
 	private static final long serialVersionUID = 1L;
@@ -38,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 		dbManager = DBManager.getInstance();
 		customerDAO = new CustomerDAO(dbManager);
 		savingDAO = new SavingDAO(dbManager);
+		transactionDAO = new TransactionDAO(dbManager);
 	}
 
 	/**
@@ -71,12 +75,20 @@ public class LoginServlet extends HttpServlet {
 		String customerOTP = request.getParameter("password");
 		// initial saving object in list structure
 		List<Saving> savingList = savingDAO.getSavingByPhone(customerPhone);
+		// initial recent transaction in list structure
+		List<Transaction> recentTransactionList = transactionDAO.getRecentTransactionByPhone(customerPhone);
+		// test list trans
+		for (Transaction transaction : recentTransactionList) {
+			System.out.println(transaction.getReciveName());
+			System.out.println(transaction.getReciverPhone());
+		}
 		// Check if the user exists in the database then set the session attribute to
 		// the customer object
 		if (customerDAO.checkLogin(customerPhone, customerOTP)) {
-//			System.out.println("Login session created");
+			// System.out.println("Login session created");
 			request.getSession().setAttribute("customer", customerDAO.getCustomerByPhone(customerPhone));
 			request.getSession().setAttribute("saving", savingList);
+			request.getSession().setAttribute("recentTransaction", recentTransactionList);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home_user.jsp");
 			dispatcher.forward(request, response);
 
@@ -88,9 +100,9 @@ public class LoginServlet extends HttpServlet {
 			out.println("location='login.jsp';");
 			out.println("</script>");
 			out.println("</body></html>");
-//			request.setAttribute("error", "Invalid username or password");
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-//			dispatcher.forward(request, response);
+			// request.setAttribute("error", "Invalid username or password");
+			// RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+			// dispatcher.forward(request, response);
 		}
 	}
 

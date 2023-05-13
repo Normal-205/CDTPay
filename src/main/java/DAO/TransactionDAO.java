@@ -77,30 +77,24 @@ public class TransactionDAO {
 		return result;
 	}
 
-	// method to get recent account number for specific customer
-	public List<Transaction> getRecentAccountNumber(String customerPhone) {
-		List<Transaction> transactionList = new ArrayList<Transaction>();
-		try {
-			Connection conn = DBManager.getInstance().getConnection();
-			String sql = "SELECT * FROM transaction WHERE senderPhone = ? OR reciverPhone = ? ORDER BY transactionDate DESC LIMIT 1";
-			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setString(1, customerPhone);
-			statement.setString(2, customerPhone);
-			ResultSet result = statement.executeQuery();
-			while (result.next()) {
+	// method to get recent account number and account name from transaction table
+	// and customer table, then return a list of transaction
+	public List<Transaction> getRecentTransactionByPhone(String phone) {
+		List<Transaction> list = new ArrayList<>();
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(
+					"SELECT DISTINCT customerName,reciverPhone FROM transaction  INNER JOIN customer ON transaction.reciverPhone = customer.customerPhone  WHERE senderPhone = ? ORDER BY reciverPhone DESC  LIMIT 5");
+			ps.setString(1, phone);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
 				Transaction transaction = new Transaction();
-				transaction.setTransactionNumber(result.getString("transactionNumber"));
-				transaction.setSenderPhone(result.getString("senderPhone"));
-				transaction.setReciverPhone(result.getString("reciverPhone"));
-				transaction.setTransactionMessages(result.getString("transactionMessages"));
-				transaction.setTransactionAmount(result.getInt("transactionAmount"));
-				transaction.setDate(result.getDate("transactionDate").toLocalDate());
-				transactionList.add(transaction);
+				transaction.setReciveName(rs.getString("customerName"));
+				transaction.setReciverPhone(rs.getString("reciverPhone"));
+				list.add(transaction);
 			}
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return transactionList;
+		return list;
 	}
 }

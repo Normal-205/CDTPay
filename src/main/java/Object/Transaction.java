@@ -18,6 +18,12 @@ public class Transaction {
 	public Transaction() {
 	}
 
+	public Transaction(String reciverPhone, String reciveName) {
+		super();
+		this.reciverPhone = reciverPhone;
+		this.reciveName = reciveName;
+	}
+
 	public Transaction(String senderPhone, String reciverPhone, String reciveName, String transactionMessages,
 			Integer transactionAmount) {
 		super();

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
   <!DOCTYPE html>
   <html lang="en">
@@ -90,24 +91,15 @@
               </form>
             </div>
             <div class="recent">
-              <p>Recent / Test</p>
+              <p>Recent Transaction</p>
               <div class="recent_items">
-                <a href="transaction_user.jsp?accountnumber=0123456789">
+              <c:forEach items="${recentTransaction}" var="recentTransaction">
                   <div class="recent_item">
-                    <p>${customerPhone}</p>
-                    <p>${reciveName}</p>
-                    <p>${amount}</p>
-                    <p>${message}</p>
-                    <p>${password}</p>
-                  </div>
-                </a>
-                <a href="">
-                  <div class="recent_item">
-                    <p>NGUYEN THANH CHUNG</p>
+                    <p>${recentTransaction.reciveName}</p>
                     <p>-</p>
-                    <p>0123456789</p>
+                    <p>${recentTransaction.reciverPhone}</p>
                   </div>
-                </a>
+                   </c:forEach>
               </div>
             </div>
           </div>
