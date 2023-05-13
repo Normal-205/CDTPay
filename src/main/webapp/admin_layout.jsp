@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../style/css/home_user_style.css" />
+    <link rel="stylesheet" href="style/css/home_user_style.css" />
     <link
       rel="stylesheet"
-      href="../style/font/fontawesome-free-6.3.0-web/css/all.min.css"
+      href="style/font/fontawesome-free-6.3.0-web/css/all.min.css"
     />
   </head>
   <body>
@@ -26,7 +26,7 @@
           >
         </li>
         <li class="navbar_item hiden">
-          <a href="deposit.jsp"><i class="fa-solid fa-wallet"></i>Deposit</a>
+          <a href="admin_deposit.jsp"><i class="fa-solid fa-wallet"></i>Deposit</a>
         </li>
         
         <li class="navbar_item hiden">
@@ -40,7 +40,7 @@
           >
         </li>
         <li class="navbar_item hiden navad">
-          <a href="accuser.jsp"><i class="fa-solid fa-user"></i>Account User</a>
+          <a href="admin_accuser.jsp"><i class="fa-solid fa-user"></i>Account User</a>
         </li>
         <li class="navbar_item hiden">
           <a href="#"
@@ -55,7 +55,7 @@
       <input type="text" id="role" hidden="true" value="nv"/>
       <div class="header_user">
         <img
-          src="../style/img/page's avatar.png"
+          src="style/img/page's avatar.png"
           alt=""
         />
         <p>PHAM DUY THANH DAN</p>

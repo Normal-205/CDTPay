@@ -12,8 +12,8 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    <link rel="stylesheet" href="../style/css/home_user_style.css" />
-    <link rel="stylesheet" href="../style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
+    <link rel="stylesheet" href="style/css/home_user_style.css" />
+    <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
   </head>
 
   <body>
