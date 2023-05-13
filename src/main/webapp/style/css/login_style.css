@@ -85,11 +85,9 @@ body {
 .submitcheck {
   display: block;
 }
-.login__form-btn {
-  width: 350px;
-  height: 50px;
-}
-.login__form-btn button {
+
+
+.login__form-btn button,.login__form-btn {
   width: 350px;
   height: 50px;
   font-size: 18px;
