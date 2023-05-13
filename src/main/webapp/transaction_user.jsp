@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <!-- Check session -->
+  <!-- Check session -->
     <% if(null==session.getAttribute("customer")){ %>
       <script>
         window.location.href = "login.jsp";
@@ -116,6 +116,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
 
   <script>
+  var qrCodeValue = sessionStorage.getItem('qrCodeValue');
+  if (qrCodeValue) {
+	  
+	  document.getElementById('accountnumber').value = qrCodeValue;
+	  sessionStorage.removeItem('qrCodeValue');
+	  //document.getElementById('checkacc').click();
+	};
     $(document).ready(function () {
       $("#header").load("layout.jsp", function () {
         $("#header")

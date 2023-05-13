@@ -75,8 +75,11 @@
           ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
           const code = jsQR(imageData.data, imageData.width, imageData.height);
+          var scannedValue;
           if (code) {
-            window.location.href = code.data;
+        	  scannedValue = code.data;
+        	  sessionStorage.setItem('qrCodeValue', scannedValue);
+        	  window.location.href = "transaction_user.jsp";
             // Xử lý mã QR tại đây
           }
           requestAnimationFrame(tick);

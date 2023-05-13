@@ -51,7 +51,7 @@
     </div>
     <div class="header header_admin">
       <div class="header_title"><p>Dashboard</p></div>
-      <!-- role ở đây -->
+      <!-- role ở đây ne -->
       <input type="text" id="role" hidden="true" value="nv"/>
       <div class="header_user">
         <img
