@@ -203,10 +203,13 @@ JOIN customer c2 ON c2.customerPhone = t.reciverPhone
 WHERE t.senderPhone = '0123456789'
 order by reciverPhone;
 /* sth */
-SELECT DISTINCT customerName,reciverPhone
-FROM transaction 
-INNER JOIN customer ON transaction.reciverPhone = customer.customerPhone 
-WHERE senderPhone = '0123456789'
-ORDER BY reciverPhone DESC 
-LIMIT 5
+	SELECT DISTINCT customerName,reciverPhone
+	FROM transaction 
+	INNER JOIN customer ON transaction.reciverPhone = customer.customerPhone 
+	WHERE senderPhone = '0123456789'
+	ORDER BY reciverPhone DESC 
+	LIMIT 5;
 
+SELECT *
+FROM transaction
+WHERE MONTH(transactionDate) = 5;

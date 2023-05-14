@@ -36,7 +36,7 @@
                   <div class="to">
                     <p>To:</p>
                     <label for="accountnumber" class="black">Account number:</label>
-                    <input type="text" name="customerPhone" maxlength="10" class="to_item" id="accountnumber" value="${customDep.phone}" />
+                    <input type="text" name="customerPhone" maxlength="10" class="to_item" id="accountnumber" value="${customDep.phone}" required />
                     <input type="submit" name="submit" class="checkacc" value="checkPhone" hidden="true" />
                     <label for="accountname">Account name:</label>
                     <input type="text" class="to_item" id="accountname" value="${customDep.fullname}" readonly />
@@ -85,25 +85,7 @@
           title: 'Required!',
           text: 'Please enter information',
         });
-      }
-      else {
-
-        Swal.fire({
-          title: 'Do you want to perform this action',
-          text: "You won't be able to undo this action!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Yes',
-          cancelButtonText: 'No'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            // Xử lý khi confirm được nhấn
-            // var servletUrl = "";
-            //var redirectUrl = servletUrl + "?param1=value1&param2=value2";
-            //window.location.href = redirectUrl;
-          }
-        });
-      }
+      }       
     });
 
     $(document).ready(function () {

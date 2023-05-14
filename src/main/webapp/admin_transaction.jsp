@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Transaction</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -17,24 +17,33 @@
   </head>
 
   <body>
+  <!-- Check session -->
+    <% if(null==session.getAttribute("staff")){ %>
+      <script>
+        window.location.href = "admin_login.jsp";
+      </script>
+      <% }else{ %>
+        <script>
+          console.log("OKE, has staff's session");
+        </script>
+        <% } %>
+          <!-- End check session -->
     <div id="header"></div>
  <div class="admin_transaction">
  <div class="content_adtran">
-        <form action="">
+        <form action="AdminTransServlet" method = "get">
       <div class="transaction_from">
-       
           <div class="from">
             <p>From:</p>
             <div class="to_items">
               <label for="accountnumber" class="black">Account number:</label>
-              <input type="text" maxlength="10" class="to_item" id="accountnumber" />
+              <input type="text" name="senderPhone" maxlength="10" class="to_item" id="accountnumber" value="${sender.phone}" />
               <!-- submit check 1 -->
-              <input type="submit" class="checkacc1" value="checkacc1" hidden="true"/>
+              <input type="submit" name="submit" class="checkacc1" value="checkacc1" hidden="true"/>
               <label for="accountname">Account name:</label>
-              <input type="text" class="to_item" id="accountname" readonly />
+              <input type="text" name="senderName" class="to_item" id="accountname" value="${sender.fullname}" readonly />
               <label for="Balance">Balance:</label>
-              <input type="text" class="to_item" maxlength="15" readonly id="Balance" value="123" />
-             
+              <input type="text" name="senderBalance" class="to_item" maxlength="15" readonly id="Balance" value="${sender.balance}"/>
             </div>
           </div>
       </div>
@@ -44,19 +53,19 @@
      <p>To:</p>
     <label for="accountnumberto" class="black">Account number:</label>
       <!-- submit check 2 -->
-              <input type="submit" class="checkacc2" value="checkacc2" hidden="true"/>
-              <input type="text" maxlength="10" class="to_item" id="accountnumberto" />
+              <input type="submit" name="submit" class="checkacc2" value="checkacc2" hidden="true"/>
+     <input type="text" name="reciverPhone" maxlength="10" class="to_item" id="accountnumberto" value="${reciver.phone}" />
               <label for="accountname">Account name:</label>
-              <input type="text" class="to_item" id="accountname" readonly />
+              <input type="text" name="reciverName" class="to_item" id="accountname" value="${reciver.fullname}" readonly />
               <label for="money" class="black">Money:</label>
-              <input type="text" class="to_item" maxlength="15" id="money" />
+              <input type="text" name="amount" class="to_item" maxlength="15" id="money"/>
               <label for="content" class="black">Content:</label>
-              <input type="text" class="to_item" maxlength="15" id="content" value="PHAM DUY THANH DAN chuyen khoan" />
+              <input type="text" name="transactionMessage" class="to_item" maxlength="15" id="content" value="Transaction was made by ${sessionScope.staff.staffName}" />
      </div>
     </div>
         </form>
         </div>
-         <div class="to_item_next" style="width: 95%">Next</div>
+         <input type="submit" name="submit" value="Next" class="to_item_next" style="width: 95%">
      </div>
     
   </body>
@@ -88,24 +97,6 @@
               title: 'Required!',
               text: 'Please enter information',
             });
-          }
-          else{
-        	  
-      Swal.fire({
-        title: 'Do you want to perform this action',
-        text: "You won't be able to undo this action!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // Xử lý khi confirm được nhấn
-        	// var servletUrl = "";
-        	  //var redirectUrl = servletUrl + "?param1=value1&param2=value2";
-        	  //window.location.href = redirectUrl;
-        } 
-      });
           }
     });
 

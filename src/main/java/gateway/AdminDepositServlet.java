@@ -98,7 +98,7 @@ public class AdminDepositServlet extends HttpServlet {
 					// alert success
 					out.println("<html><body>");
 					out.println("<script>");
-					out.println("alert('TRANSACTION SUCCESS! Press OKE to comeback :0');");
+					out.println("alert('DEPOSIT SUCCESS! Press OKE to comeback :0');");
 					out.println("location='admin_deposit.jsp';");
 					out.println("</script>");
 					out.println("</body></html>");

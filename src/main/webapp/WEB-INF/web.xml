@@ -79,4 +79,14 @@
     <servlet-name>AdminDepositServlet</servlet-name>
     <url-pattern>/AdminDepositServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminTransServlet</display-name>
+    <servlet-name>AdminTransServlet</servlet-name>
+    <servlet-class>gateway.AdminTransServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminTransServlet</servlet-name>
+    <url-pattern>/AdminTransServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -13,6 +13,17 @@
   </head>
 
   <body>
+  <!-- Check session -->
+    <% if(null==session.getAttribute("staff")){ %>
+      <script>
+        window.location.href = "admin_login.jsp";
+      </script>
+      <% }else{ %>
+        <script>
+          console.log("OKE, has staff's session");
+        </script>
+        <% } %>
+          <!-- End check session -->
     <div id="header"></div>
     <div class="content_history">
     

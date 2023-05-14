@@ -24,6 +24,18 @@ public class Transaction {
 		this.reciveName = reciveName;
 	}
 
+	public Transaction(String senderPhone, Integer staffID, String reciverPhone, String transactionMessages,
+			Integer transactionAmount) {
+		super();
+		this.transactionNumber = "TransNo " + LocalDate.now().toString() + " / " + LocalTime.now().toString();
+		this.senderPhone = senderPhone;
+		this.staffID = staffID;
+		this.reciverPhone = reciverPhone;
+		this.transactionMessages = transactionMessages;
+		this.transactionAmount = transactionAmount;
+		date = LocalDate.now();
+	}
+
 	public Transaction(String senderPhone, String reciverPhone, String reciveName, String transactionMessages,
 			Integer transactionAmount) {
 		super();
@@ -44,6 +56,7 @@ public class Transaction {
 		this.transactionMessages = transactionMessages;
 		this.transactionAmount = transactionAmount;
 		date = LocalDate.now();
+		Status = "Success";
 	}
 
 	// getter & setter
