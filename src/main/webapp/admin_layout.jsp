@@ -64,7 +64,7 @@
         <div class="header_dropdown">
           <ul class="header_dropdown_items">
             <li class="header_dropdown_item">
-              <a href=""><i class="fa-solid fa-user"></i>Account</a>
+              <i class="fa-solid fa-user">Account</i>
             </li>
             <li class="header_dropdown_item">
               <a href="StaffLoginServlet"

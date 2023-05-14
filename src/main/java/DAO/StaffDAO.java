@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Object.Staff;
 import connection.DBManager;
@@ -102,4 +104,20 @@ public class StaffDAO {
 		return result;
 	}
 
+	// get full data of all staff
+	public List<Staff> getAllStaff() {
+		List<Staff> staffList = new ArrayList<>();
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM staff");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Staff staff = new Staff(rs.getInt("staffID"), rs.getString("staffPassword"), rs.getString("staffName"),
+						rs.getString("staffPhone"), rs.getString("staffEmail"), rs.getString("staffRole"));
+				staffList.add(staff);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return staffList;
+	}
 }

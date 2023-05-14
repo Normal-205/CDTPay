@@ -87,7 +87,7 @@ public class LoginServlet extends HttpServlet {
 		if (customerDAO.checkLogin(customerPhone, customerOTP)) {
 			// System.out.println("Login session created");
 			request.getSession().setAttribute("customer", customerDAO.getCustomerByPhone(customerPhone));
-			request.getSession().setAttribute("saving", savingList);
+			request.getSession().setAttribute("savingList", savingList);
 			request.getSession().setAttribute("recentTransaction", recentTransactionList);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home_user.jsp");
 			dispatcher.forward(request, response);

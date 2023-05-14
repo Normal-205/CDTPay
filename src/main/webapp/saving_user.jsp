@@ -45,7 +45,7 @@
                 </div>
               </div>
               <div>
-                <form action="UserSaving" method="get">
+                <form action="UserSaving" method="POST">
                   <label for="interestRate">Interest Rate (%):</label>
                   <input type="text" name="interestRate" maxlength="10" class="to_item" id="interestRate" readonly
                     value="3" />
@@ -66,7 +66,7 @@
             </div>
             <div class="saving-withdraw">
               <p>HISTORY </p>
-              <c:forEach var="saving" items="${saving}">
+              <c:forEach var="saving" items="${savingList}">
 					    <p>Amount: ${saving.initialAmount}</p>
 					    <p>Time: ${saving.startDate} -> ${saving.endDate}</p>
 					    <p>Total: ${saving.totalAmount}</p>

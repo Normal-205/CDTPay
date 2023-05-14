@@ -2,6 +2,7 @@ package gateway;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import DAO.CustomerDAO;
 import DAO.SavingDAO;
@@ -74,15 +75,16 @@ public class UserSaving extends HttpServlet {
 			System.out.println("OKE");
 			// save record in saving table
 			savingDAO.addNewSaving(saving);
-			// Integer newBalance = balance - amount;
-			// // update Balance
-			// customerDAO.updateBalance(phone, newBalance);
-			// // save record in saving table
-			//// customerDAO.addNewSaving(saving);
-			// // set attribute in order to save in session
-			// customer.setBalance(newBalance);
-			// session.setAttribute("customer", customer);
+			Integer newBalance = balance - amount;
+			// update Balance
+			customerDAO.updateBalance(phone, newBalance);
+			// set attribute in order to save in session
+			List<Saving> savingList = savingDAO.getSavingByPhone(phone);
+			customer.setBalance(newBalance);
+			// add to value
+			session.setAttribute("customer", customer);
 			session.setAttribute("saving", saving);
+			request.getSession().setAttribute("savingList", savingList);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/saving_user.jsp");
 			dispatcher.forward(request, response);
 		} else {
@@ -103,8 +105,55 @@ public class UserSaving extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// Set the content type
+		response.setContentType("text/html");
+
+		// Output stream to write HTML response
+		PrintWriter out = response.getWriter();
+
+		// Retrieve the customer object from the session
+		HttpSession session = request.getSession();
+		Customer customer = (Customer) session.getAttribute("customer");
+		// Retrieve the information from session
+		Integer balance = customer.getBalance();
+		String phone = customer.getPhone();
+		// retrieve the information from form
+		Integer interestRate = Integer.parseInt(request.getParameter("interestRate"));
+		Integer amount = Integer.parseInt(request.getParameter("initialAmount"));
+		Integer time = Integer.parseInt(request.getParameter("time"));
+		double totalAmount = Double.parseDouble(request.getParameter("totalAmount"));
+		// initial saving object
+		Saving saving = new Saving(phone, amount, interestRate, time, totalAmount, "Ongoing");
+		// print test
+		System.out.println(time);
+		System.out.println(phone);
+		System.out.println(totalAmount);
+		System.out.println(interestRate);
+		if (customerDAO.checkMoney(phone, amount)) {
+			System.out.println("OKE");
+			// save record in saving table
+			savingDAO.addNewSaving(saving);
+			Integer newBalance = balance - amount;
+			// update Balance
+			customerDAO.updateBalance(phone, newBalance);
+			// set attribute in order to save in session
+			List<Saving> savingList = savingDAO.getSavingByPhone(phone);
+			customer.setBalance(newBalance);
+			// add to value
+			session.setAttribute("customer", customer);
+			session.setAttribute("saving", saving);
+			request.getSession().setAttribute("savingList", savingList);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/saving_user.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			System.out.println("NOT ENOUGH MONEY");
+			out.println("<html><body>");
+			out.println("<script>");
+			out.println("alert('Your account is not enough money, please try again');");
+			out.println("location='saving_user.jsp';");
+			out.println("</script>");
+			out.println("</body></html>");
+		}
 	}
 
 }

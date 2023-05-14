@@ -22,15 +22,14 @@ public class TransactionDAO {
 		boolean result = false;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
-					"INSERT INTO transaction (transactionNumber, senderPhone, reciverPhone, reciveName, transactionMessages, transactionAmount, transactionDate, transactionStatus) VALUES (?, ?, ?, ?, ?,?,?)");
+					"INSERT INTO transaction (transactionNumber, senderPhone, reciverPhone, transactionMessages, transactionAmount, transactionDate, transactionStatus) VALUES (?, ?, ? , ?, ?, ?, ?)");
 			ps.setString(1, transaction.getTransactionNumber());
 			ps.setString(2, transaction.getSenderPhone());
 			ps.setString(3, transaction.getReciverPhone());
-			ps.setString(4, transaction.getReciveName());
-			ps.setString(5, transaction.getTransactionMessages());
-			ps.setInt(6, transaction.getTransactionAmount());
-			ps.setDate(7, java.sql.Date.valueOf(transaction.getDate()));
-			ps.setString(8, "Success");
+			ps.setString(4, transaction.getTransactionMessages());
+			ps.setInt(5, transaction.getTransactionAmount());
+			ps.setDate(6, java.sql.Date.valueOf(transaction.getDate()));
+			ps.setString(7, "Success");
 			int rows = ps.executeUpdate();
 			if (rows > 0) {
 				result = true;

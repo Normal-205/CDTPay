@@ -2,8 +2,12 @@ package gateway;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import DAO.CustomerDAO;
 import DAO.StaffDAO;
+import Object.Customer;
+import Object.Staff;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -18,6 +22,7 @@ import jakarta.servlet.http.HttpSession;
 public class StaffLoginServlet extends HttpServlet {
 	private DBManager dbManager;
 	private StaffDAO staffDAO;
+	private CustomerDAO customerDAO;
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -32,6 +37,7 @@ public class StaffLoginServlet extends HttpServlet {
 	public void init() {
 		dbManager = DBManager.getInstance();
 		staffDAO = new StaffDAO(dbManager);
+		customerDAO = new CustomerDAO(dbManager);
 	}
 
 	/**
@@ -67,17 +73,28 @@ public class StaffLoginServlet extends HttpServlet {
 		// Check if the user exists in the database then set the session attribute to
 		// the customer object
 		if (staffDAO.checkLogin(staffName, staffPassword)) {
-//			System.out.println("Login session created");
-			request.getSession().setAttribute("staff", staffDAO.getStaffByName(staffName));
+			// get staff object
+			Staff staff = staffDAO.getStaffByName(staffName);
+			// get staff role go set session for user management
+			String staffRole = staff.getStaffRole();
+			if (staffRole.equals("admin")) {
+				System.out.println("This is admin");
+				List<Staff> staffList = staffDAO.getAllStaff();
+				request.getSession().setAttribute("staffList", staffList);
+			} else if (staffRole.equals("staff")) {
+				System.out.println("This is staff");
+				List<Customer> customerList = customerDAO.getAllCustomer();
+				request.getSession().setAttribute("customerList", customerList);
+			}
+			request.getSession().setAttribute("staff", staff);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/dashboard.jsp");
 			dispatcher.forward(request, response);
-
 		} else {
 			System.out.println("NOT OKE");
 			out.println("<html><body>");
 			out.println("<script>");
 			out.println("alert('Invalid username or password. Please check again');");
-			out.println("location='/admin_login.jsp';");
+			out.println("location='admin_login.jsp';");
 			out.println("</script>");
 			out.println("</body></html>");
 		}

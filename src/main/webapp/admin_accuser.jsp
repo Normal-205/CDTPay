@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="Object.Staff" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Account Management</title>
     <link rel="stylesheet" href="style/css/home_user_style.css" />
     <link rel="stylesheet" href="style/font/fontawesome-free-6.3.0-web/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -41,6 +43,7 @@
           </div>
         </div>
       </div>
+      
       <div id="tableContainer">
       <table id="dataTable">
         <thead>
@@ -54,28 +57,42 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>0368808518</td>
-            <td>NGUYEN THANH CHUNG</td>
-            <td>ntc@gmai.com</td>
-            <td>642002</td>
-            <td>user</td>
+        <c:choose>
+  <c:when test="${sessionScope.staff.staffRole == 'admin'}">
+    <!-- Code to execute if staff role is 'admin' -->
+	        <c:forEach var="staff" items="${staffList}">
+    <tr>
+            <td>${staff.staffPhone}</td>
+            <td>${staff.staffName}</td>
+            <td>${staff.staffEmail}</td>
+            <td>${staff.staffPassword}</td>
+            <td>${staff.staffRole}</td>
             <td>
-              <button class="btn update-btn"  data-phone="0368808518" data-name="NGUYEN THANH CHUNG" data-email="ntc@gmai.com" data-role="user">Update</button>
+              <button class="btn update-btn"  data-phone="${staff.staffPhone}" data-name="${staff.staffName}" data-email="${staff.staffEmail}" data-role="user">Update</button>
               <button class="btn delete-btn hiden">Delete</button>
             </td>
           </tr>
-          <tr>
-            <td>0368808513</td>
-            <td>NGUYEN THANH CHUNG</td>
-            <td>ntc@gmai.com</td>
-            <td>271102</td>
+    </c:forEach>
+  </c:when>
+  <c:when test="${sessionScope.staff.staffRole == 'staff'}">
+    <!-- Code to execute if staff role is 'staff' -->
+    <p>Welcome, staff member!</p>
+        <c:forEach var="customer" items="${customerList}">
+    <tr>
+            <td>${customer.phone}</td>
+            <td>${customer.fullname}</td>
+            <td>${customer.email}</td>
+            <td>${customer.password}</td>
             <td>user</td>
             <td>
-              <button class="btn update-btn">Update</button>
+              <button class="btn update-btn"  data-phone="${customer.phone}" data-name="${customer.fullname}" data-email="${customer.email}" data-role="user">Update</button>
               <button class="btn delete-btn hiden">Delete</button>
             </td>
           </tr>
+    </c:forEach>
+    <!-- Additional staff-specific content -->
+  </c:when>
+</c:choose>
         </tbody>
       </table>
         </div>
@@ -97,7 +114,7 @@
              <select class="roleuser hiden">
             <option value="user">user</option>
             <option value="admin">admin</option>
-            <option value="nv">nv</option>
+            <option value="staff">staff</option>
             </select>
             <button class="btn update-submit">Update Account</button>
           </div>

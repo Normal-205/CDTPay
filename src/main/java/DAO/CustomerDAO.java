@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Object.Customer;
 import connection.DBManager;
@@ -159,4 +161,22 @@ public class CustomerDAO {
 		}
 		return balance;
 	}
+
+	// get full data of all customer
+	public List<Customer> getAllCustomer() {
+		List<Customer> customerList = new ArrayList<>();
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM customer");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Customer customer = new Customer(rs.getString("customerName"), rs.getString("customerPhone"),
+						rs.getString("customerEmail"), rs.getString("customerOTP"), rs.getInt("balance"));
+				customerList.add(customer);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return customerList;
+	}
+
 }
