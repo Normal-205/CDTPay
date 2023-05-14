@@ -19,10 +19,7 @@
    <div>
       <button class="btn create-btn">Create account</button>
       <div class="search">
-      <form action="">
       <input type="text" class="accountnumber search_input" maxlength="10" placeholder="Search phone number"/>
-
-      </form>
       </div>
    </div>
       <div class="createbgr hiden">      
@@ -44,6 +41,7 @@
           </div>
         </div>
       </div>
+      <div id="tableContainer">
       <table id="dataTable">
         <thead>
           <tr>
@@ -80,6 +78,12 @@
           </tr>
         </tbody>
       </table>
+        </div>
+        <div id="paginationContainer">
+        <div id="prevButton"><i class="fa-solid fa-angle-left"></i></div>
+      <ul id="pagination"></ul>
+        <div id="nextButton"><i class="fa-solid fa-angle-right"></i></div>
+    </div>
       <div class="updatebgr hiden">
         <div class="update_bg">
       </div>
@@ -170,6 +174,59 @@ $(document).ready(function () {
           });
         });
       });
+$(document).ready(function () {
+	  var rowsPerPage = 8;
+	  var rows = $("#dataTable tbody tr");
+	  var numRows = rows.length;
+	  var numPages = Math.ceil(numRows / rowsPerPage);
+	  for (var i = 1; i <= numPages; i++) {
+	    $("#pagination").append(
+	      '<li><a href="#" class="page-link">' + i + "</a></li>"
+	    );
+	  }
+	  $("#pagination li:nth-child(1) a").addClass("u");
+	  showPage(1);
+
+	  // Sự kiện khi nhấp vào nút Previous
+	  $("#prevButton").click(function () {
+		  
+	    var currentPage = parseInt($("#pagination li a.u").text());
+	    if (currentPage > 1) {
+	    	$(".page-link").removeClass("u");
+	    	$("#pagination li:nth-child(" + (currentPage - 1) + ") a").addClass("u");
+	      showPage(currentPage - 1);
+	    }
+	  });
+
+	  // Sự kiện khi nhấp vào nút Next
+	  $("#nextButton").click(function () {
+	    var currentPage = parseInt($("#pagination li a.u").text());
+	    if (currentPage < numPages) {
+	    	$(".page-link").removeClass("u");
+	    	$("#pagination li:nth-child(" + (currentPage + 1) + ") a").addClass("u");
+	      showPage(currentPage + 1);
+	    }
+	  });
+
+	  $("#pagination").on("click", ".page-link", function () {
+	    var page = $(this).text();
+	    $(".page-link").removeClass("u");
+	    $(this).addClass("u");
+	    showPage(page);
+	  });
+
+	  function showPage(page) {
+	    var start = (page - 1) * rowsPerPage;
+	    var end = start + rowsPerPage;
+
+	    rows.hide();
+	    rows.slice(start, end).show();
+
+	    $("#pagination .page-link").removeClass("active");
+	    $("#pagination li:nth-child(" + page + ") a").addClass("active");
+	  }
+	});
+
   </script>
 
   </html>
