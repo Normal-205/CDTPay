@@ -802,6 +802,31 @@ select:focus {
 	  border: none;
 	  color: #fff;
 }
+#paginationContainer{
+	margin: 24px 0 0 0;
+	display: flex;
+	justify-content: center;
+	color: #61678b;
+
+}
+#paginationContainer>div:hover{
+	cursor: pointer;
+	color: 61678b;
+}
+#pagination{
+	display: flex;
+	margin: 0 12px;
+}
+#pagination li{
+	margin: 0 5px;
+	font-weight: bold;
+}
+#pagination li:hover{
+	color: #43a2cc;
+}
+.u{
+	text-decoration: underline;
+}
 @media screen and (max-width: 768px) {
   /* Các quy tắc CSS cho màn hình có độ rộng tối đa là 768px */
   .navbar {
