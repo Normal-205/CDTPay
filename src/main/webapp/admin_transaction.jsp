@@ -63,9 +63,9 @@
               <input type="text" name="transactionMessage" class="to_item" maxlength="15" id="content" value="Transaction was made by ${sessionScope.staff.staffName}" />
      </div>
     </div>
+         <input type="submit" name="submit" value="Next" class="to_item_next" style="width: 95%">
         </form>
         </div>
-         <input type="submit" name="submit" value="Next" class="to_item_next" style="width: 95%">
      </div>
     
   </body>

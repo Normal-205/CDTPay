@@ -114,6 +114,11 @@ public class AdminTransServlet extends HttpServlet {
 				// create a transaction object
 				Transaction transaction = new Transaction(senderPhone, staffID, reciverPhone, transactionMessage,
 						amount);
+				// print transaction for debug
+				System.out.println(transaction.getReciveName());
+				System.out.println(transaction.getTransactionMessages());
+				System.out.println(transaction.getTransactionAmount());
+				System.out.println(transaction.getDate());
 
 				// count new balance from both user
 				// update sender balance

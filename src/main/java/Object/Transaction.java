@@ -18,12 +18,14 @@ public class Transaction {
 	public Transaction() {
 	}
 
+	// for finding recent transaction
 	public Transaction(String reciverPhone, String reciveName) {
 		super();
 		this.reciverPhone = reciverPhone;
 		this.reciveName = reciveName;
 	}
 
+	// for admin transaction
 	public Transaction(String senderPhone, Integer staffID, String reciverPhone, String transactionMessages,
 			Integer transactionAmount) {
 		super();
