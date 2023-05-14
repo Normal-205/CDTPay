@@ -21,7 +21,7 @@
       <div class="search">
       <form action="">
       <input type="text" class="accountnumber search_input" maxlength="10" placeholder="Search phone number"/>
-      <input type="submit" value="Search" class="search_submit"/>
+
       </form>
       </div>
    </div>
@@ -44,7 +44,7 @@
           </div>
         </div>
       </div>
-      <table>
+      <table id="dataTable">
         <thead>
           <tr>
             <th>Phone number</th>
@@ -161,7 +161,15 @@
           }
         });
       });
-
+//search
+$(document).ready(function () {
+        $(".search_input").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $("#dataTable tbody tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+          });
+        });
+      });
   </script>
 
   </html>
