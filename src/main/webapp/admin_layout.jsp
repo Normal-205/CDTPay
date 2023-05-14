@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +27,11 @@
           >
         </li>
         <li class="navbar_item hiden">
-          <a href="admin_deposit.jsp"><i class="fa-solid fa-wallet"></i>Deposit</a>
+          <a href="admin_deposit.jsp"
+            ><i class="fa-solid fa-wallet"></i>Deposit</a
+          >
         </li>
-        
+
         <li class="navbar_item hiden">
           <a href="admin_history.jsp"
             ><i class="fa-solid fa-clock-rotate-left"></i>History</a
@@ -40,32 +43,31 @@
           >
         </li>
         <li class="navbar_item hiden navad">
-          <a href="admin_accuser.jsp"><i class="fa-solid fa-user"></i>User Account</a>
+          <a href="admin_accuser.jsp"
+            ><i class="fa-solid fa-user"></i>User Account</a
+          >
         </li>
         <li class="navbar_item hiden">
-          <a href="#"
-            ><i class="fa-solid fa-phone-volume"></i>Support</a
-          >
+          <a href="#"><i class="fa-solid fa-phone-volume"></i>Support</a>
         </li>
       </ul>
     </div>
     <div class="header header_admin">
       <div class="header_title"><p>Dashboard</p></div>
       <!-- role ở đây ne -->
-      <input type="text" id="role" hidden="true" value="${sessionScope.staff.staffRole}"/>
+      <input
+        type="text"
+        id="role"
+        hidden="true"
+        value="${sessionScope.staff.staffRole}"
+      />
       <div class="header_user">
-        <img
-          src="style/img/page's avatar.png"
-          alt=""
-        />
+        <img src="style/img/page's avatar.png" alt="" />
         <p>${sessionScope.staff.staffName}</p>
         <i class="fa-sharp fa-solid fa-chevron-down"></i>
 
         <div class="header_dropdown">
           <ul class="header_dropdown_items">
-            <li class="header_dropdown_item">
-              <i class="fa-solid fa-user">Account</i>
-            </li>
             <li class="header_dropdown_item">
               <a href="StaffLoginServlet"
                 ><i class="fa-solid fa-arrow-right-from-bracket"></i>Log out</a
@@ -76,19 +78,16 @@
       </div>
     </div>
   </body>
-   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
 
   <script>
- 
     $(document).ready(function () {
-		if($("#role").val()==="admin"){
-			$(".navad").removeClass("hiden");
-		}
-		else{
-			$(".navbar_item").removeClass("hiden");
-		}
+      if ($("#role").val() === "admin") {
+        $(".navad").removeClass("hiden");
+      } else {
+        $(".navbar_item").removeClass("hiden");
+      }
     });
- 
   </script>
 </html>

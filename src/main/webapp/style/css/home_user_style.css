@@ -827,6 +827,11 @@ select:focus {
 .u{
 	text-decoration: underline;
 }
+.btnsubmit{
+	background-color: #4caf50;
+	  border: none;
+	  color: #fff;
+}
 @media screen and (max-width: 768px) {
   /* Các quy tắc CSS cho màn hình có độ rộng tối đa là 768px */
   .navbar {
