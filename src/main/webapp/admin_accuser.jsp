@@ -27,6 +27,8 @@
       <div class="createbgr hiden">      
       <div class="create_bg">
       </div>
+      <form action="">
+     
         <div class="create_form">
           <div class="create-form-items">
             <p>Create account</p>
@@ -39,9 +41,10 @@
             <option value="admin">admin</option>
             <option value="nv">nv</option>
             </select>
-            <button class="btn create-submit">Create Account</button>
+            <input type="submit" class="btn create-submit btnsubmit" value="Create Account"/>
           </div>
         </div>
+         </form>
       </div>
       
       <div id="tableContainer">
@@ -104,6 +107,7 @@
       <div class="updatebgr hiden">
         <div class="update_bg">
       </div>
+      <form action="">
         <div class="update_form">
           <div class="update-form-items">
             <p>Update account</p>
@@ -116,9 +120,10 @@
             <option value="admin">admin</option>
             <option value="staff">staff</option>
             </select>
-            <button class="btn update-submit">Update Account</button>
+            <input type="submit" class="btn update-submit btnsubmit" value="Update Account"/>
           </div>
         </div>
+      </form>
       </div>
     </div>
   </body>
