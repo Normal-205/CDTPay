@@ -89,4 +89,24 @@
     <servlet-name>AdminTransServlet</servlet-name>
     <url-pattern>/AdminTransServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StaffCreateUser</display-name>
+    <servlet-name>StaffCreateUser</servlet-name>
+    <servlet-class>gateway.StaffCreateUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StaffCreateUser</servlet-name>
+    <url-pattern>/StaffCreateUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StaffUpdateUser</display-name>
+    <servlet-name>StaffUpdateUser</servlet-name>
+    <servlet-class>gateway.StaffUpdateUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StaffUpdateUser</servlet-name>
+    <url-pattern>/StaffUpdateUser</url-pattern>
+  </servlet-mapping>
 </web-app>

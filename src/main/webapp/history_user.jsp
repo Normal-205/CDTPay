@@ -38,16 +38,16 @@
               <p>${currentTrans.transactionNumber}</p>
               <p>${currentTrans.transactionMessages}</p>
             </div>
-            <div class="history_it	em_money">
+            <div class="history_item_money">
               <p>
               <span>
               <c:choose>
   					<c:when test="${currentTrans.reciverPhone eq sessionScope.customer.phone}">
-              			<p>+ ${currentTrans.transactionAmount}</p> <span>VND</span>
+              			<p>+ ${currentTrans.transactionAmount} VND</p>
               			<p>Incoming</p>
               		</c:when>
               		<c:otherwise>
-					    <p>- ${currentTrans.transactionAmount}</p> <span>VND</span>
+					    <p>- ${currentTrans.transactionAmount} VND</p> 
 					    <p>Transaction</p>
 					 </c:otherwise>
               </c:choose>
@@ -75,11 +75,11 @@
               <span>
               <c:choose>
   					<c:when test="${previousTrans.reciverPhone eq sessionScope.customer.phone}">
-              			<p>+ ${previousTrans.transactionAmount}</p> <span>VND</span>
+              			<p>+ ${previousTrans.transactionAmount} VND</p> 
               			<p>Incoming</p>
               		</c:when>
               		<c:otherwise>
-					    <p>- ${previousTrans.transactionAmount}</p> <span>VND</span>
+					    <p>- ${previousTrans.transactionAmount} VND</p> 
 					    <p>Transaction</p>
 					 </c:otherwise>
               </c:choose>
