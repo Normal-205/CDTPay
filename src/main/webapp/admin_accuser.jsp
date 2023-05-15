@@ -48,7 +48,6 @@
                   <input type="text" name="customerEmail" placeholder="Email" />
                   <input type="text" name="customerOTP" placeholder="Password" maxlength="6" />
                   <select class="roleuser hiden">
-                    <option value="user">user</option>
                     <option value="admin">admin</option>
                     <option value="staff">staff</option>
                   </select>
@@ -124,12 +123,11 @@
               <div class="update_form">
                 <div class="update-form-items">
                   <p>Update account</p>
-                  <input type="text" name="customerPhone" placeholder="Phone number" class="phone" readonly />
-                  <input type="text" name="customerName" placeholder="Fullname" class="name" />
-                  <input type="text" name="customerEmail" placeholder="Email" class="email" />
-                  <input type="text" name="customerOTP" placeholder="Password" maxlength="6" />
+                  <input type="text" name="Phone" placeholder="Phone number" class="phone" readonly />
+                  <input type="text" name="Name" placeholder="Fullname" class="name" />
+                  <input type="text" name="Email" placeholder="Email" class="email" />
+                  <input type="text" name="OTP" placeholder="Password" required/>
                   <select name="role" class="roleuser hiden">
-                    <option value="user">user</option>
                     <option value="admin">admin</option>
                     <option value="staff">staff</option>
                   </select>

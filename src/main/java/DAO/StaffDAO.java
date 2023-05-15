@@ -43,6 +43,33 @@ public class StaffDAO {
 		return result;
 	}
 
+	public boolean updateStaff(Staff staff) {
+		boolean result = false;
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(
+					"UPDATE staff SET staffPassword = ?, staffName = ?, staffPhone = ?, staffEmail = ?, staffRole = ? WHERE staffPhone = ?");
+			ps.setString(1, staff.getStaffPassword());
+			ps.setString(2, staff.getStaffName());
+			ps.setString(3, staff.getStaffPhone());
+			ps.setString(4, staff.getStaffEmail());
+			ps.setString(5, staff.getStaffRole());
+			ps.setString(6, staff.getStaffPhone());
+			int rows = ps.executeUpdate();
+			if (rows > 0) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				dbManager.getConnection().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 	public boolean checkLogin(String staffName, String staffPassword) {
 		boolean isValid = false;
 		try {
@@ -119,5 +146,20 @@ public class StaffDAO {
 			e.printStackTrace();
 		}
 		return staffList;
+	}
+
+	public boolean checkNameExists(String name) {
+		boolean result = false;
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM staff WHERE staffName = ?");
+			ps.setString(1, name);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
