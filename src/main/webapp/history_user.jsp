@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,79 +27,67 @@
     <div id="header"></div>
     <div class="content_history">
       <div class="content_time">
-        <p>Month 3,2023</p>
+      <c:set var="currentDate" value="<%= java.time.LocalDate.now() %>"/>
+        <p>Time: ${currentDate.monthValue} / ${currentDate.year}</p>
         <div class="history_items">
+        
+          <c:forEach var="currentTrans" items="${currentTransList}">
           <div class="history_item">
             <div class="history_item_content">
-              <p><span>NGUYEN THANH CHUNG</span> - <span>0123456789</span></p>
-              <p>18:20 - 20/03/2023</p>
-              <p>PHAM DUY THANH DAN Chuyển khoản</p>
+              <p><span>${currentTrans.reciveName}</span> - <span>${currentTrans.reciverPhone}</span></p>
+              <p>${currentTrans.transactionNumber}</p>
+              <p>${currentTrans.transactionMessages}</p>
             </div>
-            <div class="history_item_money">
-              <p><span>-100000</span> <span>VND</span></p>
-              <p>CDTPay</p>
-            </div>
-          </div>
-          <div class="history_item">
-            <div class="history_item_content">
-              <p><span>NGUYEN THANH CHUNG</span> - <span>0123456789</span></p>
-              <p>18:20 - 20/03/2023</p>
-              <p>PHAM DUY THANH DAN Chuyển khoản</p>
-            </div>
-            <div class="history_item_money">
-              <p><span>-100000</span> <span>VND</span></p>
-              <p>CDTPay</p>
-            </div>
-          </div>
-          <div class="history_item">
-            <div class="history_item_content">
-              <p><span>NGUYEN THANH CHUNG</span> - <span>0123456789</span></p>
-              <p>18:20 - 20/03/2023</p>
-              <p>PHAM DUY THANH DAN Chuyển khoản</p>
-            </div>
-            <div class="history_item_money">
-              <p><span>-100000</span> <span>VND</span></p>
-              <p>CDTPay</p>
+            <div class="history_it	em_money">
+              <p>
+              <span>
+              <c:choose>
+  					<c:when test="${currentTrans.reciverPhone eq sessionScope.customer.phone}">
+              			<p>+ ${currentTrans.transactionAmount}</p> <span>VND</span>
+              			<p>Incoming</p>
+              		</c:when>
+              		<c:otherwise>
+					    <p>- ${currentTrans.transactionAmount}</p> <span>VND</span>
+					    <p>Transaction</p>
+					 </c:otherwise>
+              </c:choose>
+              </span></p>
             </div>
           </div>
+          </c:forEach>
+          
         </div>
       </div>
       <div class="content_time">
-        <p>Month 3,2023</p>
+        <c:set var="previousMonth" value="${currentDate.minusMonths(1)}" />
+        <p>Time: ${previousMonth.monthValue} / ${previousMonth.year}</p>
         <div class="history_items">
+        
+                  <c:forEach var="previousTrans" items="${previousTransList}">
           <div class="history_item">
             <div class="history_item_content">
-              <p><span>NGUYEN THANH CHUNG</span> - <span>0123456789</span></p>
-              <p>18:20 - 20/03/2023</p>
-              <p>PHAM DUY THANH DAN Chuyển khoản</p>
+              <p><span>${previousTrans.reciveName}</span> - <span>${previousTrans.reciverPhone}</span></p>
+              <p>${previousTrans.transactionNumber}</p>
+              <p>${previousTrans.transactionMessages}</p>
             </div>
-            <div class="history_item_money">
-              <p><span>-100000</span> <span>VND</span></p>
-              <p>CDTPay</p>
-            </div>
-          </div>
-          <div class="history_item">
-            <div class="history_item_content">
-              <p><span>NGUYEN THANH CHUNG</span> - <span>0123456789</span></p>
-              <p>18:20 - 20/03/2023</p>
-              <p>PHAM DUY THANH DAN Chuyển khoản</p>
-            </div>
-            <div class="history_item_money">
-              <p><span>-100000</span> <span>VND</span></p>
-              <p>CDTPay</p>
-            </div>
-          </div>
-          <div class="history_item">
-            <div class="history_item_content">
-              <p><span>NGUYEN THANH CHUNG</span> - <span>0123456789</span></p>
-              <p>18:20 - 20/03/2023</p>
-              <p>PHAM DUY THANH DAN Chuyển khoản</p>
-            </div>
-            <div class="history_item_money">
-              <p><span>-100000</span> <span>VND</span></p>
-              <p>CDTPay</p>
+            <div class="history_it	em_money">
+              <p>
+              <span>
+              <c:choose>
+  					<c:when test="${previousTrans.reciverPhone eq sessionScope.customer.phone}">
+              			<p>+ ${previousTrans.transactionAmount}</p> <span>VND</span>
+              			<p>Incoming</p>
+              		</c:when>
+              		<c:otherwise>
+					    <p>- ${previousTrans.transactionAmount}</p> <span>VND</span>
+					    <p>Transaction</p>
+					 </c:otherwise>
+              </c:choose>
+              </span></p>
             </div>
           </div>
+          </c:forEach>
+          
         </div>
       </div>
     </div>

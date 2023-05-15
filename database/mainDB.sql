@@ -209,7 +209,12 @@ order by reciverPhone;
 	WHERE senderPhone = '0123456789'
 	ORDER BY reciverPhone DESC 
 	LIMIT 5;
+    
+SELECT customerName, transaction.* 
+FROM transaction 
+INNER JOIN customer 
+ON transaction.reciverPhone = customer.customerPhone  
+WHERE (senderPhone = 0123456789 or reciverPhone = 0123456789)  AND MONTH(transactionDate) = 5 
+ORDER BY transactionNumber DESC;
 
-SELECT *
-FROM transaction
-WHERE MONTH(transactionDate) = 5;
+SELECT MONTH(CURRENT_DATE()) - 0

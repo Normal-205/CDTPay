@@ -77,6 +77,10 @@ public class LoginServlet extends HttpServlet {
 		List<Saving> savingList = savingDAO.getSavingByPhone(customerPhone);
 		// initial recent transaction in list structure
 		List<Transaction> recentTransactionList = transactionDAO.getRecentTransactionByPhone(customerPhone);
+		Integer currentMonth = transactionDAO.getSpecificMonth(0);
+		Integer previousMonth = transactionDAO.getSpecificMonth(1);
+		List<Transaction> currentTransList = transactionDAO.getTransactionHistoryByPhone(customerPhone, currentMonth);
+		List<Transaction> previousTransList = transactionDAO.getTransactionHistoryByPhone(customerPhone, previousMonth);
 		// test list trans
 		for (Transaction transaction : recentTransactionList) {
 			System.out.println(transaction.getReciveName());
@@ -89,6 +93,8 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("customer", customerDAO.getCustomerByPhone(customerPhone));
 			request.getSession().setAttribute("savingList", savingList);
 			request.getSession().setAttribute("recentTransaction", recentTransactionList);
+			request.getSession().setAttribute("currentTransList", currentTransList);
+			request.getSession().setAttribute("previousTransList", previousTransList);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home_user.jsp");
 			dispatcher.forward(request, response);
 

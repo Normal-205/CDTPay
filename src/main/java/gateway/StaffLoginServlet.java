@@ -6,8 +6,10 @@ import java.util.List;
 
 import DAO.CustomerDAO;
 import DAO.StaffDAO;
+import DAO.TransactionDAO;
 import Object.Customer;
 import Object.Staff;
+import Object.Transaction;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -22,6 +24,7 @@ import jakarta.servlet.http.HttpSession;
 public class StaffLoginServlet extends HttpServlet {
 	private DBManager dbManager;
 	private StaffDAO staffDAO;
+	private TransactionDAO transactionDAO;
 	private CustomerDAO customerDAO;
 	private static final long serialVersionUID = 1L;
 
@@ -37,6 +40,7 @@ public class StaffLoginServlet extends HttpServlet {
 	public void init() {
 		dbManager = DBManager.getInstance();
 		staffDAO = new StaffDAO(dbManager);
+		transactionDAO = new TransactionDAO(dbManager);
 		customerDAO = new CustomerDAO(dbManager);
 	}
 
@@ -77,6 +81,9 @@ public class StaffLoginServlet extends HttpServlet {
 			Staff staff = staffDAO.getStaffByName(staffName);
 			// get staff role go set session for user management
 			String staffRole = staff.getStaffRole();
+			Integer staffID = staff.getStaffID();
+			Integer currentMonth = transactionDAO.getSpecificMonth(0);
+			Integer previousMonth = transactionDAO.getSpecificMonth(1);
 			if (staffRole.equals("admin")) {
 				System.out.println("This is admin");
 				List<Staff> staffList = staffDAO.getAllStaff();
@@ -84,7 +91,17 @@ public class StaffLoginServlet extends HttpServlet {
 			} else if (staffRole.equals("staff")) {
 				System.out.println("This is staff");
 				List<Customer> customerList = customerDAO.getAllCustomer();
+				List<Transaction> currentTransList = transactionDAO.getTransactionHistoryByStaffID(staffID,
+						currentMonth);
+				List<Transaction> previousTransList = transactionDAO.getTransactionHistoryByStaffID(staffID,
+						previousMonth);
+//				// test
+				for (Transaction currentTrans : currentTransList) {
+					System.out.println(currentTrans.getSenderPhone());
+				}
 				request.getSession().setAttribute("customerList", customerList);
+				request.getSession().setAttribute("currentTransList", currentTransList);
+				request.getSession().setAttribute("previousTransList", previousTransList);
 			}
 			request.getSession().setAttribute("staff", staff);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/dashboard.jsp");

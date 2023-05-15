@@ -96,4 +96,75 @@ public class TransactionDAO {
 		}
 		return list;
 	}
+
+	// method to get transaction history by staffID, month and return a list of
+	// transaction sort by date
+	public List<Transaction> getTransactionHistoryByStaffID(int staffID, int month) {
+		List<Transaction> list = new ArrayList<>();
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(
+					"SELECT customerName, transaction.* FROM transaction INNER JOIN customer ON transaction.reciverPhone = customer.customerPhone WHERE staffID = ? AND MONTH(transactionDate) = ? ORDER BY transactionNumber DESC");
+			ps.setInt(1, staffID);
+			ps.setInt(2, month);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Transaction transaction = new Transaction();
+				transaction.setTransactionNumber(rs.getString("transactionNumber"));
+				transaction.setReciveName(rs.getString("customerName"));
+				transaction.setSenderPhone(rs.getString("senderPhone"));
+				transaction.setReciverPhone(rs.getString("reciverPhone"));
+				transaction.setTransactionMessages(rs.getString("transactionMessages"));
+				transaction.setTransactionAmount(rs.getInt("transactionAmount"));
+				transaction.setDate(rs.getDate("transactionDate").toLocalDate());
+				list.add(transaction);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	// the same with method above but find with phone
+	public List<Transaction> getTransactionHistoryByPhone(String phone, int month) {
+		List<Transaction> list = new ArrayList<>();
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(
+					"SELECT customerName, transaction.* FROM transaction INNER JOIN customer ON transaction.reciverPhone = customer.customerPhone WHERE (senderPhone = ? or reciverPhone = ?)  AND MONTH(transactionDate) = ? ORDER BY transactionNumber DESC");
+			ps.setString(1, phone);
+			ps.setString(2, phone);
+			ps.setInt(3, month);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Transaction transaction = new Transaction();
+				transaction.setTransactionNumber(rs.getString("transactionNumber"));
+				transaction.setReciveName(rs.getString("customerName"));
+				transaction.setSenderPhone(rs.getString("senderPhone"));
+				transaction.setReciverPhone(rs.getString("reciverPhone"));
+				transaction.setTransactionMessages(rs.getString("transactionMessages"));
+				transaction.setTransactionAmount(rs.getInt("transactionAmount"));
+				transaction.setDate(rs.getDate("transactionDate").toLocalDate());
+				list.add(transaction);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	// method to get current month value
+	public int getSpecificMonth(int month) {
+		int result = 0;
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement("SELECT MONTH(CURRENT_DATE()) - ?");
+			ps.setInt(1, month);
+			ResultSet rs = ps.executeQuery();
+			// get current month value
+			while (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
