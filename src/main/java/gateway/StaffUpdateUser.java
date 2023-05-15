@@ -7,6 +7,7 @@ import java.util.List;
 import DAO.CustomerDAO;
 import DAO.StaffDAO;
 import DAO.TransactionDAO;
+import Object.Customer;
 import Object.Staff;
 import connection.DBManager;
 import jakarta.servlet.ServletException;
@@ -55,43 +56,46 @@ public class StaffUpdateUser extends HttpServlet {
 		Staff staffSession = (Staff) session.getAttribute("staff");
 		// Retrieve the information from session
 		String staffRole = staffSession.getStaffRole();
-//		String updateRoleee = request.getParameter("role");
-//		System.out.println("bruh" + updateRoleee);
-		// Get parameters from the HTML form
+		// seperate role
 		if (staffRole.equals("admin")) {
 			// get submit
+			// Get parameters from the HTML form
 			String staffPhone = request.getParameter("Phone");
 			String staffName = request.getParameter("Name");
 			String staffEmail = request.getParameter("Email");
 			String staffOTP = request.getParameter("OTP");
 			String updateRole = request.getParameter("role");
-
-			Staff staff = new Staff(null, staffOTP, staffName, staffPhone, staffEmail, staffRole);
-			if (staffDAO.checkNameExists(staffName)) {
-				// phone number already exists, show error message
-				out.println("<html><body>");
-				out.println("<script>");
-				out.println("alert('Phone number already exists');");
-				out.println("location='admin_accuser.jsp';");
-				out.println("</script>");
-				out.println("</body></html>");
-//				response.sendRedirect(request.getContextPath() + "/view/signup.jsp");
-			} else {
-				// Call the UserDAO method to insert the user into the database
-				staffDAO.updateStaff(staff);
-				List<Staff> staffList = staffDAO.getAllStaff();
-				request.getSession().setAttribute("staffList", staffList);
-				// Sign up successful, redirect to the login page
-				out.println("<html><body>");
-				out.println("<script>");
-				out.println("alert('Update Succesfully');");
-				out.println("location='admin_accuser.jsp';");
-				out.println("</script>");
-				out.println("</body></html>");
-//				response.sendRedirect(request.getContextPath() + "/view/login.jsp");
-			}
+			Integer staffID = Integer.parseInt(request.getParameter("ID"));
+			Staff staff = new Staff(staffID, staffOTP, staffName, staffPhone, staffEmail, updateRole);
+			// Call the UserDAO method to update into the database
+			staffDAO.updateStaff(staff);
+			List<Staff> staffList = staffDAO.getAllStaff();
+			request.getSession().setAttribute("staffList", staffList);
+			// Update successful, redirect to the page
+			out.println("<html><body>");
+			out.println("<script>");
+			out.println("alert('Update Succesfully');");
+			out.println("location='admin_accuser.jsp';");
+			out.println("</script>");
+			out.println("</body></html>");
+			// response.sendRedirect(request.getContextPath() + "/view/login.jsp");
 		} else if (staffRole.equals("staff")) {
-			String updateRole = request.getParameter("role");
+			String customerPhone = request.getParameter("Phone");
+			String customerName = request.getParameter("Name");
+			String customerEmail = request.getParameter("Email");
+			String customerOTP = request.getParameter("OTP");
+			Customer customer = new Customer(customerName, customerPhone, customerEmail, customerOTP, null);
+			// Call the UserDAO method to update into the database
+			customerDAO.updateCustomer(customer);
+			List<Customer> customerList = customerDAO.getAllCustomer();
+			request.getSession().setAttribute("customerList", customerList);
+			// Update successful, redirect to the page
+			out.println("<html><body>");
+			out.println("<script>");
+			out.println("alert('Update Succesfully');");
+			out.println("location='admin_accuser.jsp';");
+			out.println("</script>");
+			out.println("</body></html>");
 		}
 	}
 

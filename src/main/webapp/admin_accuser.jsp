@@ -16,127 +16,133 @@
       </head>
 
       <body>
-      <!-- Check session -->
-    <% if(null==session.getAttribute("staff")){ %>
-      <script>
-        window.location.href = "admin_login.jsp";
-      </script>
-      <% }else{ %>
-        <script>
-          console.log("OKE, has staff's session");
-        </script>
-        <% } %>
-          <!-- End check session -->
-        <div id="header"></div>
-        <div class="account">
-          <div>
-            <button class="btn create-btn">Create account</button>
-            <div class="search">
-              <input type="text" class="accountnumber search_input" maxlength="10" placeholder="Search phone number" />
-            </div>
-          </div>
-          <div class="createbgr hiden">
-            <div class="create_bg">
-            </div>
-            <form action="StaffCreateUser" method="get">
+        <!-- Check session -->
+        <% if(null==session.getAttribute("staff")){ %>
+          <script>
+            window.location.href = "admin_login.jsp";
+          </script>
+          <% }else{ %>
+            <script>
+              console.log("OKE, has staff's session");
+            </script>
+            <% } %>
+              <!-- End check session -->
+              <div id="header"></div>
+              <div class="account">
+                <div>
+                  <button class="btn create-btn">Create account</button>
+                  <div class="search">
+                    <input type="text" class="accountnumber search_input" maxlength="10"
+                      placeholder="Search phone number" />
+                  </div>
+                </div>
+                <div class="createbgr hiden">
+                  <div class="create_bg">
+                  </div>
+                  <form action="StaffCreateUser" method="get">
 
-              <div class="create_form">
-                <div class="create-form-items">
-                  <p>Create account</p>
-                  <input type="text" name="customerPhone" placeholder="Phone number" maxlength="10" />
-                  <input type="text" name="customerName" placeholder="Fullname" />
-                  <input type="text" name="customerEmail" placeholder="Email" />
-                  <input type="text" name="customerOTP" placeholder="Password" maxlength="6" />
-                  <select class="roleuser hiden">
-                    <option value="admin">admin</option>
-                    <option value="staff">staff</option>
-                  </select>
-                  <input type="submit" class="btn create-submit btnsubmit" value="Create Account" />
+                    <div class="create_form">
+                      <div class="create-form-items">
+                        <p>Create account</p>
+                        <input type="text" name="Phone" placeholder="Phone number" maxlength="10" />
+                        <input type="text" name="Name" placeholder="Fullname" />
+                        <input type="text" name="Email" placeholder="Email" />
+                        <input type="text" name="OTP" placeholder="Password" maxlength="6" />
+                        <select name="role" class="roleuser hiden">
+                          <option value="admin">admin</option>
+                          <option value="staff">staff</option>
+                        </select>
+                        <input type="submit" class="btn create-submit btnsubmit" value="Create Account" />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div id="tableContainer">
+                  <table id="dataTable">
+                    <thead>
+                      <tr>
+                        <th>Phone number</th>
+                        <th>Fullname</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <c:choose>
+                        <c:when test="${sessionScope.staff.staffRole == 'admin'}">
+                          <!-- Code to execute if staff role is 'admin' -->
+                          <c:forEach var="staff" items="${staffList}">
+                            <tr>
+                              <td>${staff.staffPhone}</td>
+                              <td>${staff.staffName}</td>
+                              <td>${staff.staffEmail}</td>
+                              <td>${staff.staffPassword}</td>
+                              <td>${staff.staffRole}</td>
+                              <td>
+                                <button class="btn update-btn" data-id="${staff.staffID}"
+                                  data-phone="${staff.staffPhone}" data-name="${staff.staffName}"
+                                  data-email="${staff.staffEmail}" data-role="${staff.staffRole}">Update</button>
+                                <a href="StaffDeleteServlet?action=delete&staffID=${staff.staffID}">
+                                  <div class="btn delete-btn hiden">Delete</div>
+                                </a>
+                              </td>
+                            </tr>
+                          </c:forEach>
+                        </c:when>
+                        <c:when test="${sessionScope.staff.staffRole == 'staff'}">
+                          <!-- Code to execute if staff role is 'staff' -->
+                          <p>Welcome, staff member!</p>
+                          <c:forEach var="customer" items="${customerList}">
+                            <tr>
+                              <td>${customer.phone}</td>
+                              <td>${customer.fullname}</td>
+                              <td>${customer.email}</td>
+                              <td>${customer.password}</td>
+                              <td>user</td>
+                              <td>
+                                <button class="btn update-btn" data-phone="${customer.phone}"
+                                  data-name="${customer.fullname}" data-email="${customer.email}"
+                                  data-role="user">Update</button>
+                                <button class="btn delete-btn hiden">Delete</button>
+                              </td>
+                            </tr>
+                          </c:forEach>
+                          <!-- Additional staff-specific content -->
+                        </c:when>
+                      </c:choose>
+                    </tbody>
+                  </table>
+                </div>
+                <div id="paginationContainer">
+                  <div id="prevButton"><i class="fa-solid fa-angle-left"></i></div>
+                  <ul id="pagination"></ul>
+                  <div id="nextButton"><i class="fa-solid fa-angle-right"></i></div>
+                </div>
+                <div class="updatebgr hiden">
+                  <div class="update_bg">
+                  </div>
+                  <form action="StaffUpdateUser" method="get">
+                    <div class="update_form">
+                      <div class="update-form-items">
+                        <p>Update account</p>
+                        <input type="text" name="ID" class="id" hidden readonly>
+                        <input type="text" name="Phone" placeholder="Phone number" class="phone" readonly />
+                        <input type="text" name="Name" placeholder="Fullname" class="name" />
+                        <input type="text" name="Email" placeholder="Email" class="email" />
+                        <input type="text" name="OTP" placeholder="Password" maxlength="6" required />
+                        <select name="role" class="roleuser hiden">
+                          <option value="admin">admin</option>
+                          <option value="staff">staff</option>
+                        </select>
+                        <input type="submit" class="btn update-submit btnsubmit" value="Update Account" />
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
-            </form>
-          </div>
-
-          <div id="tableContainer">
-            <table id="dataTable">
-              <thead>
-                <tr>
-                  <th>Phone number</th>
-                  <th>Fullname</th>
-                  <th>Email</th>
-                  <th>Password</th>
-                  <th>Role</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <c:choose>
-                  <c:when test="${sessionScope.staff.staffRole == 'admin'}">
-                    <!-- Code to execute if staff role is 'admin' -->
-                    <c:forEach var="staff" items="${staffList}">
-                      <tr>
-                        <td>${staff.staffPhone}</td>
-                        <td>${staff.staffName}</td>
-                        <td>${staff.staffEmail}</td>
-                        <td>${staff.staffPassword}</td>
-                        <td>${staff.staffRole}</td>
-                        <td>
-                          <button class="btn update-btn" data-phone="${staff.staffPhone}" data-name="${staff.staffName}"
-                            data-email="${staff.staffEmail}" data-role="${staff.staffRole}">Update</button>
-                          <button class="btn delete-btn hiden">Delete</button>
-                        </td>
-                      </tr>
-                    </c:forEach>
-                  </c:when>
-                  <c:when test="${sessionScope.staff.staffRole == 'staff'}">
-                    <!-- Code to execute if staff role is 'staff' -->
-                    <p>Welcome, staff member!</p>
-                    <c:forEach var="customer" items="${customerList}">
-                      <tr>
-                        <td>${customer.phone}</td>
-                        <td>${customer.fullname}</td>
-                        <td>${customer.email}</td>
-                        <td>${customer.password}</td>
-                        <td>user</td>
-                        <td>
-                          <button class="btn update-btn" data-phone="${customer.phone}" data-name="${customer.fullname}"
-                            data-email="${customer.email}" data-role="user">Update</button>
-                          <button class="btn delete-btn hiden">Delete</button>
-                        </td>
-                      </tr>
-                    </c:forEach>
-                    <!-- Additional staff-specific content -->
-                  </c:when>
-                </c:choose>
-              </tbody>
-            </table>
-          </div>
-          <div id="paginationContainer">
-            <div id="prevButton"><i class="fa-solid fa-angle-left"></i></div>
-            <ul id="pagination"></ul>
-            <div id="nextButton"><i class="fa-solid fa-angle-right"></i></div>
-          </div>
-          <div class="updatebgr hiden">
-            <div class="update_bg">
-            </div>
-            <form action="StaffUpdateUser" method="get">
-              <div class="update_form">
-                <div class="update-form-items">
-                  <p>Update account</p>
-                  <input type="text" name="Phone" placeholder="Phone number" class="phone" readonly />
-                  <input type="text" name="Name" placeholder="Fullname" class="name" />
-                  <input type="text" name="Email" placeholder="Email" class="email" />
-                  <input type="text" name="OTP" placeholder="Password" required/>
-                  <select name="role" class="roleuser hiden">
-                    <option value="admin">admin</option>
-                    <option value="staff">staff</option>
-                  </select>
-                  <input type="submit" class="btn update-submit btnsubmit" value="Update Account" />
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
       </body>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
@@ -162,6 +168,7 @@
           });
           $(".update-btn").click(function () {
             $(".updatebgr").removeClass("hiden");
+            $(".update-form-items .id").val($(this).data("id"));
             $(".update-form-items .phone").val($(this).data("phone"));
             $(".update-form-items .name").val($(this).data("name"));
             $(".update-form-items .email").val($(this).data("email"));
@@ -169,25 +176,6 @@
           });
           $(".update_bg").click(function () {
             $(".updatebgr").addClass("hiden");
-          });
-          $('.delete-btn').click(() => {
-            // Hiển thị SweetAlert với nút confirm và cancel
-
-            Swal.fire({
-              title: 'Do you want to perform this action',
-              text: "You won't be able to undo this action!",
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonText: 'Yes',
-              cancelButtonText: 'No'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                // Xử lý khi confirm được nhấn
-                // var servletUrl = "";
-                //var redirectUrl = servletUrl + "?param1=value1&param2=value2";
-                //window.location.href = redirectUrl;
-              }
-            });
           });
         });
         $(document).ready(function () {

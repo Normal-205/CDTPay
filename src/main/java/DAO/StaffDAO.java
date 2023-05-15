@@ -47,13 +47,34 @@ public class StaffDAO {
 		boolean result = false;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
-					"UPDATE staff SET staffPassword = ?, staffName = ?, staffPhone = ?, staffEmail = ?, staffRole = ? WHERE staffPhone = ?");
+					"UPDATE staff SET staffPassword = ?, staffName = ?, staffPhone = ?, staffEmail = ?, staffRole = ? WHERE staffID = ?");
 			ps.setString(1, staff.getStaffPassword());
 			ps.setString(2, staff.getStaffName());
 			ps.setString(3, staff.getStaffPhone());
 			ps.setString(4, staff.getStaffEmail());
 			ps.setString(5, staff.getStaffRole());
-			ps.setString(6, staff.getStaffPhone());
+			ps.setInt(6, staff.getStaffID());
+			int rows = ps.executeUpdate();
+			if (rows > 0) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				dbManager.getConnection().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public boolean deleteStaff(Integer staffID) {
+		boolean result = false;
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement("DELETE FROM staff WHERE staffID = ?");
+			ps.setInt(1, staffID);
 			int rows = ps.executeUpdate();
 			if (rows > 0) {
 				result = true;

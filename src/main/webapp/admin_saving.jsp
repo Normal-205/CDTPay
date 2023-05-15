@@ -43,19 +43,19 @@
               <label for="accountname">Account name:</label>
               <input type="text" class="to_item" id="accountname" readonly />
               <label for="Balance">Balance:</label>
-              <input type="text" class="to_item" maxlength="15" readonly id="Balance" value="123" />
+              <input type="text" class="to_item" maxlength="15" readonly id="Balance" value="" />
             </div>
               <div>
       
                   <label for="interestRate">Interest Rate (%):</label>
                   <input type="text" name="interestRate" maxlength="10" class="to_item" id="interestRate" readonly
-                    value="3" />
+                    value="5" />
                   <select name="time" id="select-time">
-                    <option value="5">5 minute</option>
-                    <option value="10">10 minute</option>
+                    <option value="5">5 month</option>
+                    <option value="10">10 month</option>
                   </select>
                   <label for="money" class="black">Money:</label>
-                  <input type="text" name="initialAmount" class="to_item" id="money" />
+                  <input type="text" name="initialAmount" class="to_item" maxlength="12" id="money" />
                   <div>
                   </div>
                   <label for="totalmoney">Total money:</label>
@@ -170,6 +170,34 @@
               $('#money').val('').focus();
             });
           }
+        });
+      });
+    $(document).ready(function () {
+        // Bắt sự kiện khi chọn giá trị trong select
+        $('#select-time').change(function () {
+          // Lấy giá trị được chọn
+          var selectedValue = $(this).val();
+          if (selectedValue === '5') {
+            // Nếu giá trị được chọn là 5, thêm giá trị 3 vào input
+            var currentValue = $('#interestRate').val();
+            $('#interestRate').val(5);
+          }
+          if (selectedValue === '10') {
+            // Nếu giá trị được chọn là 10, thêm giá trị 5 vào input
+            var currentValue = $('#interestRate').val();
+            $('#interestRate').val(10);
+          }
+        });
+        $('#money').on('input', function () {
+      	  if($('#money').val()===""){
+      		  $('#totalmoney').val("0");
+      	  }
+      	  else{
+      		   var value1 = parseInt($(this).val());
+          var value2 = value1 + (value1 * ($('#interestRate').val())/100);
+          $('#totalmoney').val( parseInt(value2));
+      	  }
+         
         });
       });
   </script>

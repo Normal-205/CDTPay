@@ -109,4 +109,14 @@
     <servlet-name>StaffUpdateUser</servlet-name>
     <url-pattern>/StaffUpdateUser</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StaffDeleteServlet</display-name>
+    <servlet-name>StaffDeleteServlet</servlet-name>
+    <servlet-class>gateway.StaffDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StaffDeleteServlet</servlet-name>
+    <url-pattern>/StaffDeleteServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

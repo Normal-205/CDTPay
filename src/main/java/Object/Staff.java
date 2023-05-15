@@ -12,9 +12,19 @@ public class Staff {
 	public Staff() {
 	}
 
-	public Staff(Integer staffID, String staffPassword, String staffName, String staffPhone, String staffEmail, String staffRole) {
+	public Staff(Integer staffID, String staffPassword, String staffName, String staffPhone, String staffEmail,
+			String staffRole) {
 		super();
 		this.staffID = staffID;
+		this.staffPassword = staffPassword;
+		this.staffName = staffName;
+		this.staffPhone = staffPhone;
+		this.staffEmail = staffEmail;
+		this.staffRole = staffRole;
+	}
+
+	public Staff(String staffPassword, String staffName, String staffPhone, String staffEmail, String staffRole) {
+		super();
 		this.staffPassword = staffPassword;
 		this.staffName = staffName;
 		this.staffPhone = staffPhone;

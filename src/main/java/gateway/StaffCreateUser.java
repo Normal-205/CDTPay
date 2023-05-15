@@ -8,11 +8,13 @@ import DAO.CustomerDAO;
 import DAO.StaffDAO;
 import DAO.TransactionDAO;
 import Object.Customer;
+import Object.Staff;
 import connection.DBManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class StaffCreateUser
@@ -49,36 +51,65 @@ public class StaffCreateUser extends HttpServlet {
 
 		// Output stream to write HTML response
 		PrintWriter out = response.getWriter();
-
+		// Retrieve the customer object from the session
+		HttpSession session = request.getSession();
+		Staff staffSession = (Staff) session.getAttribute("staff");
+		// Retrieve the information from session
+		String staffRole = staffSession.getStaffRole();
 		// get submit
-		String customerPhone = request.getParameter("customerPhone");
-		String customerName = request.getParameter("customerName");
-		String customerEmail = request.getParameter("customerEmail");
-		String customerOTP = request.getParameter("customerOTP");
+		String Phone = request.getParameter("Phone");
+		String Name = request.getParameter("Name");
+		String Email = request.getParameter("Email");
+		String OTP = request.getParameter("OTP");
+		String role = request.getParameter("role");
 		Integer balance = 0;
-		Customer customer = new Customer(customerName, customerPhone, customerEmail, customerOTP, balance);
-		if (customerDAO.checkPhoneExists(customerPhone)) {
-			// phone number already exists, show error message
-			out.println("<html><body>");
-			out.println("<script>");
-			out.println("alert('Phone number already exists');");
-			out.println("location='admin_accuser.jsp';");
-			out.println("</script>");
-			out.println("</body></html>");
-//			response.sendRedirect(request.getContextPath() + "/view/signup.jsp");
-		} else {
-			// Call the UserDAO method to insert the user into the database
-			customerDAO.createUser(customer);
-			List<Customer> customerList = customerDAO.getAllCustomer();
-			request.getSession().setAttribute("customerList", customerList);
-			// Sign up successful, redirect to the login page
-			out.println("<html><body>");
-			out.println("<script>");
-			out.println("alert('Sign Up Succesfully');");
-			out.println("location='admin_accuser.jsp';");
-			out.println("</script>");
-			out.println("</body></html>");
-//			response.sendRedirect(request.getContextPath() + "/view/login.jsp");
+		if (staffRole.equals("admin")) {
+			Staff staff = new Staff(OTP, Name, Phone, Email, role);
+			if (staffDAO.checkNameExists(Name)) {
+				// phone number already exists, show error message
+				out.println("<html><body>");
+				out.println("<script>");
+				out.println("alert('Username already exists');");
+				out.println("location='admin_accuser.jsp';");
+				out.println("</script>");
+				out.println("</body></html>");
+			} else {
+				// Call the UserDAO method to create staff into the database
+				staffDAO.createStaff(staff);
+				List<Staff> staffList = staffDAO.getAllStaff();
+				request.getSession().setAttribute("staffList", staffList);
+				// Sign up successful, redirect to the login page
+				out.println("<html><body>");
+				out.println("<script>");
+				out.println("alert('Sign Up Succesfully');");
+				out.println("location='admin_accuser.jsp';");
+				out.println("</script>");
+				out.println("</body></html>");
+			}
+		} else if (staffRole.equals("staff")) {
+			Customer customer = new Customer(Name, Phone, Email, OTP, balance);
+			if (customerDAO.checkPhoneExists(Phone)) {
+				// phone number already exists, show error message
+				out.println("<html><body>");
+				out.println("<script>");
+				out.println("alert('Phone number already exists');");
+				out.println("location='admin_accuser.jsp';");
+				out.println("</script>");
+				out.println("</body></html>");
+				// response.sendRedirect(request.getContextPath() + "/view/signup.jsp");
+			} else {
+				// Call the UserDAO method to insert the user into the database
+				customerDAO.createUser(customer);
+				List<Customer> customerList = customerDAO.getAllCustomer();
+				request.getSession().setAttribute("customerList", customerList);
+				// Sign up successful, redirect to the login page
+				out.println("<html><body>");
+				out.println("<script>");
+				out.println("alert('Sign Up Succesfully');");
+				out.println("location='admin_accuser.jsp';");
+				out.println("</script>");
+				out.println("</body></html>");
+			}
 		}
 	}
 

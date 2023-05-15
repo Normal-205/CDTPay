@@ -48,13 +48,13 @@
                 <form action="UserSaving" method="POST">
                   <label for="interestRate">Interest Rate (%):</label>
                   <input type="text" name="interestRate" maxlength="10" class="to_item" id="interestRate" readonly
-                    value="3" />
+                    value="5" />
                   <select name="time" id="select-time">
-                    <option value="5">5 minute</option>
-                    <option value="10">10 minute</option>
+                    <option value="5">5 month</option>
+                    <option value="10">10 month</option>
                   </select>
                   <label for="money" class="black">Money:</label>
-                  <input type="text" name="initialAmount" class="to_item" id="money" />
+                  <input type="text" name="initialAmount" maxlength="12" class="to_item" id="money" />
                   <div>
                   </div>
                   <label for="totalmoney">Total money:</label>
@@ -97,18 +97,24 @@
         if (selectedValue === '5') {
           // Nếu giá trị được chọn là 5, thêm giá trị 3 vào input
           var currentValue = $('#interestRate').val();
-          $('#interestRate').val(3);
+          $('#interestRate').val(5);
         }
         if (selectedValue === '10') {
           // Nếu giá trị được chọn là 10, thêm giá trị 5 vào input
           var currentValue = $('#interestRate').val();
-          $('#interestRate').val(5);
+          $('#interestRate').val(10);
         }
       });
       $('#money').on('input', function () {
-        var value1 = parseInt($(this).val());
-        var value2 = value1 + (value1 * ($('#interestRate').val()));
-        $('#totalmoney').val(value2);
+    	  if($('#money').val()===""){
+    		  $('#totalmoney').val("0");
+    	  }
+    	  else{
+    		   var value1 = parseInt($(this).val());
+        var value2 = value1 + (value1 * ($('#interestRate').val())/100);
+        $('#totalmoney').val( parseInt(value2));
+    	  }
+       
       });
     });
 

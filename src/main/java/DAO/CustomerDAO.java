@@ -45,6 +45,31 @@ public class CustomerDAO {
 		return result;
 	}
 
+	public boolean updateCustomer(Customer customer) {
+		boolean result = false;
+		try (Connection conn = dbManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(
+					"UPDATE customer SET customerName = ?, customerEmail = ?, customerOTP = ? WHERE customerPhone = ?");
+			ps.setString(1, customer.getFullname());
+			ps.setString(2, customer.getEmail());
+			ps.setString(3, customer.getPassword());
+			ps.setString(4, customer.getPhone());
+			int rows = ps.executeUpdate();
+			if (rows > 0) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				dbManager.getConnection().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 	// validate user by phone
 	public Customer getCustomerByPhone(String phone) {
 		Customer customer = null;
