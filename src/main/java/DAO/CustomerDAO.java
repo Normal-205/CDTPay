@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Object.Customer;
+import Models.Customer;
 import connection.DBManager;
 
 public class CustomerDAO {
@@ -18,7 +18,7 @@ public class CustomerDAO {
 		this.dbManager = dbManager;
 	}
 
-	public boolean createUser(Customer customer) {
+	public boolean createUser(Models.Customer customer) {
 		boolean result = false;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
@@ -45,7 +45,7 @@ public class CustomerDAO {
 		return result;
 	}
 
-	public boolean updateCustomer(Customer customer) {
+	public boolean updateCustomer(Models.Customer customer) {
 		boolean result = false;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
@@ -78,7 +78,7 @@ public class CustomerDAO {
 			ps.setString(1, phone);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				customer = new Customer(rs.getString("customerName"), rs.getString("customerPhone"),
+				customer = new Models.Customer(rs.getString("customerName"), rs.getString("customerPhone"),
 						rs.getString("customerEmail"), rs.getString("customerOTP"), rs.getInt("balance"));
 			}
 		} catch (SQLException e) {
@@ -188,14 +188,15 @@ public class CustomerDAO {
 	}
 
 	// get full data of all customer
-	public List<Customer> getAllCustomer() {
-		List<Customer> customerList = new ArrayList<>();
+	public List<Models.Customer> getAllCustomer() {
+		List<Models.Customer> customerList = new ArrayList<>();
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM customer");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Customer customer = new Customer(rs.getString("customerName"), rs.getString("customerPhone"),
-						rs.getString("customerEmail"), rs.getString("customerOTP"), rs.getInt("balance"));
+				Models.Customer customer = new Models.Customer(rs.getString("customerName"),
+						rs.getString("customerPhone"), rs.getString("customerEmail"), rs.getString("customerOTP"),
+						rs.getInt("balance"));
 				customerList.add(customer);
 			}
 		} catch (SQLException e) {

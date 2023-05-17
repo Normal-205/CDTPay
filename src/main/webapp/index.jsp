@@ -35,6 +35,7 @@
             </div>
             <div class="header__login">
               <a href="login.jsp"><button>Login</button></a>
+              <a href="admin_login.jsp"><button>Admin Portal</button></a>
             </div>
           </header>
           <div class="slide" id="slide">

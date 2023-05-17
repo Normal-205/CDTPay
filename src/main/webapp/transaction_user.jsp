@@ -36,7 +36,7 @@
                     <div class="from_items">
                       <div class="from_left">
                         <div class="from_item">
-                          <div class="from_accnb">${sessionScope.customer.phone}</div>
+                          <div class="from_accnb" id="accnb">${sessionScope.customer.phone}</div>
                           <div>-</div>
                           <div class="from_name">${sessionScope.customer.fullname}</div>
                         </div>
@@ -109,11 +109,13 @@
 
     <script>
       var qrCodeValue = sessionStorage.getItem('qrCodeValue');
+      
       if (qrCodeValue) {
-
-        document.getElementById('accountnumber').value = qrCodeValue;
+		//if($("#accnb").text()!==qrCodeValue){
+			 document.getElementById('accountnumber').value = qrCodeValue;
         sessionStorage.removeItem('qrCodeValue');
         document.getElementById('checkacc').click();
+		//}
       };
       $(document).ready(function () {
         $("#header").load("layout.jsp", function () {

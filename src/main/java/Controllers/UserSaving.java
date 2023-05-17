@@ -1,4 +1,4 @@
-package gateway;
+package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -6,8 +6,8 @@ import java.util.List;
 
 import DAO.CustomerDAO;
 import DAO.SavingDAO;
-import Object.Customer;
-import Object.Saving;
+import Models.Customer;
+import Models.Saving;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

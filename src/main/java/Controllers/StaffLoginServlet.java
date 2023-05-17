@@ -1,4 +1,4 @@
-package gateway;
+package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,9 +7,9 @@ import java.util.List;
 import DAO.CustomerDAO;
 import DAO.StaffDAO;
 import DAO.TransactionDAO;
-import Object.Customer;
-import Object.Staff;
-import Object.Transaction;
+import Models.Customer;
+import Models.Staff;
+import Models.Transaction;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

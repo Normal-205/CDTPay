@@ -1,12 +1,13 @@
-package gateway;
+package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import DAO.CustomerDAO;
 import DAO.TransactionDAO;
-import Object.Customer;
-import Object.Transaction;
+import Models.Customer;
+import Models.Transaction;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -58,9 +59,6 @@ public class UserTransaction extends HttpServlet {
 				// Retrieve the customer object from the session
 				HttpSession session = request.getSession();
 				Customer customerSession = (Customer) session.getAttribute("customer");
-
-				// Retrieve the information from session
-				String senderPhone = customerSession.getPhone();
 				// Get the phone parameter from the HTML form
 				String customerPhone = request.getParameter("customerPhone");
 				// Call the method to get the customer by phone
@@ -78,22 +76,31 @@ public class UserTransaction extends HttpServlet {
 					out.println("</script>");
 					out.println("</body></html>");
 				}
+
 			} else if (submitButtonValue.equals("transaction")) {
 				// Retrieve the customer object from the session
 				HttpSession session = request.getSession();
 				Customer customer = (Customer) session.getAttribute("customer");
-
 				// Retrieve the information from session
 				Integer balance = customer.getBalance();
 				String senderPhone = customer.getPhone();
 				String customerOTP = customer.getPassword();
 
 				// Get the phone parameter from the HTML form
-				String recievePhone = request.getParameter("customerPhone");
+				String receiver = request.getParameter("customerPhone");
 				String reciveName = request.getParameter("reciveName");
 				Integer amount = Integer.parseInt(request.getParameter("amount"));
 				String message = request.getParameter("message");
 				String password = request.getParameter("password");
+				// validate if customer's phone & receiver phone is the same
+				if (receiver == senderPhone) {
+					out.println("<html><body>");
+					out.println("<script>");
+					out.println("alert('CANNOT TRANSFER TO YOURSELF!');");
+					out.println("location='transaction_user.jsp';");
+					out.println("</script>");
+					out.println("</body></html>");
+				}
 				// test
 				System.out.println(reciveName);
 				// validate password
@@ -108,20 +115,26 @@ public class UserTransaction extends HttpServlet {
 				}
 				// create a transaction object
 //				Transaction transaction = new Transaction(senderPhone, recievePhone,reciveName, message, amount, password);
-				Transaction transaction = new Transaction(senderPhone, recievePhone, reciveName, message, amount);
+				Transaction transaction = new Transaction(senderPhone, receiver, reciveName, message, amount);
 				// count new balance from both user
 				// update sender balance
 				Integer newSenderBalance = balance - amount;
 				customerDAO.updateBalance(senderPhone, newSenderBalance);
-				// get reciever balance
-				Customer reciever = customerDAO.getCustomerByPhone(recievePhone);
+				// get receiver balance
+				Customer reciever = customerDAO.getCustomerByPhone(receiver);
 				Integer recieverBalance = reciever.getBalance();
-				// update reciever balance
+				// update receiver balance
 				Integer newRecieverBalance = recieverBalance + amount;
-				customerDAO.updateBalance(recievePhone, newRecieverBalance);
+				customerDAO.updateBalance(receiver, newRecieverBalance);
 				// import transaction to database
 				transactionDAO.createUserTransaction(transaction);
-				// set session attribute to new balance of sender
+				// update session
+				Integer currentMonth = transactionDAO.getSpecificMonth(0);
+				Integer previousMonth = transactionDAO.getSpecificMonth(1);
+				List<Transaction> currentTransList = transactionDAO.getTransactionHistoryByPhone(senderPhone,
+						currentMonth);
+				List<Transaction> previousTransList = transactionDAO.getTransactionHistoryByPhone(senderPhone,
+						previousMonth);
 				// alert success
 				out.println("<html><body>");
 				out.println("<script>");
@@ -131,7 +144,8 @@ public class UserTransaction extends HttpServlet {
 				out.println("</body></html>");
 				// set attribute
 				request.getSession().setAttribute("customer", customerDAO.getCustomerByPhone(senderPhone));
-
+				request.getSession().setAttribute("currentTransList", currentTransList);
+				request.getSession().setAttribute("previousTransList", previousTransList);
 				// redirect back to transaction_user.jsp
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/transaction_user.jsp");
 				dispatcher.forward(request, response);

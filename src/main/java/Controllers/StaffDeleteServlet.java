@@ -1,13 +1,11 @@
-package gateway;
+package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import DAO.CustomerDAO;
 import DAO.StaffDAO;
-import DAO.TransactionDAO;
-import Object.Staff;
+import Models.Staff;
 import connection.DBManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -20,16 +18,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class StaffDeleteServlet extends HttpServlet {
 	private DBManager dbManager;
 	private StaffDAO staffDAO;
-	private TransactionDAO transactionDAO;
-	private CustomerDAO customerDAO;
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void init() {
 		dbManager = DBManager.getInstance();
 		staffDAO = new StaffDAO(dbManager);
-		transactionDAO = new TransactionDAO(dbManager);
-		customerDAO = new CustomerDAO(dbManager);
 	}
 
 	public StaffDeleteServlet() {

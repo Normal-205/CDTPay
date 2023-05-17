@@ -23,7 +23,7 @@
     <description></description>
     <display-name>SignUpServlet</display-name>
     <servlet-name>SignUpServlet</servlet-name>
-    <servlet-class>gateway.SignUpServlet</servlet-class>
+    <servlet-class>Controllers.SignUpServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SignUpServlet</servlet-name>
@@ -33,7 +33,7 @@
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>gateway.LoginServlet</servlet-class>
+    <servlet-class>Controllers.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -43,7 +43,7 @@
     <description></description>
     <display-name>UserTransaction</display-name>
     <servlet-name>UserTransaction</servlet-name>
-    <servlet-class>gateway.UserTransaction</servlet-class>
+    <servlet-class>Controllers.UserTransaction</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserTransaction</servlet-name>
@@ -53,7 +53,7 @@
     <description></description>
     <display-name>UserSaving</display-name>
     <servlet-name>UserSaving</servlet-name>
-    <servlet-class>gateway.UserSaving</servlet-class>
+    <servlet-class>Controllers.UserSaving</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserSaving</servlet-name>
@@ -63,7 +63,7 @@
     <description></description>
     <display-name>StaffLoginServlet</display-name>
     <servlet-name>StaffLoginServlet</servlet-name>
-    <servlet-class>gateway.StaffLoginServlet</servlet-class>
+    <servlet-class>Controllers.StaffLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>StaffLoginServlet</servlet-name>
@@ -73,7 +73,7 @@
     <description></description>
     <display-name>AdminDepositServlet</display-name>
     <servlet-name>AdminDepositServlet</servlet-name>
-    <servlet-class>gateway.AdminDepositServlet</servlet-class>
+    <servlet-class>Controllers.AdminDepositServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminDepositServlet</servlet-name>
@@ -83,7 +83,7 @@
     <description></description>
     <display-name>AdminTransServlet</display-name>
     <servlet-name>AdminTransServlet</servlet-name>
-    <servlet-class>gateway.AdminTransServlet</servlet-class>
+    <servlet-class>Controllers.AdminTransServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminTransServlet</servlet-name>
@@ -93,7 +93,7 @@
     <description></description>
     <display-name>StaffCreateUser</display-name>
     <servlet-name>StaffCreateUser</servlet-name>
-    <servlet-class>gateway.StaffCreateUser</servlet-class>
+    <servlet-class>Controllers.StaffCreateUser</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>StaffCreateUser</servlet-name>
@@ -103,7 +103,7 @@
     <description></description>
     <display-name>StaffUpdateUser</display-name>
     <servlet-name>StaffUpdateUser</servlet-name>
-    <servlet-class>gateway.StaffUpdateUser</servlet-class>
+    <servlet-class>Controllers.StaffUpdateUser</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>StaffUpdateUser</servlet-name>
@@ -113,7 +113,7 @@
     <description></description>
     <display-name>StaffDeleteServlet</display-name>
     <servlet-name>StaffDeleteServlet</servlet-name>
-    <servlet-class>gateway.StaffDeleteServlet</servlet-class>
+    <servlet-class>Controllers.StaffDeleteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>StaffDeleteServlet</servlet-name>

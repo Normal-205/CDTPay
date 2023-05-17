@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Object.Saving;
 import connection.DBManager;
 
 public class SavingDAO {
@@ -17,7 +16,7 @@ public class SavingDAO {
 		this.dbManager = dbManager;
 	}
 
-	public boolean addNewSaving(Saving saving) {
+	public boolean addNewSaving(Models.Saving saving) {
 		boolean result = false;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
@@ -48,16 +47,16 @@ public class SavingDAO {
 		return result;
 	}
 
-	public List<Saving> getSavingByPhone(String customerPhone) {
+	public List<Models.Saving> getSavingByPhone(String customerPhone) {
 //		Saving saving = null;
-		List<Saving> savingList = new ArrayList<>();
+		List<Models.Saving> savingList = new ArrayList<>();
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM saving WHERE customerPhone = ?");
 			ps.setString(1, customerPhone);
 			java.sql.ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Saving saving = new Saving();
-				saving = new Saving(rs.getString("customerPhone"), rs.getInt("initialAmount"),
+				Models.Saving saving = new Models.Saving();
+				saving = new Models.Saving(rs.getString("customerPhone"), rs.getInt("initialAmount"),
 						rs.getInt("interestRate"), rs.getDate("startDate").toLocalDate(),
 						rs.getDate("endDate").toLocalDate(), rs.getDouble("totalAmount"), rs.getString("status"));
 

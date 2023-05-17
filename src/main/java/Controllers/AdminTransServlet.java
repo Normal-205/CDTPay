@@ -1,14 +1,12 @@
-package gateway;
+package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import DAO.CustomerDAO;
-import DAO.StaffDAO;
 import DAO.TransactionDAO;
-import Object.Customer;
-import Object.Staff;
-import Object.Transaction;
+import Models.Customer;
+import Models.Staff;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -24,7 +22,6 @@ public class AdminTransServlet extends HttpServlet {
 	private CustomerDAO customerDAO;
 	private TransactionDAO transactionDAO;
 	private DBManager dbManager;
-	private StaffDAO staffDAO;
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -32,7 +29,6 @@ public class AdminTransServlet extends HttpServlet {
 		dbManager = DBManager.getInstance();
 		customerDAO = new CustomerDAO(dbManager);
 		transactionDAO = new TransactionDAO(dbManager);
-		staffDAO = new StaffDAO(dbManager);
 	}
 
 	/**
@@ -112,8 +108,8 @@ public class AdminTransServlet extends HttpServlet {
 				String transactionMessage = request.getParameter("transactionMessage");
 
 				// create a transaction object
-				Transaction transaction = new Transaction(senderPhone, staffID, reciverPhone, transactionMessage,
-						amount);
+				Models.Transaction transaction = new Models.Transaction(senderPhone, staffID, reciverPhone,
+						transactionMessage, amount);
 				// print transaction for debug
 				System.out.println(transaction.getReciveName());
 				System.out.println(transaction.getTransactionMessages());
@@ -126,7 +122,7 @@ public class AdminTransServlet extends HttpServlet {
 				// update balance in customer table
 				customerDAO.updateBalance(senderPhone, newSenderBalance);
 				// get receiver balance
-				Customer reciever = customerDAO.getCustomerByPhone(reciverPhone);
+				Models.Customer reciever = customerDAO.getCustomerByPhone(reciverPhone);
 				Integer recieverBalance = reciever.getBalance();
 				// update receiver balance
 				Integer newRecieverBalance = recieverBalance + amount;
@@ -143,16 +139,4 @@ public class AdminTransServlet extends HttpServlet {
 			}
 		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

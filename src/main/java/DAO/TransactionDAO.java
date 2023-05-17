@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Object.Transaction;
 import connection.DBManager;
 
 public class TransactionDAO {
@@ -18,7 +17,7 @@ public class TransactionDAO {
 	}
 
 	// create transaction for User
-	public boolean createUserTransaction(Transaction transaction) {
+	public boolean createUserTransaction(Models.Transaction transaction) {
 		boolean result = false;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
@@ -47,7 +46,7 @@ public class TransactionDAO {
 	}
 
 	// create transaction for Staff
-	public boolean createStaffTransaction(Transaction transaction) {
+	public boolean createStaffTransaction(Models.Transaction transaction) {
 		boolean result = false;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
@@ -78,15 +77,15 @@ public class TransactionDAO {
 
 	// method to get recent account number and account name from transaction table
 	// and customer table, then return a list of transaction
-	public List<Transaction> getRecentTransactionByPhone(String phone) {
-		List<Transaction> list = new ArrayList<>();
+	public List<Models.Transaction> getRecentTransactionByPhone(String phone) {
+		List<Models.Transaction> list = new ArrayList<>();
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
 					"SELECT DISTINCT customerName,reciverPhone FROM transaction  INNER JOIN customer ON transaction.reciverPhone = customer.customerPhone  WHERE senderPhone = ? ORDER BY reciverPhone DESC  LIMIT 5");
 			ps.setString(1, phone);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Transaction transaction = new Transaction();
+				Models.Transaction transaction = new Models.Transaction();
 				transaction.setReciveName(rs.getString("customerName"));
 				transaction.setReciverPhone(rs.getString("reciverPhone"));
 				list.add(transaction);
@@ -99,8 +98,8 @@ public class TransactionDAO {
 
 	// method to get transaction history by staffID, month and return a list of
 	// transaction sort by date
-	public List<Transaction> getTransactionHistoryByStaffID(int staffID, int month) {
-		List<Transaction> list = new ArrayList<>();
+	public List<Models.Transaction> getTransactionHistoryByStaffID(int staffID, int month) {
+		List<Models.Transaction> list = new ArrayList<>();
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
 					"SELECT customerName, transaction.* FROM transaction INNER JOIN customer ON transaction.reciverPhone = customer.customerPhone WHERE staffID = ? AND MONTH(transactionDate) = ? ORDER BY transactionNumber DESC");
@@ -108,7 +107,7 @@ public class TransactionDAO {
 			ps.setInt(2, month);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Transaction transaction = new Transaction();
+				Models.Transaction transaction = new Models.Transaction();
 				transaction.setTransactionNumber(rs.getString("transactionNumber"));
 				transaction.setReciveName(rs.getString("customerName"));
 				transaction.setSenderPhone(rs.getString("senderPhone"));
@@ -125,8 +124,8 @@ public class TransactionDAO {
 	}
 
 	// the same with method above but find with phone
-	public List<Transaction> getTransactionHistoryByPhone(String phone, int month) {
-		List<Transaction> list = new ArrayList<>();
+	public List<Models.Transaction> getTransactionHistoryByPhone(String phone, int month) {
+		List<Models.Transaction> list = new ArrayList<>();
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
 					"SELECT customerName, transaction.* FROM transaction INNER JOIN customer ON transaction.reciverPhone = customer.customerPhone WHERE (senderPhone = ? or reciverPhone = ?)  AND MONTH(transactionDate) = ? ORDER BY transactionNumber DESC");
@@ -135,7 +134,7 @@ public class TransactionDAO {
 			ps.setInt(3, month);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Transaction transaction = new Transaction();
+				Models.Transaction transaction = new Models.Transaction();
 				transaction.setTransactionNumber(rs.getString("transactionNumber"));
 				transaction.setReciveName(rs.getString("customerName"));
 				transaction.setSenderPhone(rs.getString("senderPhone"));

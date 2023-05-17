@@ -1,4 +1,4 @@
-package Object;
+package Models;
 
 public class Staff {
 	private Integer staffID;

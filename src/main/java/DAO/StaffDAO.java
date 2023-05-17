@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Object.Staff;
 import connection.DBManager;
 
 public class StaffDAO {
@@ -17,7 +16,7 @@ public class StaffDAO {
 		this.dbManager = dbManager;
 	}
 
-	public boolean createStaff(Staff staff) {
+	public boolean createStaff(Models.Staff staff) {
 		boolean result = false;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
@@ -43,7 +42,7 @@ public class StaffDAO {
 		return result;
 	}
 
-	public boolean updateStaff(Staff staff) {
+	public boolean updateStaff(Models.Staff staff) {
 		boolean result = false;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(
@@ -112,14 +111,14 @@ public class StaffDAO {
 	}
 
 	// validate user by phone
-	public Staff getStaffByName(String staffName) {
-		Staff staff = null;
+	public Models.Staff getStaffByName(String staffName) {
+		Models.Staff staff = null;
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM staff WHERE staffName = ?");
 			ps.setString(1, staffName);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				staff = new Staff(rs.getInt("staffID"), rs.getString("staffPassword"), rs.getString("staffName"),
+				staff = new Models.Staff(rs.getInt("staffID"), rs.getString("staffPassword"), rs.getString("staffName"),
 						rs.getString("staffPhone"), rs.getString("staffEmail"), rs.getString("staffRole"));
 			}
 		} catch (SQLException e) {
@@ -153,14 +152,15 @@ public class StaffDAO {
 	}
 
 	// get full data of all staff
-	public List<Staff> getAllStaff() {
-		List<Staff> staffList = new ArrayList<>();
+	public List<Models.Staff> getAllStaff() {
+		List<Models.Staff> staffList = new ArrayList<>();
 		try (Connection conn = dbManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM staff");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Staff staff = new Staff(rs.getInt("staffID"), rs.getString("staffPassword"), rs.getString("staffName"),
-						rs.getString("staffPhone"), rs.getString("staffEmail"), rs.getString("staffRole"));
+				Models.Staff staff = new Models.Staff(rs.getInt("staffID"), rs.getString("staffPassword"),
+						rs.getString("staffName"), rs.getString("staffPhone"), rs.getString("staffEmail"),
+						rs.getString("staffRole"));
 				staffList.add(staff);
 			}
 		} catch (SQLException e) {

@@ -1,4 +1,4 @@
-package gateway;
+package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,8 +7,8 @@ import java.util.List;
 import DAO.CustomerDAO;
 import DAO.SavingDAO;
 import DAO.TransactionDAO;
-import Object.Saving;
-import Object.Transaction;
+import Models.Saving;
+import Models.Transaction;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -81,8 +81,8 @@ public class LoginServlet extends HttpServlet {
 		Integer previousMonth = transactionDAO.getSpecificMonth(1);
 		List<Transaction> currentTransList = transactionDAO.getTransactionHistoryByPhone(customerPhone, currentMonth);
 		List<Transaction> previousTransList = transactionDAO.getTransactionHistoryByPhone(customerPhone, previousMonth);
-		// test list trans
-		for (Transaction transaction : recentTransactionList) {
+		// debug list transaction
+		for (Transaction transaction : currentTransList) {
 			System.out.println(transaction.getReciveName());
 			System.out.println(transaction.getReciverPhone());
 		}
@@ -97,7 +97,6 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("previousTransList", previousTransList);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home_user.jsp");
 			dispatcher.forward(request, response);
-
 		} else {
 			System.out.println("NOT OKE");
 			out.println("<html><body>");
@@ -106,9 +105,6 @@ public class LoginServlet extends HttpServlet {
 			out.println("location='login.jsp';");
 			out.println("</script>");
 			out.println("</body></html>");
-			// request.setAttribute("error", "Invalid username or password");
-			// RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-			// dispatcher.forward(request, response);
 		}
 	}
 

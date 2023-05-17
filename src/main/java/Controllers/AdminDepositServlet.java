@@ -1,14 +1,13 @@
-package gateway;
+package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import DAO.CustomerDAO;
-import DAO.StaffDAO;
 import DAO.TransactionDAO;
-import Object.Customer;
-import Object.Staff;
-import Object.Transaction;
+import Models.Customer;
+import Models.Staff;
+import Models.Transaction;
 import connection.DBManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -24,7 +23,6 @@ public class AdminDepositServlet extends HttpServlet {
 	private CustomerDAO customerDAO;
 	private TransactionDAO transactionDAO;
 	private DBManager dbManager;
-	private StaffDAO staffDAO;
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -32,7 +30,6 @@ public class AdminDepositServlet extends HttpServlet {
 		dbManager = DBManager.getInstance();
 		customerDAO = new CustomerDAO(dbManager);
 		transactionDAO = new TransactionDAO(dbManager);
-		staffDAO = new StaffDAO(dbManager);
 	}
 
 	/**
@@ -95,13 +92,15 @@ public class AdminDepositServlet extends HttpServlet {
 				if (result) {
 					// Call the method to insert the transaction
 					boolean result2 = transactionDAO.createStaffTransaction(transaction);
-					// alert success
-					out.println("<html><body>");
-					out.println("<script>");
-					out.println("alert('DEPOSIT SUCCESS! Press OKE to comeback :0');");
-					out.println("location='admin_deposit.jsp';");
-					out.println("</script>");
-					out.println("</body></html>");
+					if (result2) {
+						// alert success
+						out.println("<html><body>");
+						out.println("<script>");
+						out.println("alert('DEPOSIT SUCCESS! Press OKE to comeback :0');");
+						out.println("location='admin_deposit.jsp';");
+						out.println("</script>");
+						out.println("</body></html>");
+					}
 				}
 			}
 		}
